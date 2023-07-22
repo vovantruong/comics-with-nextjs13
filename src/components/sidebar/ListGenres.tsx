@@ -10,9 +10,22 @@ interface listGenresProps {
 }
 
 const ListGenres: FC<listGenresProps> = async () => {
-    // const res = await fetch(`https://comics-api.vercel.app/genres`, { next: { revalidate: 60 } })
-    // const dataGenres = await res.json()
+    // const fetchData = async () => {
+    //     try {
+    //         const res = await fetch(`https://comics-api.vercel.app/genres`, { next: { revalidate: 60 } })
+    //         const data = await res.json()
+    //         console.log("test");
 
+    //         // return data;
+    //     } catch (error) {
+    //         console.log(error);
+    //     }
+
+    // }
+    // fetchData()
+
+
+    // const dataGenres = await fetchData()
     const dataGenres = [] as any
 
     return (

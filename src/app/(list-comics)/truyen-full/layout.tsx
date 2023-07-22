@@ -1,6 +1,5 @@
-
 import DefaultLayout from '@/components/layout/DefaultLayout'
-import { FC } from 'react'
+import { FC, Suspense } from 'react'
 
 interface layoutProps {
     children: React.ReactNode
@@ -8,9 +7,12 @@ interface layoutProps {
 
 const layout: FC<layoutProps> = ({ children }) => {
     return (
-        <DefaultLayout visibleBanner={false}>
+        <>
             {children}
-        </DefaultLayout>
+            {/* <DefaultLayout visibleBanner={false}>
+            {children}
+        </DefaultLayout> */}
+        </>
     )
 }
 export default layout

@@ -7,9 +7,12 @@ interface layoutProps {
 
 const layout: FC<layoutProps> = ({ children }) => {
     return (
-        <DefaultLayout visibleBanner={false} visibleSideRanking={false} visibleComicByAuthor={true}>
+        <>
             {children}
-        </DefaultLayout>
+            {/* <DefaultLayout visibleBanner={false} visibleSideRanking={false} visibleComicByAuthor={true}>
+            {children}
+        </DefaultLayout> */}
+        </>
     )
 }
 export default layout

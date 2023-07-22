@@ -1,4 +1,4 @@
-import { FC, ReactNode } from 'react'
+import { FC, ReactNode, memo } from 'react'
 import clsx from 'clsx'
 import ListGenres from '../sidebar/ListGenres'
 import RankingComics from '../sidebar/RankingComics'
@@ -11,6 +11,7 @@ interface layoutProps {
     visibleSideRanking?: boolean
     visibleComicByAuthor?: boolean
     visibleBanner?: boolean
+    visibleListGenres?: boolean
 }
 
 const DefaultLayout: FC<layoutProps> = ({
@@ -19,9 +20,13 @@ const DefaultLayout: FC<layoutProps> = ({
     visibleSideRanking = true,
     visibleComicByAuthor = false,
     visibleBanner = true,
+    visibleListGenres = true,
 }) => {
 
-    return <main className={clsx('overflow-x-hidden bg-white', className)}>
+    console.log('This is Default Layout');
+
+
+    return <main className={`${className} overflow-x-hidden bg-white`}>
         {visibleBanner && <BannerComics />}
         <div className='container flex items-start justify-center relative flex-wrap'>
             <div className='xl:w-[70%] w-full lg:pr-2 md:pr-0'>
@@ -30,9 +35,9 @@ const DefaultLayout: FC<layoutProps> = ({
             <div className='xl:w-[30%] w-full lg:pl-2 md:pl-0'>
                 {visibleSideRanking && <RankingComics />}
                 {visibleComicByAuthor && <ComicByAuthor />}
-                <ListGenres />
+                {/* {visibleListGenres && <ListGenres />} */}
             </div>
         </div>
     </main>
 }
-export default DefaultLayout
+export default memo(DefaultLayout)

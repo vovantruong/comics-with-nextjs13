@@ -1,3 +1,4 @@
+import ListGenres from '@/components/sidebar/ListGenres'
 import { FC } from 'react'
 
 interface pageProps {
@@ -10,7 +11,10 @@ const Genres: FC<pageProps> = ({ searchParams }) => {
     // console.log(searchParams);
 
     return (
-        <div>Genres - {searchParams.type ?? "all"}</div>
+        <div>
+            The loai - {searchParams.type ?? "all"}
+            <ListGenres />
+        </div>
     )
 }
 export default Genres
