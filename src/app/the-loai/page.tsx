@@ -1,20 +1,8 @@
-import ListGenres from '@/components/sidebar/ListGenres'
 import { FC } from 'react'
 
-interface pageProps {
-    searchParams: {
-        type: string
-    }
-}
+interface GenresComicsProps { }
 
-const Genres: FC<pageProps> = ({ searchParams }) => {
-    // console.log(searchParams);
-
-    return (
-        <div>
-            The loai - {searchParams.type ?? "all"}
-            <ListGenres />
-        </div>
-    )
+const GenresComics: FC<GenresComicsProps> = ({ }) => {
+    return <div>GenresComics</div>
 }
-export default Genres
+export default GenresComics

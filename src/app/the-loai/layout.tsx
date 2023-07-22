@@ -1,14 +1,16 @@
+import ComicByAuthor from "@/components/sidebar/ComicByAuthor"
 import ListGenres from "@/components/sidebar/ListGenres"
 import RankingComics from "@/components/sidebar/RankingComics"
 
-interface LayoutComicsTopProps {
+interface LayoutGenresProps {
     children: React.ReactNode
     className?: string
 }
-export default function LayoutComicsTop({
+export default function LayoutGenres({
     children,
     className
-}: LayoutComicsTopProps) {
+}: LayoutGenresProps) {
+
     return (
         <main className={`${className} overflow-x-hidden bg-white`}>
             <div className='container flex items-start justify-center relative flex-wrap'>

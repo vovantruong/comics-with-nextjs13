@@ -10,19 +10,20 @@ interface listGenresProps {
 }
 
 const ListGenres: FC<listGenresProps> = async () => {
-    // const fetchData = async () => {
-    //     try {
-    //         const res = await fetch(`https://comics-api.vercel.app/genres`, { next: { revalidate: 60 } })
-    //         const data = await res.json()
-    //         console.log("test");
+    const fetchData = async () => {
+        try {
+            // const res = await fetch(`https://comics-api.vercel.app/genres`, { next: { revalidate: 60 } })
+            const res = await fetch('https://jsonplaceholder.typicode.com/posts', { next: { revalidate: 60 } })
+            const data = await res.json()
+            console.log("test");
 
-    //         // return data;
-    //     } catch (error) {
-    //         console.log(error);
-    //     }
+            // return data;
+        } catch (error) {
+            console.log(error);
+        }
 
-    // }
-    // fetchData()
+    }
+    fetchData()
 
 
     // const dataGenres = await fetchData()

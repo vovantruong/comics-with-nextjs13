@@ -23,9 +23,6 @@ const DefaultLayout: FC<layoutProps> = ({
     visibleListGenres = true,
 }) => {
 
-    console.log('This is Default Layout');
-
-
     return <main className={`${className} overflow-x-hidden bg-white`}>
         {visibleBanner && <BannerComics />}
         <div className='container flex items-start justify-center relative flex-wrap'>
