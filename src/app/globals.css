@@ -2,26 +2,30 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+body::-webkit-scrollbar {
+	@apply w-[6px];
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+body::-webkit-scrollbar-track {
+	@apply bg-[#fafafa];
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+body::-webkit-scrollbar-thumb {
+	@apply bg-secondary rounded-[10px] cursor-pointer;
+}
+
+.container {
+	@apply md:px-4 px-1 transition-all duration-200 ease-in-out my-0 mx-auto;
+}
+
+.banner-pagination {
+	@apply block sm:!bottom-0 !bottom-[-5px];
+}
+
+.banner-pagination span {
+	@apply opacity-100 w-2 h-2 rounded-full bg-[#d2d2d2] cursor-pointer transition-all duration-700 ease-in-out origin-center;
+}
+
+.banner-pagination .banner-pagination__active {
+	@apply bg-thirdary w-8 h-2 rounded-md origin-center;
 }
