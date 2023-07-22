@@ -82,7 +82,7 @@ function HomePage() {
                         placeholder="Tất cả"
                         onChange={setSelectedOption}
                         options={options}
-                        instanceId={useId()}
+                        instanceId={"type-trend"}
                         theme={(theme) => ({
                             ...theme,
                             colors: {
