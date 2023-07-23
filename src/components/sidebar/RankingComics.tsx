@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from 'react'
+import { FC, memo } from 'react'
 import GifBookCate from '../../../public/images/cate-book.gif';
 import Image from 'next/image'
 import { FaCrown } from 'react-icons/fa'
@@ -13,10 +13,18 @@ import Skeleton from 'react-loading-skeleton';
 interface rankingComicsProps { }
 
 const RankingComics: FC<rankingComicsProps> = async ({ }) => {
-    // const res = await fetch(`https://comics-api.vercel.app/top`, { next: { revalidate: 60 } })
-    // const dataFetch = await res.json()
-    // const dataTopRanking = dataFetch.comics.filter((item: comicsProps, index: number) => index < 7)
-    const dataTopRanking = [] as any
+    const fetchData = async () => {
+        try {
+            const res = await fetch(`https://comics-api.vercel.app/top`, { next: { revalidate: 60 } })
+            const dataFetch = await res.json()
+            const dataLimit = dataFetch.comics.filter((item: comicsProps, index: number) => index < 7)
+
+            return dataLimit;
+        } catch (error) {
+            console.log(error);
+        }
+    }
+    const dataTopRanking = await fetchData()
 
 
 
@@ -110,4 +118,4 @@ function LoadingSkeleton() {
     ))
 }
 
-export default RankingComics
+export default memo(RankingComics)

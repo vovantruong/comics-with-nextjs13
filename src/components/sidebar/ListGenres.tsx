@@ -4,6 +4,7 @@ import Image from "next/image";
 import IconGenres from '../../../public/images/genres.gif'
 import { getGenresComic } from '@/utils/services';
 import { genresProps } from '@/types/typeProps';
+import LoadingBook from '../LoadingBook';
 
 interface listGenresProps {
 
@@ -31,7 +32,7 @@ const ListGenres: FC<listGenresProps> = async () => {
                 </h2>
             </div>
             <div className='p-4 flex items-center flex-wrap justify-start gap-2'>
-                {dataGenres && dataGenres.length > 0 && dataGenres.map((item: genresProps) => (
+                {dataGenres && dataGenres.length > 0 ? dataGenres.map((item: genresProps) => (
                     <Link
                         key={item.id}
                         title={item.description}
@@ -41,7 +42,7 @@ const ListGenres: FC<listGenresProps> = async () => {
                     >
                         {item.name}
                     </Link>
-                ))}
+                )) : <LoadingBook />}
             </div>
         </aside>
     )
