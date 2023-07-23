@@ -11,9 +11,11 @@ import DropdownMenu from "../DropdownMenu";
 import { genresProps } from "@/types/typeProps";
 import LoadingBook from "../LoadingBook";
 
-interface HeaderProps { }
+interface HeaderProps {
+    dataGenres?: genresProps
+}
 
-const Header: FC<HeaderProps> = ({ }) => {
+const Header: FC<HeaderProps> = ({ dataGenres }) => {
     const [dataListGenres, setDataListGenres] = useState<genresProps[]>([])
     const [dropGenres, setDropGenres] = useState(false)
     const [dropListComics, setDropListComics] = useState(false)
@@ -30,19 +32,19 @@ const Header: FC<HeaderProps> = ({ }) => {
         })
     }, [])
 
-    useEffect(() => {
-        const handleGenresList = async () => {
-            try {
-                const res = await fetch("https://comics-api.vercel.app/genres");
-                const data = await res.json()
-                setDataListGenres(data)
-            } catch (error) {
-                console.log(error);
-            }
-        }
+    // useEffect(() => {
+    //     const handleGenresList = async () => {
+    //         try {
+    //             const res = await fetch("https://comics-api.vercel.app/genres");
+    //             const data = await res.json()
+    //             setDataListGenres(data)
+    //         } catch (error) {
+    //             console.log(error);
+    //         }
+    //     }
 
-        handleGenresList()
-    }, [])
+    //     handleGenresList()
+    // }, [])
 
     return (
         <header

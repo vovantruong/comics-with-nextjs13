@@ -4,12 +4,13 @@ import IconTitle from '../../public/images/light-book.png';
 import Image from 'next/image'
 import { useEffect, useId, useState } from 'react';
 import { comicsProps } from '@/types/typeProps';
-// import sendRequest from '@/utils/sendRequest';
 import LoadingBook from '@/components/LoadingBook';
 import Select from 'react-select';
-// import { getTopComics } from '@/utils/services';
 import Skeleton from 'react-loading-skeleton';
 import DefaultLayout from '@/components/layout/DefaultLayout';
+import RankingComics from '@/components/sidebar/RankingComics';
+import ListGenres from '@/components/sidebar/ListGenres';
+import BannerComics from '@/components/comon/BannerComics';
 
 const options: selectProps[] = [
     { value: 'all', label: 'Tất cả' },
@@ -131,9 +132,21 @@ function LoadingSkeleton() {
 
 
 export default function Home() {
+
     return (
-        <DefaultLayout>
+        <main className={` overflow-x-hidden bg-white`}>
             <HomePage />
-        </DefaultLayout>
+            {/* <BannerComics />
+            <div className='container flex items-start justify-center relative flex-wrap'>
+                <div className='xl:w-[70%] w-full lg:pr-2 md:pr-0'>
+                    <HomePage />
+                </div>
+                <div className='xl:w-[30%] w-full lg:pl-2 md:pl-0'>
+                    <RankingComics />
+                    <ListGenres />
+                </div>
+            </div> */}
+        </main>
+
     )
 }
