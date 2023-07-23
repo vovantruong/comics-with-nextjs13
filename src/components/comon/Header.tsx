@@ -6,7 +6,6 @@ import Logo from '../../../public/images/truyen-logo-2.png'
 import SearchBox from "../SearchBox";
 import SideBarMenu from "../sidebar/SideBarMenu";
 import { useContext, useEffect, useState } from "react";
-import { MediaQueryContext } from "@/contexts/MediaQueryContext";
 import clsx from "clsx";
 import DropdownMenu from "../DropdownMenu";
 import { genresProps } from "@/types/typeProps";

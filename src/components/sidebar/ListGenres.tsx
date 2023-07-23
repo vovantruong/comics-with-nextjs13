@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { FC, memo } from 'react'
 import Link from 'next/link'
 import Image from "next/image";
 import IconGenres from '../../../public/images/genres.gif'
@@ -12,22 +12,15 @@ interface listGenresProps {
 const ListGenres: FC<listGenresProps> = async () => {
     const fetchData = async () => {
         try {
-            // const res = await fetch(`https://comics-api.vercel.app/genres`, { next: { revalidate: 60 } })
-            const res = await fetch('https://jsonplaceholder.typicode.com/posts', { next: { revalidate: 60 } })
+            const res = await fetch(`https://comics-api.vercel.app/genres`, { next: { revalidate: 60 } })
             const data = await res.json()
-            console.log("test");
 
-            // return data;
+            return data;
         } catch (error) {
             console.log(error);
         }
-
     }
-    fetchData()
-
-
-    // const dataGenres = await fetchData()
-    const dataGenres = [] as any
+    const dataGenres = await fetchData()
 
     return (
         <aside className='w-full my-2 bg-[#f6f3ee] rounded-md overflow-hidden border'>
@@ -54,4 +47,4 @@ const ListGenres: FC<listGenresProps> = async () => {
     )
 }
 
-export default ListGenres
+export default memo(ListGenres)

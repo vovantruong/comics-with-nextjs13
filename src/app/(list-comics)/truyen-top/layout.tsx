@@ -9,6 +9,8 @@ export default function LayoutComicsTop({
     children,
     className
 }: LayoutComicsTopProps) {
+    console.log("This is layout Top truyen");
+
     return (
         <main className={`${className} overflow-x-hidden bg-white`}>
             <div className='container flex items-start justify-center relative flex-wrap'>
