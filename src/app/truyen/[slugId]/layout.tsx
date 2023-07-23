@@ -1,25 +1,26 @@
-import BannerComics from '@/components/comon/BannerComics';
-import SectionTopComics from '@/components/home/SectionTopComics';
-import ListGenres from '@/components/sidebar/ListGenres';
-import RankingComics from '@/components/sidebar/RankingComics';
+import ComicByAuthor from '@/components/sidebar/ComicByAuthor'
+import ListGenres from '@/components/sidebar/ListGenres'
+import { FC } from 'react'
 
-export default function Home() {
+interface layoutProps {
+    children: React.ReactNode
+}
 
+const layout: FC<layoutProps> = ({ children }) => {
     return (
         <main className={` overflow-x-hidden bg-white`}>
-            <BannerComics />
             <div className='container flex items-start justify-center relative flex-wrap'>
                 <div className='xl:w-[70%] w-full lg:pr-2 md:pr-0'>
                     <div className="relative w-full">
-                        <SectionTopComics />
+                        {children}
                     </div>
                 </div>
                 <div className='xl:w-[30%] w-full lg:pl-2 md:pl-0'>
-                    <RankingComics />
+                    <ComicByAuthor />
                     <ListGenres />
                 </div>
             </div>
         </main>
-
     )
 }
+export default layout

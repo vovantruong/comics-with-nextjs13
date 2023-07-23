@@ -1,8 +1,15 @@
 import { FC } from 'react'
 
-interface GenresComicsProps { }
+interface GenresComicsProps {
+    searchParams: {
+        type: string
+    }
+}
 
-const GenresComics: FC<GenresComicsProps> = ({ }) => {
-    return <div>GenresComics</div>
+const GenresComics: FC<GenresComicsProps> = ({ searchParams }) => {
+
+    const type_genres = searchParams.type ?? "all"
+
+    return <div>GenresComics --- {type_genres}</div>
 }
 export default GenresComics

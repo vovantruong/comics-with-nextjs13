@@ -1,10 +1,10 @@
 'use client'
 import { FC, useContext, useEffect, useRef, useState } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
-import { Autoplay, Pagination, Navigation } from 'swiper/modules';
+import { Autoplay, Pagination, Navigation, FreeMode } from 'swiper/modules';
 import { MediaQueryContext } from '@/contexts/MediaQueryContext'
 import { comicsProps } from '@/types/typeProps'
-// import { getTrending } from '@/utils/services'
+import { getTrending } from '@/utils/services'
 import CardComic from '../CardComic'
 import Skeleton from 'react-loading-skeleton';
 import clsx from 'clsx';
@@ -15,17 +15,16 @@ const BannerComics = ({ }) => {
 
     const swiperRef = useRef() as any;
 
-    const { sm } = useContext(MediaQueryContext);
     useEffect(() => {
-        // const getTopComics = async () => {
-        //     try {
-        //         const res = await getTrending({ limit: 15 })
-        //         setDataTrending(res)
-        //     } catch (error) {
-        //         console.log('Error');
-        //     }
-        // }
-        // getTopComics()
+        const getTopComics = async () => {
+            try {
+                const res = await getTrending({ limit: 15 })
+                setDataTrending(res)
+            } catch (error) {
+                console.log('Error');
+            }
+        }
+        getTopComics()
     }, [])
 
     return (
@@ -38,6 +37,8 @@ const BannerComics = ({ }) => {
                             loop={true}
                             className='h-full pb-3'
                             slidesPerView={7}
+                            freeMode={true}
+                            speed={2000}
                             autoplay={{
                                 delay: 3500,
                                 disableOnInteraction: false,
@@ -48,7 +49,7 @@ const BannerComics = ({ }) => {
                                 clickableClass: clsx("banner-pagination"),
                                 bulletActiveClass: clsx("banner-pagination__active")
                             }}
-                            modules={[Autoplay, Pagination]}
+                            modules={[Autoplay, Pagination, FreeMode]}
                             breakpoints={{
                                 0: {
                                     slidesPerView: 2,

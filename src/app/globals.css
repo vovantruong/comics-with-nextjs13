@@ -27,5 +27,5 @@ body::-webkit-scrollbar-thumb {
 }
 
 .banner-pagination .banner-pagination__active {
-	@apply bg-thirdary w-8 h-2 rounded-md origin-center;
+	@apply bg-red-400 w-8 h-2 rounded-md origin-center;
 }

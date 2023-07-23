@@ -10,6 +10,7 @@ import clsx from "clsx";
 import DropdownMenu from "../DropdownMenu";
 import { genresProps } from "@/types/typeProps";
 import LoadingBook from "../LoadingBook";
+import { log } from 'console';
 
 interface HeaderProps {
     dataGenres?: genresProps
@@ -32,19 +33,19 @@ const Header: FC<HeaderProps> = ({ dataGenres }) => {
         })
     }, [])
 
-    // useEffect(() => {
-    //     const handleGenresList = async () => {
-    //         try {
-    //             const res = await fetch("https://comics-api.vercel.app/genres");
-    //             const data = await res.json()
-    //             setDataListGenres(data)
-    //         } catch (error) {
-    //             console.log(error);
-    //         }
-    //     }
+    useEffect(() => {
+        const handleGenresList = async () => {
+            try {
+                const res = await fetch("https://comics-api.vercel.app/genres");
+                const data = await res.json()
+                setDataListGenres(data)
+            } catch (error) {
+                console.log(error);
+            }
+        }
 
-    //     handleGenresList()
-    // }, [])
+        handleGenresList()
+    }, [])
 
     return (
         <header

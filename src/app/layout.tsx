@@ -11,9 +11,9 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import 'swiper/css/grid';
-
 import 'swiper/css/thumbs'
 import 'swiper/css/free-mode'
+
 import 'react-loading-skeleton/dist/skeleton.css'
 
 const montserrat = Montserrat({
