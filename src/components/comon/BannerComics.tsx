@@ -1,8 +1,7 @@
 'use client'
-import { FC, useContext, useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
-import { Autoplay, Pagination, Navigation, FreeMode } from 'swiper/modules';
-import { MediaQueryContext } from '@/contexts/MediaQueryContext'
+import { Autoplay, Pagination, FreeMode } from 'swiper/modules';
 import { comicsProps } from '@/types/typeProps'
 import { getTrending } from '@/utils/services'
 import CardComic from '../CardComic'
@@ -76,7 +75,7 @@ const BannerComics = ({ }) => {
                             {
                                 dataTrending.map(item => (
                                     <SwiperSlide key={item.id} className='w-full h-full md:p-2 p-0'>
-                                        <CardComic data={item} type='normal' />
+                                        <CardComic data={item} type='advantage' />
                                     </SwiperSlide>
                                 ))
                             }

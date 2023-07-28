@@ -64,15 +64,15 @@ const SectionTopComics: FC<SectionTopComicsProps> = ({ }) => {
     }, [selectedOption])
 
     return (
-        <div className="w-full mt-5 bg-[#f6f3ee] rounded-md overflow-hidden px-4 py-5 border">
-            <div className="flex items-end justify-between border-b-[3px] border-secondary pb-2 mb-2">
-                <div className="text-gray-700 capitalize font-bold text-2xl flex items-end gap-2">
-                    <Image src={IconTitle} alt='icon-title' width={50} height={50} />
+        <div className="w-full mt-5 bg-[#f6f3ee] rounded-md overflow-hidden sm:px-4 sm:py-5 p-2 border">
+            <div className="flex sm:items-end sm:justify-between border-b-[3px] border-secondary pb-2 mb-2 sm:flex-row flex-col justify-start items-start gap-2">
+                <div className="text-gray-700 capitalize font-bold sm:text-2xl text-lg flex items-end gap-2">
+                    <Image src={IconTitle} alt='icon-title' width={50} height={50} className='sm:w-[50px] sm:h-[50px] w-[35px] h-[35px]' />
                     <h2>Truyện đề cử</h2>
                 </div>
                 <Select
                     styles={styleSelect}
-                    className='bg-white h-10 w-[240px] font-medium rounded-md border border-solid border-gray-200 outline-none z-10'
+                    className='bg-white h-10 w-full sm:w-[240px] font-medium rounded-md border border-solid border-gray-200 outline-none z-10'
                     value={selectedOption}
                     defaultValue={selectedOption}
                     placeholder="Tất cả"

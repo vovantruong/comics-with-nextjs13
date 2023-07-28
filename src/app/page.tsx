@@ -1,5 +1,7 @@
 import BannerComics from '@/components/comon/BannerComics';
+import SectionFullComics from '@/components/home/SectionFullComics';
 import SectionTopComics from '@/components/home/SectionTopComics';
+import SectionUpdatedComics from '@/components/home/SectionUpdatedComics';
 import ListGenres from '@/components/sidebar/ListGenres';
 import RankingComics from '@/components/sidebar/RankingComics';
 
@@ -12,6 +14,8 @@ export default function Home() {
                 <div className='xl:w-[70%] w-full lg:pr-2 md:pr-0'>
                     <div className="relative w-full">
                         <SectionTopComics />
+                        <SectionFullComics />
+                        <SectionUpdatedComics />
                     </div>
                 </div>
                 <div className='xl:w-[30%] w-full lg:pl-2 md:pl-0'>

@@ -16,12 +16,12 @@ interface CardComicProps {
 
 const CardComic: FC<CardComicProps> = ({ data, type = 'basic', className }) => {
 
-    const { thumbnail, title, id, short_description, total_views, total_comments, followers, authors, genres, status } = data
+    const { thumbnail, title, id, short_description, total_views, total_comments, followers, authors, genres, status, lastest_chapters } = data
 
     function renderTypeBasic() {
         return (
             <Link
-                href={id}
+                href={`/truyen/${id}`}
                 className={clsx(className, 'relative block w-full h-full border-2 border-[#d7d7d7] hover:border-secondary shadow-md overflow-hidden rounded-md')}
                 title={title}
             >
@@ -43,10 +43,20 @@ const CardComic: FC<CardComicProps> = ({ data, type = 'basic', className }) => {
         )
     }
 
+
     function renderTypeNormal() {
         return (
+            <Link href={`/truyen/${id}`}
+            >
+                comic Normal
+            </Link>
+        )
+    }
+
+    function renderTypeAdvantage() {
+        return (
             <Link
-                href={id}
+                href={`/truyen/${id}`}
                 className={clsx(className, 'relative block w-full h-full border-2 border-[#d7d7d7] hover:border-secondary shadow-md overflow-hidden rounded-md group')}
             >
                 <div className='absolute border-t border-gray-700 bottom-0 px-2 py-1 left-0 lg:group-hover:h-full w-full h-10 sm:h-20 bg-[rgba(0,0,0,0.6)] group-hover:bg-[rgba(0,0,0,0.8)] transition-all z-[1] duration-500'>
@@ -79,11 +89,20 @@ const CardComic: FC<CardComicProps> = ({ data, type = 'basic', className }) => {
                         </span>
                         {authors.toLowerCase() !== 'updating' ? authors : "Đang cập nhật"}
                     </div>
-                    <div className='text-white text-[11px] pt-1 transition-all group-hover:delay-[500ms] opacity-0 group-hover:opacity-100 duration-300 sm:block hidden'>
-                        <p className='inline-flex flex-wrap'>
-                            <span className='underline text-secondary font-semibold pr-[3px]'>Thể loại:</span>
-                            {genres.length > 0 ? genres.map((item, index) => item.name).join(', ') : "Đang cập nhật"}
-                        </p>
+                    <div className='text-white text-[11px] pt-2 transition-all group-hover:delay-[500ms] opacity-0 group-hover:opacity-100 duration-300 sm:block hidden'>
+                        <span className='underline text-secondary font-semibold pr-[3px] block'>Chương mới:</span>
+                        <ul className='inline-flex flex-col pl-3 pt-1'>
+                            {
+                                lastest_chapters.map((item, index) => (
+                                    <li key={index} className='list-disc'>
+                                        <Link href={`/truyen/${id}/${item.id}`} className='hover:text-blue-500 hover:underline'>
+                                            <span>{item.name}</span>
+                                            <span> - {item.updated_at}</span>
+                                        </Link>
+                                    </li>
+                                ))
+                            }
+                        </ul>
                     </div>
                     <div className='text-white text-[11px] pt-1 transition-all group-hover:delay-[600ms] opacity-0 group-hover:opacity-100 duration-300 sm:block hidden'>
                         <span className='underline text-secondary font-semibold pr-[3px]'>Tình trạng:</span>
@@ -101,11 +120,12 @@ const CardComic: FC<CardComicProps> = ({ data, type = 'basic', className }) => {
         )
     }
 
+
     return (
         <>
             {type === 'basic' && (renderTypeBasic())}
             {type === 'normal' && (renderTypeNormal())}
-            {type === 'advantage' && (renderTypeBasic())}
+            {type === 'advantage' && (renderTypeAdvantage())}
         </>
     )
 }

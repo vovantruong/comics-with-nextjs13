@@ -71,7 +71,7 @@ const RankingComics: FC<rankingComicsProps> = async ({ }) => {
                                     </div>
                                     <div className='flex items-center justify-between text-xs w-full lg:flex-wrap gap-1'>
                                         <div className='text-xs text-gray-400'>
-                                            Tác giả: <span>{item.authors.toLowerCase() === 'updating' ? "Ẩn danh" : item.authors}</span>
+                                            Tác giả: <span>{item.authors.toLowerCase() === 'updating' ? "Cập nhật" : item.authors}</span>
                                         </div>
                                         <div className='flex items-center justify-center text-gray-400 gap-1'>
                                             <div className='flex items-center justify-center gap-1'>
