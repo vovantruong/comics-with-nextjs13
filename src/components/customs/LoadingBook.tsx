@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import { FC } from 'react'
-import GifBookOpen from '../../public/images/book-open.gif'
+import GifBookOpen from '../../../public/images/book-open.gif'
 import clsx from 'clsx'
 
 interface LoadingBookProps {

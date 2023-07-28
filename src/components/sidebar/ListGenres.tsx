@@ -4,7 +4,7 @@ import Image from "next/image";
 import IconGenres from '../../../public/images/genres.gif'
 import { getGenresComic } from '@/utils/services';
 import { genresProps } from '@/types/typeProps';
-import LoadingBook from '../LoadingBook';
+import LoadingBook from '../customs/LoadingBook';
 
 interface listGenresProps {
 

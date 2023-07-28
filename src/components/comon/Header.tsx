@@ -5,12 +5,12 @@ import Link from "next/link"
 import Logo from '../../../public/images/truyen-logo-2.png'
 import SearchBox from "../SearchBox";
 import SideBarMenu from "../sidebar/SideBarMenu";
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import clsx from "clsx";
-import DropdownMenu from "../DropdownMenu";
+import DropdownMenu from "../customs/DropdownMenu";
 import { genresProps } from "@/types/typeProps";
-import LoadingBook from "../LoadingBook";
-import { log } from 'console';
+import LoadingBook from '../customs/LoadingBook';
+import SubDropGenres from '../SubDropGenres';
 
 interface HeaderProps {
     dataGenres?: genresProps
@@ -46,6 +46,7 @@ const Header: FC<HeaderProps> = ({ dataGenres }) => {
 
         handleGenresList()
     }, [])
+
 
     return (
         <header
@@ -87,6 +88,7 @@ const Header: FC<HeaderProps> = ({ dataGenres }) => {
                                                 </Link>
                                             )) : <LoadingBook />}
                                         </div>
+                                        {/* <SubDropGenres /> */}
                                     </DropdownMenu>
                                 </li>
                                 <li className="relative mx-4 flex items-center">

@@ -1,4 +1,4 @@
-import BannerComics from '@/components/comon/BannerComics';
+import BannerComics from '@/components/BannerComics';
 import SectionFullComics from '@/components/home/SectionFullComics';
 import SectionTopComics from '@/components/home/SectionTopComics';
 import SectionUpdatedComics from '@/components/home/SectionUpdatedComics';
