@@ -29,3 +29,12 @@ body::-webkit-scrollbar-thumb {
 .banner-pagination .banner-pagination__active {
 	@apply bg-red-400 w-8 h-2 rounded-md origin-center;
 }
+
+.sec-full-pagination {
+}
+
+.sec-full-pagination span {
+}
+
+.sec-full-pagination .sec-full_active {
+}

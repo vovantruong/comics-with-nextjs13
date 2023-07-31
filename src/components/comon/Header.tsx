@@ -10,7 +10,6 @@ import clsx from "clsx";
 import DropdownMenu from "../customs/DropdownMenu";
 import { genresProps } from "@/types/typeProps";
 import LoadingBook from '../customs/LoadingBook';
-import SubDropGenres from '../SubDropGenres';
 
 interface HeaderProps {
     dataGenres?: genresProps
@@ -88,7 +87,6 @@ const Header: FC<HeaderProps> = ({ dataGenres }) => {
                                                 </Link>
                                             )) : <LoadingBook />}
                                         </div>
-                                        {/* <SubDropGenres /> */}
                                     </DropdownMenu>
                                 </li>
                                 <li className="relative mx-4 flex items-center">

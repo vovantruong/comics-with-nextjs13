@@ -91,7 +91,7 @@ const SectionTopComics: FC<SectionTopComicsProps> = ({ }) => {
             </div>
             <div className="overflow-hidden h-[416px] sm:block hidden rounded-md mt-5">
                 {
-                    dataTopComics.length > 0 ? (
+                    (dataTopComics && dataTopComics.length > 0) ? (
                         dataTopComics.map((item) => (
                             <div key={item.id} className='first:h-[396px] md:first:w-[260px] 2xl:first:w-[270px] first:w-[230px] float-left h-[192px] 2xl:w-[132px] relative  
                                 mt-3 ml-3 lg:w-[155px] xl:w-[126px] md:w-[128px] sm:w-[150px] w-[120px] rounded-md transition group'

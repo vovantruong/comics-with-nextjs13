@@ -6,15 +6,16 @@ import { comicsProps } from '@/types/typeProps';
 import clsx from 'clsx';
 import { BsFire } from 'react-icons/bs'
 import { FaComments, FaEye } from 'react-icons/fa';
-import { AiFillHeart } from 'react-icons/ai';
+import { AiFillHeart, AiOutlineFileDone } from 'react-icons/ai';
 
 interface CardComicProps {
     data: comicsProps
     type: 'basic' | 'normal' | 'advantage'
     className?: string
+    badge?: boolean
 }
 
-const CardComic: FC<CardComicProps> = ({ data, type = 'basic', className }) => {
+const CardComic: FC<CardComicProps> = ({ data, type = 'basic', className, badge = true }) => {
 
     const { thumbnail, title, id, short_description, total_views, total_comments, followers, authors, genres, status, lastest_chapters } = data
 
@@ -25,7 +26,7 @@ const CardComic: FC<CardComicProps> = ({ data, type = 'basic', className }) => {
                 className={clsx(className, 'relative block w-full h-full border-2 border-[#d7d7d7] hover:border-secondary shadow-md overflow-hidden rounded-md')}
                 title={title}
             >
-                <div className='absolute z-[1] right-1 top-1  text-white flex items-center gap-1 font-medium uppercase'>
+                {badge && <div className='absolute z-[1] right-1 top-1  text-white flex items-center gap-1 font-medium uppercase'>
                     <div className='py-1 px-2 rounded bg-yellow-400 text-xs group-first:block hidden'>
                         <span>#1</span>
                     </div>
@@ -33,7 +34,7 @@ const CardComic: FC<CardComicProps> = ({ data, type = 'basic', className }) => {
                         <span><BsFire /></span>
                         <span className='group-first:block hidden' >Hot</span>
                     </div>
-                </div>
+                </div>}
                 <Image src={thumbnail} alt={id} className='w-full h-full object-cover z-0 group-hover:scale-105 duration-300 transition-all' width={300} height={300} priority />
                 <div className='absolute w-full bottom-0 z-[1] text-xs mt-1 bg-[rgba(0,0,0,0.6)] text-white flex items-center justify-start group-first:justify-center 
                 font-medium group-first:text-yellow-300 group-first:text-sm px-2 h-10'>
@@ -46,9 +47,21 @@ const CardComic: FC<CardComicProps> = ({ data, type = 'basic', className }) => {
 
     function renderTypeNormal() {
         return (
-            <Link href={`/truyen/${id}`}
+            <Link
+                href={`/truyen/${id}`}
+                className={clsx(className, 'relative block w-full h-full border-2 border-[#d7d7d7] hover:border-secondary shadow-md overflow-hidden rounded-md group')}
             >
-                comic Normal
+                <Image src={thumbnail} alt={id} className='w-full h-full object-cover z-0 duration-300 transition-all' width={300} height={300} priority />
+                <div className='absolute w-full bottom-0 z-[1] text-sm mt-1 bg-[rgba(0,0,0,0.6)] text-white flex items-center justify-start group-first:justify-center 
+                font-medium px-2 h-[50px]'>
+                    <p className='line-clamp-2'>{title}</p>
+                </div>
+                {badge && <div className='absolute z-[1] right-1 top-1  text-white flex items-center gap-1 font-medium uppercase group-hover:opacity-0 opacity-100 transition-all duration-300'>
+                    <div className='flex items-center gap-1 rounded-md bg-[#00a762] py-1 px-2 text-xs shadow-md'>
+                        <span><AiOutlineFileDone /></span>
+                        <span className='group-first:block hidden' >Full</span>
+                    </div>
+                </div>}
             </Link>
         )
     }
@@ -109,12 +122,12 @@ const CardComic: FC<CardComicProps> = ({ data, type = 'basic', className }) => {
                         {status.toLowerCase() === "updating" ? "Đang tiến hành" : "Đã hoàn thành"}
                     </div>
                 </div>
-                <div className='absolute z-[1] right-1 top-1  text-white flex items-center gap-1 font-medium uppercase'>
+                {badge && <div className='absolute z-[1] right-1 top-1  text-white flex items-center gap-1 font-medium uppercase group-hover:opacity-0 opacity-100 transition-all duration-300'>
                     <div className='flex items-center gap-1 rounded-md bg-red-500 py-1 px-2 text-xs'>
                         <span><BsFire /></span>
                         <span className='group-first:block hidden' >Hot</span>
                     </div>
-                </div>
+                </div>}
                 <Image src={thumbnail} alt={id} className='w-full h-full object-cover z-0 duration-300 transition-all' width={300} height={300} priority />
             </Link>
         )

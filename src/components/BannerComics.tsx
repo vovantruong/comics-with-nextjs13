@@ -30,7 +30,7 @@ const BannerComics = ({ }) => {
         <div className='container mx-auto'>
             <section className="group/pagi relative w-full mt-2 md:mt-5 bg-[#f6f3ee] rounded-md overflow-hidden md:px-3 md:py-2 border-none sm:border sm:border-solid p-0">
                 <div className='relative rounded-md bg-white w-full md:h-[350px] sm:h-[300px] h-[170px] border-none sm:border sm:border-solid overflow-hidden'>
-                    {dataTrending.length > 0 ? (
+                    {(dataTrending && dataTrending.length > 0) ? (
                         <Swiper
                             ref={swiperRef}
                             loop={true}

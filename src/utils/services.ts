@@ -34,3 +34,14 @@ export const getTopComics = async ({ type, limit, page, status }: topComicsProps
         console.log('Error');
     }
 }
+
+
+// ===================== GET Full COMICS ============================ //
+export const getFullComics = async ({ limit, page }: topComicsProps) => {
+    try {
+        const { data } = await sendRequest.get(`/completed-comics ${page ? `?page=${page}` : ''}`) // Call API lấy truyện full trending
+        return limit ? data.comics.filter((item: comicsProps, index: number) => index < limit) : data.comics;
+    } catch (error) {
+        console.log('Error');
+    }
+}

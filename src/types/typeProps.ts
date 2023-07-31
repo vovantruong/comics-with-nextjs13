@@ -19,13 +19,13 @@ export interface comicsProps {
         id: string,
         name: string
     }[],
-    other_names: any,
+    other_names: string[],
     status: string,
-    total_views: string,
+    total_views: string | number,
     total_comments: string,
     followers: string,
     updated_at: string,
-    authors: string,
+    authors: string | string[],
 }
 
 export interface topComicsProps {
