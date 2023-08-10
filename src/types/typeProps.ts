@@ -5,27 +5,40 @@ export interface genresProps {
 }
 
 export interface comicsProps {
-    thumbnail: string,
-    title: string,
     id: string,
+    title: string,
+    thumbnail: string,
+    updated_at: string,
     is_trending: boolean,
-    short_description: string,
-    lastest_chapters: {
-        id: number,
-        name: string,
-        updated_at: string
-    }[],
     genres: {
         id: string,
         name: string
     }[],
+    short_description: string,
     other_names: string[],
     status: string,
-    total_views: string | number,
-    total_comments: string,
-    followers: string,
+    total_views: number,
+    followers: number,
+    last_chapter: {
+        id: number,
+        name: string,
+    },
+}
+export interface comicsDetailsProps {
+    id: string,
+    title: string,
+    thumbnail: string,
     updated_at: string,
-    authors: string | string[],
+    genres: {
+        id: string,
+        name: string
+    }[],
+    short_description: string,
+    other_names: string[],
+    status: string,
+    total_views: number,
+    followers: number,
+    authors: string
 }
 
 export interface topComicsProps {

@@ -9,6 +9,7 @@ import { FaRegEye, FaComments } from 'react-icons/fa'
 import Link from 'next/link';
 import { comicsProps } from '@/types/typeProps';
 import Skeleton from 'react-loading-skeleton';
+import { AiFillHeart } from 'react-icons/ai';
 
 interface rankingComicsProps { }
 
@@ -26,6 +27,19 @@ const RankingComics: FC<rankingComicsProps> = async ({ }) => {
     }
     const dataTopRanking = await fetchData()
 
+    function shortString(number: number) {
+
+        if (number >= 1000000000) {
+            return (number / 1000000000).toFixed(1) + "B";
+        } else if (number >= 1000000) {
+            return (number / 1000000).toFixed(1) + "M";
+        } else if (number >= 1000) {
+            return (number / 1000).toFixed(1) + "N";
+        } else {
+            return number;
+        }
+    }
+    // console.log(dataTopRanking);
 
 
     return (
@@ -62,26 +76,23 @@ const RankingComics: FC<rankingComicsProps> = async ({ }) => {
                                 <div className='flex-1 w-full'>
                                     <Link href={`/${item.id}`} className='hover:text-secondary transition-all font-bold text-base capitalize line-clamp-1'>{item.title}</Link>
                                     <div className='flex items-center justify-between text-xs w-full pb-2'>
-                                        {item.lastest_chapters.map((chap, i) => (
-                                            i === 0 && <Link key={i} href={`/${item.id}/${chap.id}`} className='text-blue-400 underline font-medium'>
-                                                {chap.name}
+                                        <div>
+                                            <span>Chap mới: </span>
+                                            <Link href={`/${item.id}/${item.last_chapter.id}`} className='text-blue-400 underline font-medium'>
+                                                {item.last_chapter.name}
                                             </Link>
-                                        ))}
+                                        </div>
                                         <div className='flex items-center gap-1 text-gray-400'>{item.updated_at}</div>
                                     </div>
-                                    <div className='flex items-center justify-between text-xs w-full lg:flex-wrap gap-1'>
-                                        <div className='text-xs text-gray-400'>
-                                            Tác giả: <span>{item.authors.toLowerCase() === 'updating' ? "Cập nhật" : item.authors}</span>
+                                    <div className='flex items-center justify-end text-xs w-full lg:flex-wrap gap-1'>
+                                        <div className='flex items-center justify-center gap-1 text-gray-400'>
+                                            <AiFillHeart />
+                                            <span>{shortString(item.followers)}</span>
                                         </div>
-                                        <div className='flex items-center justify-center text-gray-400 gap-1'>
-                                            <div className='flex items-center justify-center gap-1'>
-                                                <FaComments />
-                                                <span>{item.total_comments}</span>
-                                            </div>
-                                            <div className='flex items-center justify-center gap-1 '>
-                                                <FaRegEye />
-                                                <span>{item.total_views}</span>
-                                            </div>
+                                        <span className='text-gray-200 mx-1'>|</span>
+                                        <div className='flex items-center justify-center gap-1 text-gray-400'>
+                                            <FaRegEye />
+                                            <span>{shortString(item.total_views)}</span>
                                         </div>
                                     </div>
                                 </div>
