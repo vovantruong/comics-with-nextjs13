@@ -6,7 +6,7 @@ interface layoutProps {
     children: React.ReactNode
 }
 
-const layout: FC<layoutProps> = ({ children }) => {
+const layout: FC<layoutProps> = ({ children, ...props }) => {
     return (
         <main className={` overflow-x-hidden bg-white`}>
             <div className='container flex items-start justify-center relative flex-wrap'>

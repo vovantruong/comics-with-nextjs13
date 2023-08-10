@@ -10,6 +10,7 @@ import Link from 'next/link';
 import { comicsProps } from '@/types/typeProps';
 import Skeleton from 'react-loading-skeleton';
 import { AiFillHeart } from 'react-icons/ai';
+import { shortNumber } from '@/utils/shortNumber';
 
 interface rankingComicsProps { }
 
@@ -26,21 +27,6 @@ const RankingComics: FC<rankingComicsProps> = async ({ }) => {
         }
     }
     const dataTopRanking = await fetchData()
-
-    function shortString(number: number) {
-
-        if (number >= 1000000000) {
-            return (number / 1000000000).toFixed(1) + "B";
-        } else if (number >= 1000000) {
-            return (number / 1000000).toFixed(1) + "M";
-        } else if (number >= 1000) {
-            return (number / 1000).toFixed(1) + "N";
-        } else {
-            return number;
-        }
-    }
-    // console.log(dataTopRanking);
-
 
     return (
         <aside className='w-full mt-5 mb-4 bg-[#f6f3ee] rounded-md overflow-hidden border'>
@@ -87,12 +73,12 @@ const RankingComics: FC<rankingComicsProps> = async ({ }) => {
                                     <div className='flex items-center justify-end text-xs w-full lg:flex-wrap gap-1'>
                                         <div className='flex items-center justify-center gap-1 text-gray-400'>
                                             <AiFillHeart />
-                                            <span>{shortString(item.followers)}</span>
+                                            <span>{shortNumber(item.followers)}</span>
                                         </div>
                                         <span className='text-gray-200 mx-1'>|</span>
                                         <div className='flex items-center justify-center gap-1 text-gray-400'>
                                             <FaRegEye />
-                                            <span>{shortString(item.total_views)}</span>
+                                            <span>{shortNumber(item.total_views)}</span>
                                         </div>
                                     </div>
                                 </div>
