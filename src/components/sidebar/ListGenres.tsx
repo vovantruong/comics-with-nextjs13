@@ -16,7 +16,6 @@ const ListGenres: FC<listGenresProps> = async () => {
             const res = await fetch(`https://comics-api.vercel.app/genres`, { next: { revalidate: 60 } })
             const data = await res.json()
 
-
             return data;
         } catch (error) {
             console.log(error);

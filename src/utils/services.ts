@@ -45,3 +45,13 @@ export const getFullComics = async ({ limit, page }: topComicsProps) => {
         console.log('Error');
     }
 }
+
+// ===================== GET Full COMICS ============================ //
+export const getRecentUpdated = async ({ limit, page }: topComicsProps) => {
+    try {
+        const { data } = await sendRequest.get(`/recent-update-comics${page ? `?page=${page}` : ''}`) // Call API lấy truyện full trending
+        return limit ? data.comics.filter((item: comicsProps, index: number) => index < limit) : data.comics;
+    } catch (error) {
+        console.log('Error');
+    }
+}

@@ -10,6 +10,7 @@ import { getFullComics } from '@/utils/services';
 import Skeleton from 'react-loading-skeleton';
 import clsx from 'clsx';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
+import Link from 'next/link';
 
 interface SectionFullComicsProps { }
 
@@ -36,6 +37,7 @@ const SectionFullComics: FC<SectionFullComicsProps> = ({ }) => {
                     <Image src={IconTitle} alt='icon-title' width={30} height={30} className='w-[30px] h-[30px]' />
                     <h2>Truyện full</h2>
                 </div>
+                <Link href="/truyen-full" className='text-sm underline text-[#6e60ee] font-medium italic'>Xem tất cả</Link>
             </div>
             <div className="overflow-hidden rounded-md mt-5 relative group/pagi">
                 <div className='relative rounded-md bg-white w-full border-none sm:border sm:border-solid overflow-hidden'>
@@ -85,7 +87,7 @@ const SectionFullComics: FC<SectionFullComicsProps> = ({ }) => {
                                 dataFullComics.map(item => (
                                     <SwiperSlide key={item.id} className='h-full w-full py-2 px-2'>
                                         <div className='h-[320px] rounded-md border'>
-                                            <CardComic type='normal' data={item} />
+                                            <CardComic type='normal' data={item} badge='full' />
                                         </div>
                                     </SwiperSlide>
                                 ))

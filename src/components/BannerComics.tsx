@@ -29,7 +29,7 @@ const BannerComics = ({ }) => {
     return (
         <div className='container mx-auto'>
             <section className="group/pagi relative w-full mt-2 md:mt-5 bg-[#f6f3ee] rounded-md overflow-hidden md:px-3 md:py-2 border-none sm:border sm:border-solid p-0">
-                <div className='relative rounded-md bg-white w-full md:h-[350px] sm:h-[300px] h-[170px] border-none sm:border sm:border-solid overflow-hidden'>
+                <div className='relative rounded-md bg-white w-full md:h-[350px] sm:h-[300px] h-[200px] border-none sm:border sm:border-solid overflow-hidden'>
                     {(dataTrending && dataTrending.length > 0) ? (
                         <Swiper
                             ref={swiperRef}
@@ -75,7 +75,7 @@ const BannerComics = ({ }) => {
                             {
                                 dataTrending.map(item => (
                                     <SwiperSlide key={item.id} className='w-full h-full md:p-2 p-0'>
-                                        <CardComic data={item} type='advantage' />
+                                        <CardComic data={item} type='advantage' badge='hot' />
                                     </SwiperSlide>
                                 ))
                             }
@@ -92,23 +92,27 @@ const BannerComics = ({ }) => {
                         </div>
                     )}
                 </div>
-                <div className='absolute left-0 right-0 top-[45%] -translate-y-[50%] w-full z-10 lg:opacity-0 transition-all duration-300 group-hover/pagi:opacity-100 
+                {
+                    (dataTrending && dataTrending.length > 0) && (
+                        <div className='absolute left-0 right-0 top-[45%] -translate-y-[50%] w-full z-10 lg:opacity-0 transition-all duration-300 group-hover/pagi:opacity-100 
                 sm:block hidden opacity-100'>
-                    <button
-                        onClick={() => swiperRef.current.swiper.slidePrev()}
-                        className='absolute left-3 lg:left-0 text-white w-10 h-10 rounded-full bg-[#ffda0bbf] flex items-center justify-center border border-secondary 
+                            <button
+                                onClick={() => swiperRef.current.swiper.slidePrev()}
+                                className='absolute left-3 lg:left-0 text-white w-10 h-10 rounded-full bg-[#ffda0bbf] flex items-center justify-center border border-secondary 
                         lg:group-hover/pagi:left-7 transition-all duration-500'
-                    >
-                        <FaChevronLeft />
-                    </button>
-                    <button
-                        onClick={() => swiperRef.current.swiper.slideNext()}
-                        className='absolute right-3 lg:right-0 text-white w-10 h-10 rounded-full bg-[#ffda0bbf] flex items-center justify-center border border-secondary 
+                            >
+                                <FaChevronLeft />
+                            </button>
+                            <button
+                                onClick={() => swiperRef.current.swiper.slideNext()}
+                                className='absolute right-3 lg:right-0 text-white w-10 h-10 rounded-full bg-[#ffda0bbf] flex items-center justify-center border border-secondary 
                         lg:group-hover/pagi:right-7 transition-all duration-500'
-                    >
-                        <FaChevronRight />
-                    </button>
-                </div>
+                            >
+                                <FaChevronRight />
+                            </button>
+                        </div>
+                    )
+                }
 
             </section>
         </div>

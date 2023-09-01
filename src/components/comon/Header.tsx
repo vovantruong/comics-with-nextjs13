@@ -33,18 +33,34 @@ const Header: FC<HeaderProps> = ({ dataGenres }) => {
     }, [])
 
     useEffect(() => {
-        const handleGenresList = async () => {
+        const handeGetGenres = async () => {
             try {
-                const res = await fetch("https://comics-api.vercel.app/genres");
+                const res = await fetch("/api/genres");
                 const data = await res.json()
                 setDataListGenres(data)
             } catch (error) {
                 console.log(error);
             }
         }
-
-        handleGenresList()
+        handeGetGenres()
     }, [])
+
+    // useEffect(() => {
+    //     const handeGetGenres = async () => {
+    //         try {
+    //             const { data } = await axios.get("/api/genres", {
+    //                 data: {
+    //                     name: "123",
+    //                     age: "adasd"
+    //                 }
+    //             });
+    //             // console.log(data);
+    //         } catch (error) {
+    //             console.log(error);
+    //         }
+    //     }
+    //     handeGetGenres()
+    // }, [])
 
 
     return (

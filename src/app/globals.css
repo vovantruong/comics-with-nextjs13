@@ -27,14 +27,17 @@ body::-webkit-scrollbar-thumb {
 }
 
 .banner-pagination .banner-pagination__active {
-	@apply bg-red-400 w-8 h-2 rounded-md origin-center;
+	@apply bg-yellow-600 w-8 h-2 rounded-md origin-center;
 }
 
 .sec-full-pagination {
+	@apply cursor-pointer;
 }
 
 .sec-full-pagination span {
+	@apply opacity-100 bg-[#636363] rounded-full w-3 h-3;
 }
 
-.sec-full-pagination .sec-full_active {
+.sec-full-pagination .sec-full__active {
+	@apply bg-yellow-400;
 }
