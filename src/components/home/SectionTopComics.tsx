@@ -1,6 +1,6 @@
 'use client'
 
-import { comicsProps } from '@/types/typeProps'
+import { comicsProps, topComicsProps } from '@/types/typeProps'
 import { FC, useEffect, useState } from 'react'
 import CardComic from '@/components/CardComic';
 import IconTitle from '../../../public/images/light-book.png';

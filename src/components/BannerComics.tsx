@@ -15,15 +15,23 @@ const BannerComics = ({ }) => {
     const swiperRef = useRef() as any;
 
     useEffect(() => {
-        const getTopComics = async () => {
+        const handeGetTrending = async () => {
             try {
-                const res = await getTrending({ limit: 15 })
-                setDataTrending(res)
+                const res = await fetch("/api/trending", {
+                    method: 'POST',
+                    body: JSON.stringify({
+                        page: 1,
+                        limit: 15
+                    })
+                });
+                const data = await res.json()
+                setDataTrending(data)
+
             } catch (error) {
-                console.log('Error');
+                console.log(error);
             }
         }
-        getTopComics()
+        handeGetTrending()
     }, [])
 
     return (

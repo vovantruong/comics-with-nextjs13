@@ -2,10 +2,10 @@ import './globals.css'
 import type { Metadata } from 'next'
 import clsx from 'clsx'
 import { Montserrat } from 'next/font/google'
-import Footer from '@/components/comon/Footer'
-import Header from '@/components/comon/Header'
+import Footer from '@/components/Footer'
+import Header from '@/components/Header'
 import { MediaQueryProvider } from '@/contexts/MediaQueryContext'
-import ScrollTop from '@/components/comon/ScrollTop'
+import ScrollTop from '@/components/ScrollTop'
 
 import 'swiper/css';
 import 'swiper/css/pagination';

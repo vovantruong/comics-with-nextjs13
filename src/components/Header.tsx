@@ -2,14 +2,14 @@
 import { FC } from 'react'
 import Image from "next/image";
 import Link from "next/link"
-import Logo from '../../../public/images/truyen-logo-2.png'
-import SearchBox from "../SearchBox";
-import SideBarMenu from "../sidebar/SideBarMenu";
+import Logo from '../../public/images/truyen-logo-2.png'
+import SearchBox from "./SearchBox";
+import SideBarMenu from "./sidebar/SideBarMenu";
 import { useEffect, useState } from "react";
 import clsx from "clsx";
-import DropdownMenu from "../customs/DropdownMenu";
+import DropdownMenu from "./customs/DropdownMenu";
 import { genresProps } from "@/types/typeProps";
-import LoadingBook from '../customs/LoadingBook';
+import LoadingBook from './customs/LoadingBook';
 
 interface HeaderProps {
     dataGenres?: genresProps
@@ -44,24 +44,6 @@ const Header: FC<HeaderProps> = ({ dataGenres }) => {
         }
         handeGetGenres()
     }, [])
-
-    // useEffect(() => {
-    //     const handeGetGenres = async () => {
-    //         try {
-    //             const { data } = await axios.get("/api/genres", {
-    //                 data: {
-    //                     name: "123",
-    //                     age: "adasd"
-    //                 }
-    //             });
-    //             // console.log(data);
-    //         } catch (error) {
-    //             console.log(error);
-    //         }
-    //     }
-    //     handeGetGenres()
-    // }, [])
-
 
     return (
         <header
