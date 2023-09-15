@@ -1,7 +1,7 @@
 'use client'
 import { MediaQueryContext } from '@/contexts/MediaQueryContext'
 import clsx from 'clsx'
-import { FC, useContext, useState } from 'react'
+import { FC, useContext, useRef, useState } from 'react'
 import { IoSearchOutline } from 'react-icons/io5'
 
 interface SearchBoxProps {
@@ -9,8 +9,11 @@ interface SearchBoxProps {
 }
 
 const SearchBox: FC<SearchBoxProps> = ({ className }) => {
+    const [showBoxed, setShowBoxed] = useState(false)
     const [query, setQuery] = useState<string>("")
     const [showModal, setShowModal] = useState<boolean>(false)
+
+    const searchInputRef = useRef() as any
 
     const { sm } = useContext(MediaQueryContext);
 
@@ -21,11 +24,14 @@ const SearchBox: FC<SearchBoxProps> = ({ className }) => {
         <div className={clsx(className, "flex items-center gap-2 w-full md:w-[60%] lg:w-[unset]")}>
             <div className="relative w-full flex items-center justify-end">
                 <input
+                    ref={searchInputRef}
+                    onFocus={() => setShowBoxed(true)}
+                    onBlur={() => setShowBoxed(false)}
                     type="text"
                     value={query}
                     onChange={(e) => setQuery(e.target.value)}
                     placeholder="Tìm kiếm tên truyện, tác giả, ..."
-                    className="xl:placeholder:text-sm md:placeholder:text-xs outline-none border-[#f0f0f0] h-10 bg-white rounded-md xl:pl-10 xl:pr-2 xl:min-w-[350px] 
+                    className="xl:placeholder:text-sm md:placeholder:text-xs outline-none border-[#f0f0f0] h-10 bg-white rounded-md xl:pl-10 xl:pr-2 xl:min-w-[380px] 
                                 opacity-[1] text-sm placeholder:text-gray-800 focus:border-secondary lg:w-[250px] md:pl-2 md:pr-10 transition border xl:w-full 
                                 min-w-[auto] w-full md:block hidden"
                 />
@@ -35,13 +41,14 @@ const SearchBox: FC<SearchBoxProps> = ({ className }) => {
                 >
                     <IoSearchOutline />
                 </button>
+                <div className={clsx('absolute hidden opacity-0 bg-white w-full h-[300px] overflow-y-auto top-[100%] z-10 left-0 rounded-md shadow-md p-2',
+                    'element-scrollbar',
+                    { "!block opacity-100": showBoxed })}>
+                    <div className='text-center text-sm pt-2'>
+                        No result data!
+                    </div>
+                </div>
             </div>
-            <button
-                className="border text-sm xl:flex items-center justify-center h-10 px-3 rounded-md bg-linearPrimary 
-                            text-white font-semibold md:hidden hidden w-[115px]"
-            >
-                Tìm kiếm
-            </button>
         </div>
     )
 }

@@ -46,7 +46,7 @@ const RankingComics: FC<rankingComicsProps> = async ({ }) => {
                             <div key={item.id} className='group py-2 px-4 border-b border-[#d7d7d7] w-full flex items-start gap-2 last:border-b-0' title={`Truyện tranh ${item.title}`}>
                                 {
                                     key <= 2 ? (
-                                        <Link href={`/${item.id}`} className='w-[50px] h-[50px] rounded-fullflex items-center justify-center'>
+                                        <Link href={`/truyen/${item.id}`} className='w-[50px] h-[50px] rounded-fullflex items-center justify-center'>
                                             {key === 0 && <Image src={IconRankingTop1} alt='top-1' className='w-auto h-auto' priority />}
                                             {key === 1 && <Image src={IconRankingTop2} alt='top-2' className='w-auto h-auto' priority />}
                                             {key === 2 && <Image src={IconRankingTop3} alt='top-3' className='w-auto h-auto' priority />}
@@ -63,8 +63,8 @@ const RankingComics: FC<rankingComicsProps> = async ({ }) => {
                                     <Link href={`/${item.id}`} className='hover:text-secondary transition-all font-bold text-base capitalize line-clamp-1'>{item.title}</Link>
                                     <div className='flex items-center justify-between text-xs w-full pb-2'>
                                         <div>
-                                            <span>Chap mới: </span>
-                                            <Link href={`/${item.id}/${item.last_chapter.id}`} className='text-blue-400 underline font-medium'>
+                                            <span>Chap mới:</span>
+                                            <Link href={`/truyen/${item.id}/${item.last_chapter.id}`} className='text-blue-400 underline font-medium'>
                                                 {item.last_chapter.name}
                                             </Link>
                                         </div>
