@@ -8,31 +8,25 @@ import CardComic from './CardComic'
 import Skeleton from 'react-loading-skeleton';
 import clsx from 'clsx';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
+import useSWR from 'swr';
+
 
 const BannerComics = ({ }) => {
-    const [dataTrending, setDataTrending] = useState<comicsProps[]>([])
 
     const swiperRef = useRef() as any;
 
-    useEffect(() => {
-        const handeGetTrending = async () => {
-            try {
-                const res = await fetch("/api/trending", {
-                    method: 'POST',
-                    body: JSON.stringify({
-                        page: 1,
-                        limit: 15
-                    })
-                });
-                const data = await res.json()
-                setDataTrending(data)
 
-            } catch (error) {
-                console.log(error);
-            }
-        }
-        handeGetTrending()
-    }, [])
+    const fetcherWithTrending = (url: string, headerValue: any) => fetch(url, {
+        method: 'POST',
+        body: JSON.stringify(headerValue)
+    }).then(res => res.json())
+
+    const { data: dataTrending, mutate } = useSWR(`/api/trending`, url => fetcherWithTrending(url, { page: 1, limit: 15 }), {
+        revalidateIfStale: false,
+        revalidateOnFocus: false,
+        revalidateOnReconnect: false
+    })
+
 
     return (
         <div className='container mx-auto'>
@@ -81,7 +75,7 @@ const BannerComics = ({ }) => {
                             }}
                         >
                             {
-                                dataTrending.map(item => (
+                                dataTrending.map((item: comicsProps) => (
                                     <SwiperSlide key={item.id} className='w-full h-full md:p-2 p-0'>
                                         <CardComic data={item} type='advantage' badge='hot' />
                                     </SwiperSlide>

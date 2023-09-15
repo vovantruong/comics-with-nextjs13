@@ -10,13 +10,11 @@ import clsx from "clsx";
 import DropdownMenu from "./customs/DropdownMenu";
 import { genresProps } from "@/types/typeProps";
 import LoadingBook from './customs/LoadingBook';
+import useSWR from 'swr';
 
-interface HeaderProps {
-    dataGenres?: genresProps
-}
+const fetcher = (url: string) => fetch(url).then(res => res.json())
 
-const Header: FC<HeaderProps> = ({ dataGenres }) => {
-    const [dataListGenres, setDataListGenres] = useState<genresProps[]>([])
+const Header = () => {
     const [dropGenres, setDropGenres] = useState(false)
     const [dropListComics, setDropListComics] = useState(false)
     const [scroll, setScroll] = useState(false)
@@ -32,18 +30,12 @@ const Header: FC<HeaderProps> = ({ dataGenres }) => {
         })
     }, [])
 
-    useEffect(() => {
-        const handeGetGenres = async () => {
-            try {
-                const res = await fetch("/api/genres");
-                const data = await res.json()
-                setDataListGenres(data)
-            } catch (error) {
-                console.log(error);
-            }
-        }
-        handeGetGenres()
-    }, [])
+
+    const { data, mutate } = useSWR(`/api/genres`, fetcher, {
+        revalidateIfStale: false,
+        revalidateOnFocus: false,
+        revalidateOnReconnect: false
+    })
 
     return (
         <header
@@ -73,7 +65,7 @@ const Header: FC<HeaderProps> = ({ dataGenres }) => {
                                         setVisible={setDropGenres}
                                     >
                                         <div className="w-full flex flex-wrap gap-1 text-[10px] text-gray-600 rounded-md">
-                                            {dataListGenres.length > 0 ? dataListGenres.map(item => (
+                                            {data ? data?.map((item: genresProps) => (
                                                 <Link
                                                     title={item.description}
                                                     key={item.id}
