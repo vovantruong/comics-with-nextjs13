@@ -126,7 +126,7 @@ const SearchBox: FC<SearchBoxProps> = ({ className }) => {
                     placeholder="Tìm kiếm tên truyện, tác giả, ..."
                     className="xl:placeholder:text-sm md:placeholder:text-xs outline-none border-[#f0f0f0] h-10 bg-white rounded-md xl:pr-2 xl:min-w-[380px] 
                         opacity-[1] text-sm placeholder:text-gray-800 focus:border-secondary lg:w-[320px] pl-3 md:pr-10 transition border xl:w-full 
-                        min-w-[auto] w-full"
+                        min-w-[auto] w-full hidden md:block"
                 />
                 <button className="absolute w-auto top-[50%] -translate-y-[50%] text-2xl p-2 md:p-1.5 bg-linearPrimary text-white rounded-md md:right-2 right-0 md:text-lg 
                 xl:border-none border "
