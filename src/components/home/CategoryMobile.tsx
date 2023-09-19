@@ -1,5 +1,5 @@
-
 'use client'
+
 import { MediaQueryContext } from '@/contexts/MediaQueryContext';
 import React, { useContext } from 'react'
 
@@ -7,12 +7,12 @@ const CategoryMobile = () => {
 
     const { md } = useContext(MediaQueryContext);
 
-    if (!md) {
-        return null
-    }
+    // if (!md) {
+    //     return
+    // }
 
-    return (
-        <div className='my-4 px-2'>CategoryMobile</div>
+    return md && (
+        <div>Category Mobile</div>
     )
 }
 

@@ -4,6 +4,18 @@ export interface genresProps {
     name: string
 }
 
+export interface searchComicsProps {
+    id: string,
+    title: string,
+    thumbnail: string,
+    lastest_chapter: string,
+    genres: {
+        id: string,
+        name: string
+    }[],
+    authors: string[]
+}
+
 export interface comicsProps {
     id: string,
     title: string,
@@ -24,6 +36,7 @@ export interface comicsProps {
         name: string,
     },
 }
+
 export interface comicsDetailsProps {
     id: string,
     title: string,
