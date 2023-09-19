@@ -9,10 +9,7 @@ export interface searchComicsProps {
     title: string,
     thumbnail: string,
     lastest_chapter: string,
-    genres: {
-        id: string,
-        name: string
-    }[],
+    genres: string[],
     authors: string[]
 }
 

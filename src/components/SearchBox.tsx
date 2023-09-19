@@ -158,7 +158,10 @@ const SearchBox: FC<SearchBoxProps> = ({ className }) => {
                                     <h1 className='font-bold text-lg line-clamp-2 leading-[1] mb-1'>{item.title}</h1>
                                     <p className='font-medium'>Tác giả: <span className='text-[#d3873f]'>{item.authors}</span></p>
                                     <p><span className='font-medium'>Trạng thái:</span> {item.lastest_chapter}</p>
-                                    <p><span className='font-medium line-clamp-2'>Thể loại:</span> {item?.genres.join(", ")}</p>
+                                    <div className='inline line-clamp-2'>
+                                        <span className='font-medium '>Thể loại: </span>
+                                        {item?.genres.map(genres => <span key={genres} className='mr-[2px]'>{genres.concat(", ")}</span>)}
+                                    </div>
                                 </div>
                             </Link>
                         ))
