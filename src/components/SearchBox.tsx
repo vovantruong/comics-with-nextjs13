@@ -77,16 +77,16 @@ const SearchBox: FC<SearchBoxProps> = ({ className }) => {
                 )}
                 {(dataSearch && dataSearch.length > 0 && !isLoading) && (
                     dataSearch.map((item, i) => (
-                        <Link key={item.id} href={`/truyen/${item.id}`} className='w-full sm:h-[110px] h-[135px] mb-3 flex items-start 
+                        <Link key={item.id} href={`/truyen/${item.id}`} className='w-full sm:h-[110px] h-[125px] mb-3 flex items-start 
                             hover:bg-slate-100 transition-all rounded-md p-1 overflow-hidden'>
-                            <div className='sm:max-w-[75px] max-w-[90px] w-full h-full overflow-hidden rounded-md border border-[#fe7a00] bg-slate-500 mb-1' title={item.title}>
+                            <div className='sm:max-w-[75px] max-w-[80px] w-full h-full overflow-hidden rounded-md border border-[#fe7a00] bg-slate-500 mb-1' title={item.title}>
                                 <Image src={item.thumbnail} alt={item.id} className='w-full h-full object-cover rounded-md' priority width={100} height={100} />
                             </div>
                             <div className='pl-2 text-xs flex flex-col overflow-hidden'>
                                 <h1 className='font-bold text-lg line-clamp-2 leading-[1] sm:mb-1 mb-3'>{item.title}</h1>
                                 <p className='font-medium'>Tác giả: <span className='text-[#d3873f]'>{item.authors}</span></p>
                                 <p><span className='font-medium'>Trạng thái:</span> {item.lastest_chapter}</p>
-                                <div className=''>
+                                <div className='line-clamp-2'>
                                     <span className='font-medium'>Thể loại: </span>
                                     {item?.genres.map(genres => <span key={genres} >{genres.concat(", ")}</span>)}
                                 </div>
@@ -138,7 +138,7 @@ const SearchBox: FC<SearchBoxProps> = ({ className }) => {
                             type="text"
                             value={query}
                             onChange={(e) => setQuery(e.target.value)}
-                            placeholder="Nhập từ khóa để tìm kiếm tên truyện, tác giả, ..."
+                            placeholder="Tìm kiếm tên truyện, tác giả, ..."
                             className={clsx(className, "xl:placeholder:text-sm md:placeholder:text-xs outline-none border-b-2 border-slate-500 h-10 bg-white xl:pr-2 xl:min-w-[380px]",
                                 "opacity-[1] text-sm placeholder:text-gray-800 focus:border-secondary lg:w-[320px] pl-3 md:pr-10 transition xl:w-full ",
                                 "min-w-[auto] w-full"
