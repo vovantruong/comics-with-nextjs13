@@ -1,5 +1,5 @@
 'use client'
-import { FC } from 'react'
+import { FC, useContext } from 'react'
 import Image from "next/image";
 import Link from "next/link"
 import Logo from '../../public/images/truyen-logo-2.png'
@@ -18,7 +18,6 @@ const Header = () => {
     const [dropGenres, setDropGenres] = useState(false)
     const [dropListComics, setDropListComics] = useState(false)
     const [scroll, setScroll] = useState(false)
-
 
     useEffect(() => {
         window.addEventListener('scroll', () => {
@@ -116,7 +115,7 @@ const Header = () => {
                         </nav>
                         {/* Search component */}
                         <SearchBox />
-                        <div className="lg:hidden block">
+                        <div className="lg:hidden block" suppressHydrationWarning>
                             <SideBarMenu />
                         </div>
                     </div>

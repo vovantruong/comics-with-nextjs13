@@ -26,6 +26,7 @@ function MediaQueryProvider({ children }: MediaQueryProps) {
         sm: isMobile
     }
 
+
     return <MediaQueryContext.Provider value={breakpoint}>{children}</MediaQueryContext.Provider>
 }
 
