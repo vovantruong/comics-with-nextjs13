@@ -72,17 +72,17 @@ const SearchBox: FC<SearchBoxProps> = ({ className }) => {
                     value={query}
                     onChange={(e) => setQuery(e.target.value)}
                     placeholder="Tìm kiếm tên truyện, tác giả, ..."
-                    className="xl:placeholder:text-sm md:placeholder:text-xs outline-none border-[#f0f0f0] h-10 bg-white rounded-md xl:pl-10 xl:pr-2 xl:min-w-[380px] 
-                                opacity-[1] text-sm placeholder:text-gray-800 focus:border-secondary lg:w-[270px] md:pl-2 md:pr-10 transition border xl:w-full 
+                    className="xl:placeholder:text-sm md:placeholder:text-xs outline-none border-[#f0f0f0] h-10 bg-white rounded-md xl:pr-2 xl:min-w-[380px] 
+                                opacity-[1] text-sm placeholder:text-gray-800 focus:border-secondary lg:w-[270px] pl-3 md:pr-10 transition border xl:w-full 
                                 min-w-[auto] w-full md:block hidden"
                 />
-                <button className="absolute xl:left-4 w-auto xl:p-0 top-[50%] -translate-y-[50%] bg-transparent xl:bg-none md:p-1.5 text-2xl p-2 md:bg-transparent 
-                bg-linearPrimary xl:text-heading text-white rounded-md md:left-[unset] xl:right-[unset] md:right-2 md:text-lg xl:border-none border "
+                <button className="absolute w-auto top-[50%] -translate-y-[50%] text-2xl p-1.5 bg-linearPrimary text-white rounded-md right-2 md:text-lg 
+                xl:border-none border "
                     onClick={() => { sm && setShowModal(true) }}
                 >
                     <IoSearchOutline />
                 </button>
-                <div className={clsx('absolute hidden opacity-0 bg-white w-full h-[450px] overflow-y-auto top-[100%] z-[100] left-0 rounded-md shadow-md p-2',
+                <div className={clsx('absolute hidden opacity-0 bg-white w-full h-[450px] overflow-y-auto top-[110%] z-[100] left-0 rounded-md shadow-md p-2',
                     'element-scrollbar', { "!block opacity-100": showBoxed })}>
                     {(!dataSearch || dataSearch.length === 0) && (!isLoading) && (
                         <div className='text-center text-sm absolute top-0 left-0 w-full h-full flex items-center justify-center z-10'>
