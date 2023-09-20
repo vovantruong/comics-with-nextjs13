@@ -1,17 +1,15 @@
 'use client'
 
-import { MediaQueryContext } from '@/contexts/MediaQueryContext';
-import React, { useContext } from 'react'
+import React from 'react'
 
 const CategoryMobile = () => {
 
-    const { md } = useContext(MediaQueryContext);
 
     // if (!md) {
     //     return
     // }
 
-    return md && (
+    return (
         <div>Category Mobile</div>
     )
 }

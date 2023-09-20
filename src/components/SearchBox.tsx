@@ -1,5 +1,5 @@
 'use client'
-import { MediaQueryContext } from '@/contexts/MediaQueryContext'
+import { useMediaQueryContext } from '@/contexts/MediaQueryContext'
 import { comicsProps, searchComicsProps } from '@/types/typeProps'
 import clsx from 'clsx'
 import Image from 'next/image'
@@ -23,8 +23,9 @@ const SearchBox: FC<SearchBoxProps> = ({ className }) => {
 
     // ---------------------------------------- //
     const searchInputRef = useRef() as any
-    const { sm } = useContext(MediaQueryContext);
     const router = useRouter()
+
+    const { sm } = useMediaQueryContext()
 
     const searchHandle = useCallback(async () => {
         if (query) {

@@ -1,7 +1,7 @@
-'use client'
-import React, { createContext } from 'react'
-import { useMediaQuery } from 'react-responsive'
 
+'use client';
+import { createContext, useContext, useState } from "react";
+import { useMediaQuery } from 'react-responsive'
 
 interface MediaQueryProps {
     children: React.ReactNode
@@ -13,9 +13,10 @@ interface queryProps {
     sm?: boolean
 }
 
+
 const MediaQueryContext = createContext<queryProps>({})
 
-function MediaQueryProvider({ children }: MediaQueryProps) {
+export const MediaQueryProvider = ({ children }: MediaQueryProps) => {
     const isDesktop = useMediaQuery({ query: `(max-width: 1179px)` })
     const isTablet = useMediaQuery({ query: `(max-width: 1023px)` })
     const isMobile = useMediaQuery({ query: `(max-width: 739px)` })
@@ -26,8 +27,11 @@ function MediaQueryProvider({ children }: MediaQueryProps) {
         sm: isMobile
     }
 
+    return (
+        <MediaQueryContext.Provider value={breakpoint}>
+            {children}
+        </MediaQueryContext.Provider>
+    )
+};
 
-    return <MediaQueryContext.Provider value={breakpoint}>{children}</MediaQueryContext.Provider>
-}
-
-export { MediaQueryContext, MediaQueryProvider }
+export const useMediaQueryContext = () => useContext(MediaQueryContext);

@@ -1,5 +1,5 @@
 'use client'
-import { FC, useContext } from 'react'
+import { FC } from 'react'
 import Image from "next/image";
 import Link from "next/link"
 import Logo from '../../public/images/truyen-logo-2.png'
@@ -11,7 +11,6 @@ import DropdownMenu from "./customs/DropdownMenu";
 import { genresProps } from "@/types/typeProps";
 import LoadingBook from './customs/LoadingBook';
 import useSWR from 'swr';
-import { MediaQueryContext } from '@/contexts/MediaQueryContext';
 
 const fetcher = (url: string) => fetch(url).then(res => res.json())
 
@@ -19,8 +18,6 @@ const Header = () => {
     const [dropGenres, setDropGenres] = useState(false)
     const [dropListComics, setDropListComics] = useState(false)
     const [scroll, setScroll] = useState(false)
-
-    const { sm } = useContext(MediaQueryContext)
 
     useEffect(() => {
         window.addEventListener('scroll', () => {
@@ -56,7 +53,7 @@ const Header = () => {
                             </Link>
                         </div>
                         {/* Navbar */}
-                        {!sm && <nav className="flex-1 lg:block hidden">
+                        <nav className="flex-1 lg:block hidden">
                             <ul className="flex items-center flex-wrap justify-center">
                                 <li className="relative mx-4 flex items-center">
                                     <DropdownMenu
@@ -115,7 +112,7 @@ const Header = () => {
                                     </Link>
                                 </li>
                             </ul>
-                        </nav>}
+                        </nav>
                         {/* Search component */}
                         <SearchBox />
                         <div className="lg:hidden block" suppressHydrationWarning>

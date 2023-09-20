@@ -49,7 +49,7 @@ const ListGenres: FC<listGenresProps> = async ({ className, size = "lg", type, i
                         href={`/the-loai?type=${item.id}`}
                         className={clsx(
                             itemClassName,
-                            { "!py-2 !px-3 !md:text-xs !text-[10px] hover:bg-secondary transition hover:text-slate-700": size === "md" },
+                            { "!py-2 !px-3 text-xs hover:bg-secondary transition hover:text-slate-700": size === "md" },
                             { "!bg-secondary !text-slate-700": (item.id === type && type) },
                             'py-3 px-4 rounded-xl bg-white text-sm font-medium border border-[#d7d7d7] leading-none hover:bg-thirdary transition hover:text-white'
                         )}
