@@ -8,6 +8,7 @@ import Image from 'next/image'
 import Skeleton from 'react-loading-skeleton';
 import { getTopComics } from '@/utils/services';
 import Select from 'react-select';
+import { AiOutlineLoading3Quarters } from 'react-icons/ai';
 
 interface SectionTopComicsProps { }
 
@@ -48,14 +49,17 @@ interface selectProps {
 type selectTopProps = selectProps | null
 
 const SectionTopComics: FC<SectionTopComicsProps> = ({ }) => {
+    const [isLoading, setIsLoading] = useState<boolean>(false)
     const [dataTopComics, setDataTopComic] = useState<comicsProps[]>([])
     const [selectedOption, setSelectedOption] = useState<selectTopProps>(options[3]);
 
     useEffect(() => {
         const handleDataGetTopComics = async () => {
             try {
+                setIsLoading(true)
                 const res = await getTopComics({ type: selectedOption?.value, limit: 11, })
                 setDataTopComic(res)
+                setIsLoading(false)
             } catch (error) {
                 console.log('Error');
             }
@@ -89,24 +93,23 @@ const SectionTopComics: FC<SectionTopComicsProps> = ({ }) => {
                     })}
                 />
             </div>
-            <div className="overflow-hidden h-[416px] sm:block hidden rounded-md mt-5">
-                {
-                    (dataTopComics && dataTopComics.length > 0) ? (
-                        dataTopComics.map((item) => (
-                            <div key={item.id} className='first:h-[396px] md:first:w-[260px] 2xl:first:w-[270px] first:w-[230px] float-left h-[192px] 2xl:w-[132px] relative  
+            <div className='relative'>
+                <div className="overflow-hidden h-[416px] rounded-md mt-5 relative">
+                    {
+                        (dataTopComics && dataTopComics.length > 0) && (!isLoading) ? (
+                            dataTopComics.map((item) => (
+                                <div key={item.id} className='first:h-[396px] md:first:w-[260px] 2xl:first:w-[270px] first:w-[230px] float-left h-[192px] 2xl:w-[132px] relative  
                                 mt-3 ml-3 lg:w-[155px] xl:w-[126px] md:w-[128px] sm:w-[150px] w-[120px] rounded-md transition group'
-                            >
-                                <CardComic data={item} type='basic' badge='top' />
-                            </div>
-                        ))
+                                >
+                                    <CardComic data={item} type='basic' badge='top' />
+                                </div>
+                            ))
 
-                    ) : (
-                        <LoadingSkeleton />
-                    )
-                }
-            </div>
-            <div className='sm:hidden block'>
-                Slide truyen de cu
+                        ) : (
+                            <LoadingSkeleton />
+                        )
+                    }
+                </div>
             </div>
         </div>
     )

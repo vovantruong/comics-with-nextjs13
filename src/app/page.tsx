@@ -1,7 +1,7 @@
-import BannerComics from '@/components/home/BannerComics';
-import SectionFullComics from '@/components/home/SectionFullComics';
-import SectionTopComics from '@/components/home/SectionTopComics';
-import SectionUpdatedComics from '@/components/home/SectionUpdatedComics';
+import BannerComics from '@/components/comon/BannerComics';
+import SectionFullComics from '@/components/comon/SectionFullComics';
+import SectionTopComics from '@/components/comon/SectionTopComics';
+import SectionUpdatedComics from '@/components/comon/SectionUpdatedComics';
 import ListGenres from '@/components/sidebar/ListGenres';
 import RankingComics from '@/components/sidebar/RankingComics';
 

@@ -47,7 +47,7 @@ const Header = () => {
                 <div className="container">
                     <div className={clsx("flex items-center w-full justify-between h-[70px] lg:gap-0 gap-3 ",)}>
                         {/* Logo */}
-                        <div className="md:w-[150px] flex items-center mx-1 w-full">
+                        <div className="md:w-max flex items-center mx-1 w-full">
                             <Link href="/" className="py-1">
                                 <Image src={Logo} alt="Logo" height={40} className="w-full h-full" priority />
                             </Link>

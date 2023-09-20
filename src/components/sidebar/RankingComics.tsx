@@ -13,14 +13,16 @@ import { AiFillHeart } from 'react-icons/ai';
 import { shortNumber } from '@/utils/shortNumber';
 import { BsFillBookmarksFill } from 'react-icons/bs';
 
-interface rankingComicsProps { }
+interface rankingComicsProps {
+    limitNumber?: number
+}
 
-const RankingComics: FC<rankingComicsProps> = async ({ }) => {
+const RankingComics: FC<rankingComicsProps> = async ({ limitNumber = 7 }) => {
     const fetchData = async () => {
         try {
             const res = await fetch(`https://comics-api.vercel.app/top`, { next: { revalidate: 60 } })
             const dataFetch = await res.json()
-            const dataLimit = dataFetch.comics.filter((item: comicsProps, index: number) => index < 7)
+            const dataLimit = dataFetch.comics.filter((item: comicsProps, index: number) => index < limitNumber)
 
             return dataLimit;
         } catch (error) {

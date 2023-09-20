@@ -3,7 +3,7 @@ import clsx from 'clsx'
 import ListGenres from '../sidebar/ListGenres'
 import RankingComics from '../sidebar/RankingComics'
 import ComicByAuthor from '../sidebar/ComicByAuthor'
-import BannerComics from '../home/BannerComics'
+import BannerComics from '../comon/BannerComics'
 
 interface layoutProps {
     children: ReactNode,
