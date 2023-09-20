@@ -26,6 +26,10 @@ body::-webkit-scrollbar-thumb {
 	@apply bg-secondary rounded-[10px] cursor-pointer;
 }
 
+.element-no-scrollbar::-webkit-scrollbar {
+	display: none;
+}
+
 .container {
 	@apply md:px-4 px-1 transition-all duration-200 ease-in-out my-0 mx-auto;
 }
