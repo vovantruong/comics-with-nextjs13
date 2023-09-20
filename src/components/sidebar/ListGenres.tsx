@@ -8,11 +8,14 @@ import clsx from 'clsx';
 
 interface listGenresProps {
     className?: string
+    itemClassName?: string
+    wrapItemClassName?: string
     size?: 'md' | "lg"
     type?: string
+    toggleButton?: boolean
 }
 
-const ListGenres: FC<listGenresProps> = async ({ className, size = "lg", type }) => {
+const ListGenres: FC<listGenresProps> = async ({ className, size = "lg", type, itemClassName, wrapItemClassName, toggleButton = false }) => {
 
     const fetchData = async () => {
         try {
@@ -35,13 +38,14 @@ const ListGenres: FC<listGenresProps> = async ({ className, size = "lg", type })
                     Thể loại truyện
                 </h2>
             </div>}
-            <div className='p-4 flex items-center flex-wrap justify-start gap-2'>
+            <div className={clsx(wrapItemClassName, 'p-4 flex items-center flex-wrap justify-start gap-2')}>
                 {dataGenres && dataGenres.length > 0 ? dataGenres.map((item: genresProps) => (
                     <Link
                         key={item.id}
                         title={item.description}
                         href={`/the-loai?type=${item.id}`}
                         className={clsx(
+                            itemClassName,
                             { "!py-2 !px-3 !text-xs hover:bg-secondary transition hover:text-slate-700": size === "md" },
                             { "!bg-secondary !text-slate-700": (item.id === type && type) },
                             'py-3 px-4 rounded-xl bg-white text-sm font-medium border border-[#d7d7d7] leading-none hover:bg-thirdary transition hover:text-white'

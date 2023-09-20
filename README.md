@@ -1,4 +1,4 @@
-# Hello mọi người đã ghé thăm dự án của mình ^^
+## Hello mọi người đã ghé thăm dự án của mình
 
 _Dự án được tạo ra nhằm mục đích học tập ngôn ngữ Next và Next 13_
 
