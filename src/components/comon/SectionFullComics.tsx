@@ -39,7 +39,7 @@ const SectionFullComics: FC<SectionFullComicsProps> = ({ }) => {
                 </div>
                 <Link href="/truyen-full" className='text-sm underline text-[#6e60ee] font-medium italic'>Xem tất cả</Link>
             </div>
-            <div className="overflow-hidden rounded-md mt-5 relative group/pagi">
+            <div className="overflow-hidden rounded-md mt-5 relative group/full">
                 <div className='relative rounded-md bg-white w-full border-none sm:border sm:border-solid overflow-hidden'>
                     {(dataFullComics && dataFullComics.length > 0) ? (
                         <Swiper
@@ -98,19 +98,19 @@ const SectionFullComics: FC<SectionFullComicsProps> = ({ }) => {
                     )}
                 </div>
                 {(dataFullComics && dataFullComics.length > 0) && (
-                    <div className='absolute left-0 right-0 top-[45%] -translate-y-[50%] w-full z-10 lg:opacity-0 transition-all duration-300 group-hover/pagi:opacity-100 
+                    <div className='absolute left-0 right-0 top-[45%] -translate-y-[50%] w-full z-10 lg:opacity-0 transition-all duration-300 group-hover/full:opacity-100 
                         sm:block hidden opacity-100'>
                         <button
                             onClick={() => swiperRef.current.swiper.slidePrev()}
-                            className='absolute left-3 lg:left-0 text-white w-10 h-10 rounded-full bg-[#eed441] flex items-center justify-center border border-secondary 
-                            lg:group-hover/pagi:left-7 transition-all duration-500 shadow-lg'
+                            className='absolute left-3 lg:left-0 text-white w-12 h-12 lg:rounded-full rounded-md bg-[#eec041ab] flex items-center justify-center border border-secondary 
+                            lg:group-hover/full:left-7 transition-all duration-500 shadow-lg'
                         >
                             <FaChevronLeft />
                         </button>
                         <button
                             onClick={() => swiperRef.current.swiper.slideNext()}
-                            className='absolute right-3 lg:right-0 text-white w-10 h-10 rounded-full bg-[#eed441] flex items-center justify-center border border-secondary 
-                            lg:group-hover/pagi:right-7 transition-all duration-500 shadow-lg'
+                            className='absolute right-3 lg:right-0 text-white w-12 h-12 lg:rounded-full rounded-md bg-[#eec041ab] flex items-center justify-center border border-secondary 
+                            lg:group-hover/full:right-7 transition-all duration-500 shadow-lg'
                         >
                             <FaChevronRight />
                         </button>

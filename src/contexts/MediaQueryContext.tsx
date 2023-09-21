@@ -39,11 +39,6 @@ export const MediaQueryProvider = ({ children }: MediaQueryProps) => {
         </MediaQueryContext.Provider>
     )
 
-    // return (
-    //     <MediaQueryContext.Provider value={breakpoint}>
-    //         {children}
-    //     </MediaQueryContext.Provider>
-    // )
 };
 
 export const useMediaQueryContext = () => useContext(MediaQueryContext);

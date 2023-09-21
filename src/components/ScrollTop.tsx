@@ -28,7 +28,7 @@ const ScrollTop = ({ }) => {
             onClick={scrollToTop}
             className={clsx(
                 'fixed -bottom-10 right-10 block w-[45px] h-[45px] leading-[45px] bg-secondary border rounded-md text-white invisible',
-                'opacity-0 scale-[0.3] shadow-md z-[100] transition-all duration-300 hover:-translate-y-2.5 flex items-center justify-center',
+                'opacity-0 scale-[0.3] shadow-md z-10 transition-all duration-300 hover:-translate-y-2.5 flex items-center justify-center',
                 { '!visible bottom-10 right-10 opacity-100 !scale-100': visible })
             }>
             <ImArrowUp2 />

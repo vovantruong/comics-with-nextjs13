@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { IoClose } from 'react-icons/io5'
 import { IoIosMenu } from 'react-icons/io'
 import { MdOutlineClose } from 'react-icons/md'
@@ -19,6 +19,15 @@ interface sidebarProps {
 
 const SideBarMenu = ({ data }: sidebarProps) => {
     const [visible, setVisible] = useState<boolean>(false)
+
+    useEffect(() => {
+        if (visible) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = '';
+        }
+    }, [visible])
+
     return (
         <div className='relative'>
             <button
@@ -34,7 +43,7 @@ const SideBarMenu = ({ data }: sidebarProps) => {
                 <div className='absolute w-full h-full top-0 left-0 z-0 bg-[rgba(0,0,0,0.3)]' onClick={() => setVisible(false)}></div>
                 <div className={clsx(
                     { "transition-all duration-500 delay-100 !right-0 ease-in-out": visible },
-                    ' bg-white shadow-md w-full md:w-[50%] h-screen z-10 absolute pt-5 p-5 overflow-hidden top-0 right-[-100%] transition-all duration-500'
+                    ' bg-white shadow-md w-full md:w-[50%] h-screen z-10 absolute pt-5 p-5 overflow-y-auto element-no-scrollbar top-0 right-[-100%] transition-all duration-500'
                 )}>
                     <button className='absolute right-6 top-5 text-4xl text-slate-400' onClick={() => setVisible(false)}><IoClose /></button>
                     <div className="flex items-start mx-1 w-full flex-col pb-4 mb-6 border-b">
