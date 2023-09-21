@@ -1,6 +1,5 @@
-
 'use client';
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { useMediaQuery } from 'react-responsive'
 
 interface MediaQueryProps {
@@ -13,13 +12,18 @@ interface queryProps {
     sm?: boolean
 }
 
-
 const MediaQueryContext = createContext<queryProps>({})
 
 export const MediaQueryProvider = ({ children }: MediaQueryProps) => {
+    const [domLoaded, setDomLoaded] = useState<boolean>(false);
+
     const isDesktop = useMediaQuery({ query: `(max-width: 1179px)` })
     const isTablet = useMediaQuery({ query: `(max-width: 1023px)` })
     const isMobile = useMediaQuery({ query: `(max-width: 739px)` })
+
+    useEffect(() => {
+        setDomLoaded(true)
+    }, [])
 
     const breakpoint = {
         lg: isDesktop,
@@ -28,7 +32,7 @@ export const MediaQueryProvider = ({ children }: MediaQueryProps) => {
     }
 
     return (
-        <MediaQueryContext.Provider value={breakpoint}>
+        <MediaQueryContext.Provider value={domLoaded ? breakpoint : {}}>
             {children}
         </MediaQueryContext.Provider>
     )

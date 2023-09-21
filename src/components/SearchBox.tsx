@@ -5,10 +5,10 @@ import clsx from 'clsx'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
-import React, { FC, useCallback, useContext, useEffect, useRef, useState } from 'react'
+import React, { FC, useCallback, useEffect, useRef, useState } from 'react'
 import { AiOutlineClose, AiOutlineCloseCircle, AiOutlineLoading3Quarters } from 'react-icons/ai'
 import { IoSearchOutline } from 'react-icons/io5'
-import { useDebounce } from 'use-debounce'
+
 interface SearchBoxProps {
     className?: string
 }
@@ -122,7 +122,7 @@ const SearchBox: FC<SearchBoxProps> = ({ className }) => {
                     <IoSearchOutline />
                 </button>
                 <div className={clsx('absolute hidden opacity-0 bg-white w-full h-[450px] overflow-y-auto top-[110%] z-[100] left-0 rounded-md shadow-md p-2',
-                    'element-scrollbar', { "!block opacity-100": showBoxed }, { "hidden": sm })}>
+                    'element-scrollbar', { "!block opacity-100": showBoxed })}>
                     <RenderSearchContent />
                 </div>
             </div>

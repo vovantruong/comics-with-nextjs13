@@ -11,6 +11,8 @@ import DropdownMenu from "./customs/DropdownMenu";
 import { genresProps } from "@/types/typeProps";
 import LoadingBook from './customs/LoadingBook';
 import useSWR from 'swr';
+import dynamic from 'next/dynamic';
+import { useMediaQueryContext } from '@/contexts/MediaQueryContext';
 
 const fetcher = (url: string) => fetch(url).then(res => res.json())
 
@@ -18,6 +20,9 @@ const Header = () => {
     const [dropGenres, setDropGenres] = useState(false)
     const [dropListComics, setDropListComics] = useState(false)
     const [scroll, setScroll] = useState(false)
+
+    const { sm, md } = useMediaQueryContext()
+
 
     useEffect(() => {
         window.addEventListener('scroll', () => {
@@ -33,8 +38,9 @@ const Header = () => {
     const { data, mutate } = useSWR(`/api/genres`, fetcher, {
         revalidateIfStale: false,
         revalidateOnFocus: false,
-        revalidateOnReconnect: false
+        revalidateOnReconnect: false,
     })
+
 
     return (
         <header
@@ -53,7 +59,7 @@ const Header = () => {
                             </Link>
                         </div>
                         {/* Navbar */}
-                        <nav className="flex-1 lg:block hidden">
+                        {(!md) && <nav className="flex-1 lg:block hidden">
                             <ul className="flex items-center flex-wrap justify-center">
                                 <li className="relative mx-4 flex items-center">
                                     <DropdownMenu
@@ -112,12 +118,10 @@ const Header = () => {
                                     </Link>
                                 </li>
                             </ul>
-                        </nav>
+                        </nav>}
                         {/* Search component */}
                         <SearchBox />
-                        <div className="lg:hidden block" suppressHydrationWarning>
-                            <SideBarMenu />
-                        </div>
+                        <SideBarMenu data={data} />
                     </div>
                 </div>
             </div>
