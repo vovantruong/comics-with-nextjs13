@@ -15,7 +15,6 @@ const BannerComics = ({ }) => {
 
     const swiperRef = useRef() as any;
 
-
     const fetcherWithTrending = (url: string, headerValue: any) => fetch(url, {
         method: 'POST',
         body: JSON.stringify(headerValue)
