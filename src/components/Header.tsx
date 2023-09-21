@@ -1,5 +1,4 @@
 'use client'
-import { FC } from 'react'
 import Image from "next/image";
 import Link from "next/link"
 import Logo from '../../public/images/truyen-logo-2.png'
@@ -11,7 +10,6 @@ import DropdownMenu from "./customs/DropdownMenu";
 import { genresProps } from "@/types/typeProps";
 import LoadingBook from './customs/LoadingBook';
 import useSWR from 'swr';
-import dynamic from 'next/dynamic';
 import { useMediaQueryContext } from '@/contexts/MediaQueryContext';
 
 const fetcher = (url: string) => fetch(url).then(res => res.json())
@@ -20,13 +18,8 @@ const Header = () => {
     const [dropGenres, setDropGenres] = useState(false)
     const [dropListComics, setDropListComics] = useState(false)
     const [scroll, setScroll] = useState(false)
-    const [domLoaded, setDomLoaded] = useState<boolean>(false);
 
     const { sm, md } = useMediaQueryContext()
-
-    useEffect(() => {
-        setDomLoaded(true)
-    }, [])
 
     useEffect(() => {
         window.addEventListener('scroll', () => {
