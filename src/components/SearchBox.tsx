@@ -7,7 +7,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import React, { FC, useCallback, useEffect, useRef, useState } from 'react'
 import { AiOutlineClose, AiOutlineCloseCircle, AiOutlineLoading3Quarters } from 'react-icons/ai'
-import { IoSearchOutline } from 'react-icons/io5'
+import { IoClose, IoSearchOutline } from 'react-icons/io5'
 
 interface SearchBoxProps {
     className?: string
@@ -130,7 +130,7 @@ const SearchBox: FC<SearchBoxProps> = ({ className }) => {
                 <div className='fixed top-0 left-0 z-[1000] w-full h-full'>
                     <div className='absolute w-full h-full top-0 left-0 z-0 bg-[rgba(0,0,0,0.2)]' onClick={() => setShowModal(false)}></div>
                     <div className=' bg-white rounded-lg shadow-md w-[90%] h-au mx-auto z-10 absolute top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%] pt-10 p-5 overflow-hidden'>
-                        <button className='absolute top-4 right-4 text-xl text-slate-400' onClick={() => setShowModal(false)}><AiOutlineClose /></button>
+                        <button className='absolute top-4 right-4 text-2xl text-slate-400' onClick={() => setShowModal(false)}><IoClose /></button>
                         <h2 className='text-center font-semibold mb-4 text-2xl'>Tìm kiếm</h2>
                         <input
                             ref={searchInputRef}
@@ -138,7 +138,7 @@ const SearchBox: FC<SearchBoxProps> = ({ className }) => {
                             value={query}
                             onChange={(e) => setQuery(e.target.value)}
                             placeholder="Tìm kiếm tên truyện, tác giả, ..."
-                            className={clsx(className, "xl:placeholder:text-sm md:placeholder:text-xs outline-none border-b-2 border-slate-500 h-10 bg-white xl:pr-2 xl:min-w-[380px]",
+                            className={clsx(className, "xl:placeholder:text-sm md:placeholder:text-xs outline-none border rounded-md border-slate-400 h-10 bg-white xl:pr-2 xl:min-w-[380px]",
                                 "opacity-[1] text-sm placeholder:text-gray-800 focus:border-secondary lg:w-[320px] pl-3 md:pr-10 transition xl:w-full ",
                                 "min-w-[auto] w-full"
                             )}

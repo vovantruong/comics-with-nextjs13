@@ -20,9 +20,13 @@ const Header = () => {
     const [dropGenres, setDropGenres] = useState(false)
     const [dropListComics, setDropListComics] = useState(false)
     const [scroll, setScroll] = useState(false)
+    const [domLoaded, setDomLoaded] = useState<boolean>(false);
 
     const { sm, md } = useMediaQueryContext()
 
+    useEffect(() => {
+        setDomLoaded(true)
+    }, [])
 
     useEffect(() => {
         window.addEventListener('scroll', () => {
@@ -59,7 +63,7 @@ const Header = () => {
                             </Link>
                         </div>
                         {/* Navbar */}
-                        {(!md) && <nav className="flex-1 lg:block hidden">
+                        {!md && <nav className="flex-1 lg:block hidden">
                             <ul className="flex items-center flex-wrap justify-center">
                                 <li className="relative mx-4 flex items-center">
                                     <DropdownMenu
@@ -121,7 +125,7 @@ const Header = () => {
                         </nav>}
                         {/* Search component */}
                         <SearchBox />
-                        <SideBarMenu data={data} />
+                        {md && <SideBarMenu data={data} />}
                     </div>
                 </div>
             </div>

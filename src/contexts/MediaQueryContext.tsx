@@ -26,16 +26,24 @@ export const MediaQueryProvider = ({ children }: MediaQueryProps) => {
     }, [])
 
     const breakpoint = {
-        lg: isDesktop,
-        md: isTablet,
-        sm: isMobile
+        lg: isDesktop, md: isTablet, sm: isMobile
+    }
+
+    const initialBreakpoint = {
+        lg: true, md: true, sm: true
     }
 
     return (
-        <MediaQueryContext.Provider value={domLoaded ? breakpoint : {}}>
+        <MediaQueryContext.Provider value={domLoaded ? breakpoint : initialBreakpoint}>
             {children}
         </MediaQueryContext.Provider>
     )
+
+    // return (
+    //     <MediaQueryContext.Provider value={breakpoint}>
+    //         {children}
+    //     </MediaQueryContext.Provider>
+    // )
 };
 
 export const useMediaQueryContext = () => useContext(MediaQueryContext);
