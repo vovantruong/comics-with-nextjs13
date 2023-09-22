@@ -30,7 +30,7 @@ export const MediaQueryProvider = ({ children }: MediaQueryProps) => {
     }
 
     const initialBreakpoint = {
-        lg: true, md: true, sm: true
+        lg: false, md: false, sm: false
     }
 
     return (

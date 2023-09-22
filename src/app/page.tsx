@@ -1,5 +1,6 @@
 import BannerComics from '@/components/comon/BannerComics';
 import SectionFullComics from '@/components/comon/SectionFullComics';
+import SectionRecentlyRead from '@/components/comon/SectionRecentlyRead';
 import SectionTopComics from '@/components/comon/SectionTopComics';
 import SectionUpdatedComics from '@/components/comon/SectionUpdatedComics';
 import ListGenres from '@/components/sidebar/ListGenres';
@@ -15,6 +16,7 @@ export default function Home() {
                         <SectionTopComics />
                         <SectionFullComics />
                         <SectionUpdatedComics />
+                        <SectionRecentlyRead />
                     </div>
                 </div>
                 <div className='xl:w-[30%] w-full lg:pl-2 md:pl-0'>

@@ -129,7 +129,7 @@ const SearchBox: FC<SearchBoxProps> = ({ className }) => {
             {(showModal && sm) && (
                 <div className='fixed top-0 left-0 z-[1000] w-full h-full'>
                     <div className='absolute w-full h-full top-0 left-0 z-0 bg-[rgba(0,0,0,0.2)]' onClick={() => setShowModal(false)}></div>
-                    <div className=' bg-white rounded-lg shadow-md w-[90%] h-au mx-auto z-10 absolute top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%] pt-10 p-5 overflow-hidden'>
+                    <div className=' bg-white rounded-lg shadow-md w-[90%] h-au mx-auto z-10 absolute top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%] pt-10 sm:p-5 p-3 overflow-hidden'>
                         <button className='absolute top-4 right-4 text-2xl text-slate-400' onClick={() => setShowModal(false)}><IoClose /></button>
                         <h2 className='text-center font-semibold mb-4 text-2xl'>Tìm kiếm</h2>
                         <input

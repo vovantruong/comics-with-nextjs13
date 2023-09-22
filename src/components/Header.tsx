@@ -19,7 +19,7 @@ const Header = () => {
     const [dropListComics, setDropListComics] = useState(false)
     const [scroll, setScroll] = useState(false)
 
-    const { sm, md } = useMediaQueryContext()
+    const { md } = useMediaQueryContext()
 
     useEffect(() => {
         window.addEventListener('scroll', () => {

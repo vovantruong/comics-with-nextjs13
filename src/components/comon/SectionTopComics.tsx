@@ -13,6 +13,7 @@ import useSWR from 'swr';
 import { useMediaQueryContext } from '@/contexts/MediaQueryContext';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { FreeMode, Grid } from 'swiper/modules';
+import MediaQuery from 'react-responsive';
 
 interface SectionTopComicsProps { }
 
@@ -79,7 +80,7 @@ const SectionTopComics: FC<SectionTopComicsProps> = ({ }) => {
 
 
     return (
-        <div className="w-full mt-5 bg-[#f6f3ee] rounded-md overflow-hidden sm:px-4 sm:py-5 p-2 border">
+        <section className="w-full mt-5 bg-[#f6f3ee] rounded-md overflow-hidden sm:px-4 sm:py-5 p-2 border">
             <div className="flex sm:items-end sm:justify-between border-b-[3px] border-secondary pb-2 mb-2 sm:flex-row flex-col justify-start items-start gap-2">
                 <div className="text-gray-700 capitalize font-bold sm:text-2xl text-lg flex items-end gap-2 mb-3 sm:mb-0">
                     <Image src={IconTitle} alt='icon-title' width={50} height={50} className='sm:w-[50px] sm:h-[50px] w-[35px] h-[35px] ' />
@@ -105,7 +106,7 @@ const SectionTopComics: FC<SectionTopComicsProps> = ({ }) => {
                 />
             </div>
             <div className='relative'>
-                {!sm && <div className="overflow-auto element-no-scrollbar md:overflow-hidden md:h-[416px] h-[535px] rounded-md mt-5 relative">
+                {!sm && <div className="overflow-auto element-no-scrollbar md:overflow-hidden md:h-[416px] h-[535px] rounded-md mt-5 relative sm:block hidden">
                     {
                         (dataTopComics && dataTopComics.length > 0) && (!isLoading) ? (
                             dataTopComics.map((item: comicsProps) => (
@@ -127,30 +128,30 @@ const SectionTopComics: FC<SectionTopComicsProps> = ({ }) => {
                         )
                     }
                 </div>}
-                {sm && (
-                    <Swiper
-                        slidesPerView={3}
-                        freeMode={true}
-                        speed={2000}
-                        grid={{
-                            rows: 2,
-                            fill: "row"
-                        }}
-                        modules={[Grid, FreeMode]}
-                    >
-                        <SwiperSlide>1</SwiperSlide>
-                        <SwiperSlide>2</SwiperSlide>
-                        <SwiperSlide>3</SwiperSlide>
-                        <SwiperSlide>4</SwiperSlide>
-                        <SwiperSlide>5</SwiperSlide>
-                        <SwiperSlide>6</SwiperSlide>
-                        <SwiperSlide>7</SwiperSlide>
-                        <SwiperSlide>8</SwiperSlide>
-                        <SwiperSlide>9</SwiperSlide>
-                        <SwiperSlide>10</SwiperSlide>
-                    </Swiper>)}
+                {sm && <Swiper
+                    className='sm:hidden block'
+                    slidesPerView={3}
+                    freeMode={true}
+                    speed={2000}
+                    grid={{
+                        rows: 2,
+                        fill: "row"
+                    }}
+                    modules={[Grid, FreeMode]}
+                >
+                    <SwiperSlide>1</SwiperSlide>
+                    <SwiperSlide>2</SwiperSlide>
+                    <SwiperSlide>3</SwiperSlide>
+                    <SwiperSlide>4</SwiperSlide>
+                    <SwiperSlide>5</SwiperSlide>
+                    <SwiperSlide>6</SwiperSlide>
+                    <SwiperSlide>7</SwiperSlide>
+                    <SwiperSlide>8</SwiperSlide>
+                    <SwiperSlide>9</SwiperSlide>
+                    <SwiperSlide>10</SwiperSlide>
+                </Swiper>}
             </div>
-        </div>
+        </section>
     )
 }
 
