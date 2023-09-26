@@ -11,7 +11,7 @@ export default function Home() {
         <main className={` overflow-x-hidden bg-white`}>
             <BannerComics />
             <div className='container flex items-start justify-center relative flex-wrap'>
-                <div className='xl:w-[70%] w-full lg:pr-2 md:pr-0'>
+                <div className='xl:w-[70%] w-full xl:pr-2 md:pr-0'>
                     <div className="relative w-full">
                         <SectionTopComics />
                         <SectionFullComics />

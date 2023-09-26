@@ -116,7 +116,7 @@ const SearchBox: FC<SearchBoxProps> = ({ className }) => {
                     />
                 </div>
                 <button className="absolute w-auto top-[50%] -translate-y-[50%] text-2xl p-2 md:p-1.5 bg-linearPrimary text-white rounded-md md:right-2 right-0 md:text-lg 
-                xl:border-none border-2"
+                xl:border-none border-2 sm:border-0"
                     onClick={() => { sm && setShowModal(true) }}
                 >
                     <IoSearchOutline />

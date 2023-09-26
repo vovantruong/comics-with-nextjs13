@@ -46,7 +46,7 @@ const Header = () => {
                 { "pt-16": scroll },
             )}
         >
-            <div className={clsx("wrapper", scroll ? "fixed w-full left-0 top-0 z-[100] transition-all shadow-md animate-sticky-head px-4 bg-primary" : "")}>
+            <div className={clsx("wrapper", scroll ? "fixed w-full left-0 top-0 z-[100] transition-all shadow-md animate-sticky-head md:px-4 px-0 bg-primary" : "")}>
                 <div className="container">
                     <div className={clsx("flex items-center w-full justify-between h-[70px] lg:gap-0 gap-3 ",)}>
                         {/* Logo */}
