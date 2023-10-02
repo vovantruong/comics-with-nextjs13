@@ -11,8 +11,8 @@ export const POST = async (req: Request) => {
                 'Access-Control-Allow-Origin': '*'
             }
         })
-        const { comics } = await res.json()
-        return NextResponse.json(comics)
+        const { comics, total_pages, current_page } = await res.json()
+        return NextResponse.json({ comics, total_pages, current_page })
     } catch (error) {
         console.log("Invalited Error - ", error);
     }
