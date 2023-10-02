@@ -65,7 +65,7 @@ const SearchBox: FC<SearchBoxProps> = ({ className }) => {
         return (
             <>
                 {(!dataSearch || dataSearch.length === 0) && (!isLoading) && (
-                    <div className='text-center text-sm absolute top-0 left-0 w-full h-full flex items-center justify-center z-10'>
+                    <div className='text-center text-sm font-medium absolute top-0 left-0 w-full h-full flex items-center justify-center z-10'>
                         Không tìm thấy truyện!
                     </div>)}
                 {isLoading && (
@@ -129,9 +129,9 @@ const SearchBox: FC<SearchBoxProps> = ({ className }) => {
             {(showModal && sm) && (
                 <div className='fixed top-0 left-0 z-[1000] w-full h-full'>
                     <div className='absolute w-full h-full top-0 left-0 z-0 bg-[rgba(0,0,0,0.2)]' onClick={() => setShowModal(false)}></div>
-                    <div className=' bg-white rounded-lg shadow-md w-[90%] h-au mx-auto z-10 absolute top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%] pt-10 sm:p-5 p-3 overflow-hidden'>
+                    <div className=' bg-white rounded-lg shadow-md w-[90%] h-au mx-auto z-10 absolute top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%] pt-8 sm:p-5 p-3 overflow-hidden'>
                         <button className='absolute top-4 right-4 text-2xl text-slate-400' onClick={() => setShowModal(false)}><IoClose /></button>
-                        <h2 className='text-center font-semibold mb-4 text-2xl'>Tìm kiếm</h2>
+                        <h2 className='text-center font-semibold mb-4 text-2xl text-slate-500'>Tìm kiếm</h2>
                         <input
                             ref={searchInputRef}
                             type="text"
@@ -143,7 +143,7 @@ const SearchBox: FC<SearchBoxProps> = ({ className }) => {
                                 "min-w-[auto] w-full"
                             )}
                         />
-                        <div className='w-full h-[60vh] overflow-y-auto element-scrollbar mt-5 relative'>
+                        <div className='w-full h-[45vh] overflow-y-auto element-scrollbar mt-5 relative'>
                             <RenderSearchContent />
                         </div>
                     </div>

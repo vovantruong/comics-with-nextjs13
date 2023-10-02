@@ -47,6 +47,7 @@ const SectionUpdatedComics: FC<SectionUpdatedComicsProps> = ({ }) => {
                             ref={swiperRef}
                             slidesPerView={4}
                             freeMode={true}
+                            className='sm:pb-0 pb-5'
                             grid={{
                                 rows: 2,
                                 fill: "row"
@@ -62,7 +63,7 @@ const SectionUpdatedComics: FC<SectionUpdatedComicsProps> = ({ }) => {
                                     slidesPerView: 2,
                                     slidesPerGroup: 1,
                                     grid: {
-                                        rows: 2,
+                                        rows: 3,
                                         fill: "row"
                                     }
                                 },
@@ -87,7 +88,7 @@ const SectionUpdatedComics: FC<SectionUpdatedComicsProps> = ({ }) => {
                             {
                                 dataRecentUpdated.map(item => (
                                     <SwiperSlide key={item.id} className='h-full w-full py-2 px-2'>
-                                        <div className='h-[320px] rounded-md border'>
+                                        <div className='h-[200px] sm:h-[320px] rounded-md border'>
                                             <CardComic type='normal' data={item} badge='up' />
                                         </div>
                                     </SwiperSlide>
@@ -124,10 +125,10 @@ const SectionUpdatedComics: FC<SectionUpdatedComicsProps> = ({ }) => {
 
 function LoadingSkeleton() {
     return (
-        <div className='flex items-center justify-center flex-wrap h-[640px] overflow-hidden'>
+        <div className='flex items-center justify-center flex-wrap sm:h-[640px] h-[600px] overflow-hidden'>
             {
                 Array.from(Array(8).keys()).map(item => (
-                    <div key={item} className='w-1/2 sm:w-1/3 md:w-1/4 h-[320px] p-2'>
+                    <div key={item} className='w-1/2 sm:w-1/3 lg:w-1/4 h-[200px] sm:h-[320px] p-2'>
                         <Skeleton containerClassName='w-full h-full flex' />
                     </div>
                 ))
