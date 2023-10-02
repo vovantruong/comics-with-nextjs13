@@ -110,8 +110,8 @@ const SectionTopComics: FC<SectionTopComicsProps> = ({ }) => {
                     {
                         (dataTopComics && dataTopComics.length > 0) && (!isLoading) ? (
                             dataTopComics.map((item: comicsProps) => (
-                                <div key={item.id} className='md:first:h-[396px] first:h-[165px] md:first:w-[260px] 2xl:first:w-[270px] first:w-[105px] float-left md:h-[192px] h-[165px] 2xl:w-[132px] relative  
-                                md:mt-3 mt-2 md:ml-3 ml-2 lg:w-[155px] xl:w-[126px] md:w-[128px] w-[105px] rounded-md transition group'
+                                <div key={item.id} className='md:first:h-[396px] first:h-[200px] md:first:w-[260px] sm:first:w-1/4 2xl:first:w-[270px] first:w-1/3 float-left md:h-[192px] h-[200px] 2xl:w-[132px] relative  
+                                md:mt-3 mt-0 md:ml-3 ml-0 lg:w-[155px] xl:w-[126px] md:w-[128px] sm:w-1/4 w-1/3 rounded-md transition group md:border-1 border-none md:pb-0 pb-3 md:px-0 px-1'
                                 >
                                     <CardComic data={item} type='basic' badge='top' />
                                 </div>
@@ -119,28 +119,24 @@ const SectionTopComics: FC<SectionTopComicsProps> = ({ }) => {
 
                         ) : (
                             Array.from(Array(12).keys()).map(item => (
-                                <div key={item} className='md:first:h-[396px] first:h-[165px] md:first:w-[260px] 2xl:first:w-[270px] first:w-[105px] float-left  md:h-[192px] h-[165px] 2xl:w-[132px] relative 
-                                md:mt-3 mt-2 md:ml-3 ml-2 lg:w-[155px] xl:w-[126px] md:w-[128px] w-[105px] rounded-md overflow-hidden border-2'
+                                <div key={item} className='md:first:h-[396px] first:h-[200px] md:first:w-[260px] sm:first:w-1/4 2xl:first:w-[270px] first:w-1/3 float-left md:h-[192px] h-[200px] 2xl:w-[132px] relative 
+                                md:mt-3 mt-0 md:ml-3 ml-0 lg:w-[155px] xl:w-[126px] md:w-[128px] sm:w-1/4 w-1/3 rounded-md overflow-hidden border-2 md:border-1 border-none md:pb-0 pb-3 md:px-0 px-2'
                                 >
                                     <Skeleton containerClassName='w-full h-full flex' />
                                 </div>
                             ))
                         )
                     }
+                    {/* {
+                        Array.from(Array(12).keys()).map(item => (
+                            <div key={item} className='md:first:h-[396px] first:h-[200px] md:first:w-[260px] sm:first:w-1/4 2xl:first:w-[270px] first:w-1/3 float-left  md:h-[192px] h-[200px] 2xl:w-[132px] relative 
+                            md:mt-3 mt-0 md:ml-3 ml-0 lg:w-[155px] xl:w-[126px] md:w-[128px] sm:w-1/4 w-1/3 rounded-md overflow-hidden md:border-1 border-none md:pb-0 pb-3 md:px-0 px-2'
+                            >
+                                <Skeleton containerClassName='w-full h-full flex' />
+                            </div>
+                        ))
+                    } */}
                 </div>
-                {/* {sm && <Swiper
-                    className='sm:hidden block'
-                    slidesPerView={3}
-                    freeMode={true}
-                    speed={2000}
-                    grid={{
-                        rows: 2,
-                        fill: "row"
-                    }}
-                    modules={[Grid, FreeMode]}
-                >
-                    
-                </Swiper>} */}
             </div>
         </section>
     )
