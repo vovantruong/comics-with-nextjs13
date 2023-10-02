@@ -59,7 +59,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 .pagination-custom .page-item {
-	@apply cursor-pointer bg-white border-solid border-[#DFE3E8] rounded w-[35px] h-[35px] text-[#212B36] font-bold text-base leading-5 flex items-center justify-center transition-all duration-300;
+	@apply cursor-pointer bg-slate-50 border-solid border-[#DFE3E8] rounded w-[35px] h-[35px] text-[#212B36] font-medium text-base leading-5 flex items-center justify-center transition-all duration-300;
 }
 
 .pagination-custom .page-item a {
@@ -67,7 +67,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 .pagination-custom .page-item.disable {
-	@apply text-white bg-[#dedede] border-[#dedede];
+	@apply text-white bg-[#c2c2c2] border-[#dedede];
 }
 
 .pagination-custom .page-item.disable a {

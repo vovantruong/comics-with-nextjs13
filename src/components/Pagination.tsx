@@ -4,15 +4,17 @@ import ReactPaginate from 'react-paginate'
 
 interface PaginationProps {
     className?: string
-    handlePageClick?: () => void
+    handlePageClick?: (data: { selected: number }) => void
     data?: Object[]
     totalPage?: number
 }
 
 const Pagination: FC<PaginationProps> = ({ className, handlePageClick, data = [], totalPage = 1 }) => {
+
+
     return <nav className='my-2.5 mx-auto'>
         <ReactPaginate
-            pageCount={Math.ceil(data.length / totalPage)}
+            pageCount={totalPage}
             marginPagesDisplayed={2}
             pageRangeDisplayed={1}
             onPageChange={handlePageClick}

@@ -5,6 +5,7 @@ import useSWR, { mutate } from 'swr'
 import CardComic from './CardComic'
 import Pagination from './Pagination'
 import Skeleton from 'react-loading-skeleton'
+import { useRouter } from 'next/navigation'
 
 interface DetailGenresComicProps {
     type: string
@@ -19,8 +20,9 @@ interface dataComiscProps {
 
 const DetailGenresComic: FC<DetailGenresComicProps> = ({ page, type }) => {
     const [shouldRunEffect, setShouldRunEffect] = useState<boolean>(false);
-    // const [currentPage, setCurrentPage] = useState<number>(1)
-    // const [perPage, setPerPage] = useState<number>(1)
+    const [loadingPage, setLoadingPage] = useState<boolean>(false)
+    const router = useRouter()
+
 
     const fetcherComicByGenres = (url: string, headerValue: any) => fetch(url, {
         method: 'POST',
@@ -39,43 +41,35 @@ const DetailGenresComic: FC<DetailGenresComicProps> = ({ page, type }) => {
         } else {
             setShouldRunEffect(true);
         }
-    }, [type, page])
+    }, [type, page, window.location.pathname])
 
-    // useEffect(() => {
-    //     setCurrentPage(1)
-    // }, [data])
+    useEffect(() => {
+        if (window.location.search === "") {
+            router.push('?type=all')
+        }
+    }, [])
 
-    // useEffect(() => {
-    //     if (shouldRunEffect) {
-    //         setPerPage(data?.length)
-    //     } else {
-    //         setShouldRunEffect(true);
-    //     }
-    // }, [])
-
-
-    // const handlePageClick = (data) => {
-    //     let numberPage = data.selected + 1
-    // 	setCurrentPage(numberPage)
-    // }
+    const handleChangePage = (data: { selected: number }) => {
+        let numberPage = data.selected + 1
+        router.push(`/the-loai?type=${type}&page=${numberPage}`)
+    }
 
     return (
         <div className='relative bg-white py-3'>
             <div className='flex items-start justify-start flex-wrap'>
-                {isLoading &&
+                {(data?.comics && data?.comics.length > 0) && (!isLoading) ? data?.comics.map((item: comicsProps) => (
+                    <div className='2xl:w-1/6 xl:w-1/5 lg:w-1/4 w-1/3 md:pb-6 pb-3 lg:px-3 md:px-2 px-1 lg:h-[360px] sm:h-[280px] h-[185px]' key={item.id}>
+                        <CardComic type='normal' data={item} />
+                    </div>
+                )) : (
                     Array.from(Array(12).keys()).map(item => (
                         <div key={item} className='2xl:w-1/6 xl:w-1/5 lg:w-1/4 w-1/3 md:pb-6 pb-3 lg:px-3 md:px-2 px-1 lg:h-[360px] sm:h-[280px] h-[185px]'>
                             <Skeleton containerClassName='w-full h-full flex' />
                         </div>
                     ))
-                }
-                {(data?.comics && data?.comics.length > 0) && (!isLoading) && data?.comics.map((item: comicsProps) => (
-                    <div className='2xl:w-1/6 xl:w-1/5 lg:w-1/4 w-1/3 md:pb-6 pb-3 lg:px-3 md:px-2 px-1 lg:h-[360px] sm:h-[280px] h-[185px]' key={item.id}>
-                        <CardComic type='normal' data={item} />
-                    </div>
-                ))}
+                )}
             </div>
-            {!isLoading && <Pagination />}
+            {!isLoading && <Pagination totalPage={data?.total_pages} data={data?.comics} handlePageClick={handleChangePage} />}
         </div>
     )
 }

@@ -106,7 +106,7 @@ const SectionTopComics: FC<SectionTopComicsProps> = ({ }) => {
                 />
             </div>
             <div className='relative'>
-                <div className="overflow-auto element-no-scrollbar md:overflow-hidden md:h-[416px] h-auto rounded-md mt-5 relative sm:block flex flex-wrap">
+                <div className="overflow-auto bg-white element-no-scrollbar md:overflow-hidden md:h-[416px] h-auto rounded-md mt-5 relative sm:block flex flex-wrap">
                     {
                         (dataTopComics && dataTopComics.length > 0) && (!isLoading) ? (
                             dataTopComics.map((item: comicsProps) => (
