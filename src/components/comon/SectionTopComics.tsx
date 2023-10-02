@@ -106,7 +106,7 @@ const SectionTopComics: FC<SectionTopComicsProps> = ({ }) => {
                 />
             </div>
             <div className='relative'>
-                {!sm && <div className="overflow-auto element-no-scrollbar md:overflow-hidden md:h-[416px] h-[535px] rounded-md mt-5 relative sm:block hidden">
+                <div className="overflow-auto element-no-scrollbar md:overflow-hidden md:h-[416px] h-auto rounded-md mt-5 relative sm:block flex flex-wrap">
                     {
                         (dataTopComics && dataTopComics.length > 0) && (!isLoading) ? (
                             dataTopComics.map((item: comicsProps) => (
@@ -127,8 +127,8 @@ const SectionTopComics: FC<SectionTopComicsProps> = ({ }) => {
                             ))
                         )
                     }
-                </div>}
-                {sm && <Swiper
+                </div>
+                {/* {sm && <Swiper
                     className='sm:hidden block'
                     slidesPerView={3}
                     freeMode={true}
@@ -139,17 +139,8 @@ const SectionTopComics: FC<SectionTopComicsProps> = ({ }) => {
                     }}
                     modules={[Grid, FreeMode]}
                 >
-                    <SwiperSlide>1</SwiperSlide>
-                    <SwiperSlide>2</SwiperSlide>
-                    <SwiperSlide>3</SwiperSlide>
-                    <SwiperSlide>4</SwiperSlide>
-                    <SwiperSlide>5</SwiperSlide>
-                    <SwiperSlide>6</SwiperSlide>
-                    <SwiperSlide>7</SwiperSlide>
-                    <SwiperSlide>8</SwiperSlide>
-                    <SwiperSlide>9</SwiperSlide>
-                    <SwiperSlide>10</SwiperSlide>
-                </Swiper>}
+                    
+                </Swiper>} */}
             </div>
         </section>
     )
