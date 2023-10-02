@@ -57,3 +57,23 @@ body::-webkit-scrollbar-thumb {
 .sec-full-pagination .sec-full__active {
 	@apply bg-yellow-400;
 }
+
+.pagination-custom .page-item {
+	@apply cursor-pointer bg-white border-solid border-[#DFE3E8] rounded w-[35px] h-[35px] text-[#212B36] font-bold text-base leading-5 flex items-center justify-center transition-all duration-300;
+}
+
+.pagination-custom .page-item a {
+	@apply w-full h-full flex items-center justify-center;
+}
+
+.pagination-custom .page-item.disable {
+	@apply text-white bg-[#dedede] border-[#dedede];
+}
+
+.pagination-custom .page-item.disable a {
+	@apply cursor-no-drop;
+}
+
+.pagination-custom .page-item.active {
+	@apply border-secondary bg-secondary text-white;
+}

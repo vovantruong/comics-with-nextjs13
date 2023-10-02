@@ -57,7 +57,7 @@ const Header = () => {
                         </div>
                         {/* Navbar */}
                         {!md && <nav className="flex-1 lg:block hidden">
-                            <ul className="flex items-center flex-wrap justify-center">
+                            <ul className="flex items-center flex-wrap justify-center   ">
                                 <li className="relative mx-4 flex items-center">
                                     <DropdownMenu
                                         title="Thể Loại"
