@@ -49,6 +49,10 @@ const DetailGenresComic: FC<DetailGenresComicProps> = ({ page, type }) => {
         }
     }, [])
 
+    useEffect(() => {
+        mutate({ ...data })
+    }, [type])
+
     const handleChangePage = (data: { selected: number }) => {
         let numberPage = data.selected + 1
         router.push(`/the-loai?type=${type}&page=${numberPage}`)
