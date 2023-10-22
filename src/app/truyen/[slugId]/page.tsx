@@ -9,9 +9,6 @@ interface pageProps {
 }
 
 const ComicsDetail: FC<pageProps> = ({ params }) => {
-
-
-
     return (
         <main className={` overflow-x-hidden bg-white`}>
             <div className='container flex items-start justify-center relative flex-wrap'>
@@ -21,7 +18,6 @@ const ComicsDetail: FC<pageProps> = ({ params }) => {
                     </div>
                 </div>
                 <div className='xl:w-[30%] w-full lg:pl-2 md:pl-0'>
-                    <ComicByAuthor />
                     <ListGenres />
                 </div>
             </div>

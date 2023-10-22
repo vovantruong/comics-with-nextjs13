@@ -15,6 +15,7 @@ import 'swiper/css/thumbs'
 import 'swiper/css/free-mode'
 
 import 'react-loading-skeleton/dist/skeleton.css'
+import Head from 'next/head'
 
 const montserrat = Montserrat({
     subsets: ['latin'],
@@ -22,7 +23,7 @@ const montserrat = Montserrat({
 })
 
 export const metadata: Metadata = {
-    title: 'Truyện Hay ',
+    title: 'Truyện Hay',
     description: 'Truyện Hay - Nơi tinh hoa của những câu chuyện đẹp màu sắc đang chờ đón bạn. Chúng tôi tự hào giới thiệu một kho truyện tranh phong phú và đa dạng, hứa hẹn mang đến cho bạn những giây phút giải trí thú vị và tận hưởng những cung bậc cảm xúc đầy sắc màu.',
 }
 

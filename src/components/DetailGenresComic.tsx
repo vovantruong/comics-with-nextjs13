@@ -41,16 +41,22 @@ const DetailGenresComic: FC<DetailGenresComicProps> = ({ page, type }) => {
         } else {
             setShouldRunEffect(true);
         }
-    }, [type, page, window.location.pathname])
+    }, [type, page, typeof window !== "undefined" ? window.location.pathname : null])
 
     useEffect(() => {
-        if (window.location.search === "") {
-            router.push('?type=all')
+        if (typeof window !== "undefined") {
+            if (window.location.search === "") {
+                router.push('?type=all')
+            }
         }
     }, [])
 
     useEffect(() => {
         mutate({ ...data })
+    }, [type])
+
+    useEffect(() => {
+
     }, [type])
 
     const handleChangePage = (data: { selected: number }) => {

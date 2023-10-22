@@ -5,6 +5,7 @@ import SectionTopComics from '@/components/comon/SectionTopComics';
 import SectionUpdatedComics from '@/components/comon/SectionUpdatedComics';
 import ListGenres from '@/components/sidebar/ListGenres';
 import RankingComics from '@/components/sidebar/RankingComics';
+import Head from 'next/head';
 
 export default function Home() {
     return (
@@ -25,6 +26,5 @@ export default function Home() {
                 </div>
             </div>
         </main>
-
     )
 }
