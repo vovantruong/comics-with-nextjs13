@@ -43,8 +43,8 @@ const GenresComics: FC<GenresComicsProps> = async ({ searchParams }) => {
                             <div className="text-sm mx-2 "><BsChevronRight /></div>
                             <Link href="/the-loai?type=all" className='hover:underline text-slate-700'>Thể loại</Link>
                             <div className="text-sm mx-2 "><BsChevronRight /></div>
-                            <Link href={`/the-loai?type=${dataFilter.id}`} className='hover:underline text-slate-700'>
-                                {dataFilter.name}
+                            <Link href={`/the-loai?type=${dataFilter?.id ? dataFilter.id : 'all'}`} className='hover:underline text-slate-700'>
+                                {dataFilter?.name ? dataFilter.name : 'Tất cả'}
                             </Link>
                         </div>
                         <div className='absolute md:right-5 right-3 text-xl font-medium top-[50%] -translate-y-[50%] lg:hidden text-slate-500 w-[35px] h-[35px] cursor-pointer 

@@ -18,6 +18,8 @@ interface rankingComicsProps {
 }
 
 const RankingComics: FC<rankingComicsProps> = async ({ limitNumber = 7 }) => {
+
+
     const fetchData = async () => {
         try {
             const res = await fetch(`https://comics-api.vercel.app/top`, { next: { revalidate: 60 } })
@@ -63,7 +65,7 @@ const RankingComics: FC<rankingComicsProps> = async ({ limitNumber = 7 }) => {
                                     )
                                 }
                                 <div className='flex-1 w-full'>
-                                    <Link href={`/${item.id}`} className='hover:text-secondary transition-all font-bold text-base capitalize line-clamp-1'>{item.title}</Link>
+                                    <Link href={`/truyen/${item.id}`} className='hover:text-secondary transition-all font-bold text-base capitalize line-clamp-1'>{item.title}</Link>
                                     <div className='flex items-center justify-between text-xs w-full pb-2'>
                                         <div className='flex items-center gap-1 text-slate-400'>
                                             <span><BsFillBookmarksFill /> </span>

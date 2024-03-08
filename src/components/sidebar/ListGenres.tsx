@@ -5,6 +5,7 @@ import IconGenres from '../../../public/images/genres.gif'
 import { genresProps } from '@/types/typeProps';
 import LoadingBook from '../customs/LoadingBook';
 import clsx from 'clsx';
+import { backupDataGenres } from '@/constants/backupDataGenres';
 
 interface listGenresProps {
     className?: string
@@ -19,8 +20,9 @@ const ListGenres: FC<listGenresProps> = async ({ className, size = "lg", type, i
 
     const fetchData = async () => {
         try {
-            const res = await fetch(`https://comics-api.vercel.app/genres`, { next: { revalidate: 60 } })
+            const res = await fetch(`https://comics-api.vercel.app/genres`)
             const data = await res.json()
+
             return data;
         } catch (error) {
             console.log(error);
@@ -41,21 +43,38 @@ const ListGenres: FC<listGenresProps> = async ({ className, size = "lg", type, i
                 'p-4 flex items-center flex-wrap justify-start gap-2',
                 { "!md:gap-2 !gap-1": (size === "md") }
             )}>
-                {dataGenres && dataGenres.length > 0 ? dataGenres.map((item: genresProps) => (
-                    <Link
-                        key={item.id}
-                        title={item.description}
-                        href={`/the-loai?type=${item.id}`}
-                        className={clsx(
-                            itemClassName,
-                            { "!py-2 !px-3 text-xs hover:bg-secondary transition hover:text-slate-700 ": size === "md" },
-                            { "!bg-secondary !text-slate-700": (item.id === type && type) },
-                            'sm:py-3 py-2 sm:px-4 px-3 sm:rounded-xl rounded-[5px] bg-white text-[10px] sm:text-sm font-medium border border-[#d7d7d7] leading-none hover:bg-thirdary transition hover:text-white'
-                        )}
-                    >
-                        {item.name}
-                    </Link>
-                )) : <LoadingBook />}
+                {(dataGenres && dataGenres.length > 0)
+                    ? dataGenres.map((item: genresProps) => (
+                        <Link
+                            key={item.id}
+                            title={item.description}
+                            href={`/the-loai?type=${item.id}`}
+                            className={clsx(
+                                itemClassName,
+                                { "!py-2 !px-2 text-xs hover:bg-secondary transition hover:text-slate-700 ": size === "md" },
+                                { "!bg-secondary !text-slate-700": (item.id === type && type) },
+                                'sm:py-2 py-2 sm:px-3 px-2 sm:rounded-xl rounded-[5px] bg-white text-[10px] sm:text-xs font-medium border border-[#d7d7d7] leading-none hover:bg-thirdary transition hover:text-white'
+                            )}
+                        >
+                            {item.name}
+                        </Link>
+                    )) : dataGenres.length === 0
+                        ? backupDataGenres.map((item: genresProps) => (
+                            <Link
+                                key={item.id}
+                                title={item.description}
+                                href={`/the-loai?type=${item.id}`}
+                                className={clsx(
+                                    itemClassName,
+                                    { "!py-2 !px-2 text-xs hover:bg-secondary transition hover:text-slate-700 ": size === "md" },
+                                    { "!bg-secondary !text-slate-700": (item.id === type && type) },
+                                    'sm:py-2 py-2 sm:px-3 px-2 sm:rounded-xl rounded-[5px] bg-white text-[10px] sm:text-xs font-medium border border-[#d7d7d7] leading-none hover:bg-thirdary transition hover:text-white'
+                                )}
+                            >
+                                {item.name}
+                            </Link>
+                        ))
+                        : <LoadingBook />}
             </div>
         </aside>
     )

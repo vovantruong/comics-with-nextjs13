@@ -20,7 +20,7 @@ const BannerComics = ({ }) => {
         body: JSON.stringify(headerValue)
     }).then(res => res.json())
 
-    const { data: dataTrending, mutate } = useSWR(`/api/trending`, url => fetcherWithTrending(url, { page: 1, limit: 15 }), {
+    const { data: dataTrending, isLoading } = useSWR(`/api/trending`, url => fetcherWithTrending(url, { page: 1, limit: 15 }), {
         revalidateIfStale: false,
         revalidateOnFocus: false,
         revalidateOnReconnect: false
@@ -94,7 +94,8 @@ const BannerComics = ({ }) => {
                     )}
                 </div>
                 {
-                    (dataTrending && dataTrending.length > 0) && (
+                    (!isLoading) && (
+                        // (dataTrending && dataTrending.length > 0) && (
                         <div className='absolute left-0 right-0 top-[45%] -translate-y-[50%] w-full z-10 lg:opacity-0 transition-all duration-300 group-hover/pagi:opacity-100 
                 sm:block hidden opacity-100'>
                             <button

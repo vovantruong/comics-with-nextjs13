@@ -14,6 +14,7 @@ export const POST = async (req: Request) => {
         const { comics } = await res.json()
 
         const newData = await limit ? comics.filter((item: comicsProps, index: number) => index < limit) : comics;
+
         return NextResponse.json(newData)
     } catch (error) {
         console.log("Invalited Error - ", error);

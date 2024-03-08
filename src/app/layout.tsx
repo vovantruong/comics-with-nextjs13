@@ -16,6 +16,7 @@ import 'swiper/css/free-mode'
 
 import 'react-loading-skeleton/dist/skeleton.css'
 import Head from 'next/head'
+import { Suspense } from 'react'
 
 const montserrat = Montserrat({
     subsets: ['latin'],

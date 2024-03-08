@@ -7,6 +7,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import React, { FC, useCallback, useEffect, useRef, useState } from 'react'
 import { AiOutlineClose, AiOutlineCloseCircle, AiOutlineLoading3Quarters } from 'react-icons/ai'
+import { FaEye, FaGrinHearts } from 'react-icons/fa'
 import { IoClose, IoSearchOutline } from 'react-icons/io5'
 
 interface SearchBoxProps {
@@ -32,7 +33,8 @@ const SearchBox: FC<SearchBoxProps> = ({ className }) => {
             setIsLoading(true)
             const res = await fetch(`/api/search?query=${query}`)
             const data = await res.json()
-            setDataSearch(data)
+            setDataSearch(data.comics)
+
             setIsLoading(false)
         } else {
             setDataSearch([])
@@ -78,17 +80,25 @@ const SearchBox: FC<SearchBoxProps> = ({ className }) => {
                 {(dataSearch && dataSearch.length > 0 && !isLoading) && (
                     dataSearch.map((item, i) => (
                         <Link key={item.id} href={`/truyen/${item.id}`} className='w-full mb-4 flex items-start 
-                            hover:bg-slate-100 transition-all rounded-md p-1 overflow-hidden'>
-                            <div className='sm:max-w-[100px] md:max-w-[75px] max-w-[80px] w-full h-full overflow-hidden rounded-md border border-[#fe7a00] bg-slate-500 mb-1' title={item.title}>
-                                <Image src={item.thumbnail} alt={item.id} className='w-full h-full object-cover rounded-md' priority width={100} height={100} />
+                            hover:bg-slate-100 transition-all rounded-md p-1 overflow-hidden border-b-1 border-slate-300'>
+                            <div className='sm:max-w-[100px] md:max-w-[75px] max-w-[80px] w-full h-full overflow-hidden rounded-md border border-[#fe7a00] bg-slate-200 mb-1' title={item.title}>
+                                <Image src={item?.thumbnail} alt={item?.id} className='w-full h-full object-cover rounded-md' priority width={100} height={100} />
                             </div>
-                            <div className='pl-2 text-xs flex flex-col'>
-                                <h1 className='font-bold text-lg line-clamp-2 leading-[1] sm:mb-1 mb-3'>{item.title}</h1>
-                                <p className='font-medium'>Tác giả: <span className='text-[#d3873f]'>{item.authors}</span></p>
-                                <p><span className='font-medium'>Trạng thái:</span> {item.lastest_chapter}</p>
-                                <div className='line-clamp-2 flex flex-wrap items-center justify-start mt-2'>
-                                    {item?.genres.map(genres => <span key={genres} className='bg-[#fdd58b] text-slate-700 rounded-md px-1 py-[2px] mr-[2px] mb-[3px] text-[10px] font-medium'>{genres}</span>)}
-                                </div>
+                            <div className='pl-2 text-xs flex flex-col text-slate-500'>
+                                <h1 className='font-bold text-lg line-clamp-2 leading-[1] sm:mb-2 mb-3 text-slate-600'>{item?.title}</h1>
+                                <p className='font-medium mb-1'>Cập nhật mới: <span className='text-[#d3873f]'>{item?.updated_at}</span></p>
+                                <p className='mb-1'>
+                                    <span className='font-medium'>Trạng thái:</span>
+                                    {item?.status}
+                                </p>
+                                <p className='flex items-center gap-4 mb-1'>
+                                    <span className='flex items-center gap-2 font-medium'><FaEye /> Lượt xem:</span>
+                                    <span className='text-[#d3873f]'>{item?.total_views}</span>
+                                </p>
+                                <p className='flex items-center gap-4 mb-1'>
+                                    <span className='flex items-center gap-2 font-medium'><FaGrinHearts /> Thích:</span>
+                                    <span className='text-[#d3873f]'>  {item?.followers}</span>
+                                </p>
                             </div>
                         </Link>
                     ))

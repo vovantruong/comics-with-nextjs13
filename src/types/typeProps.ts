@@ -8,9 +8,16 @@ export interface searchComicsProps {
     id: string,
     title: string,
     thumbnail: string,
-    lastest_chapter: string,
+    status: string,
     genres: string[],
-    authors: string[]
+    total_views: number,
+    followers: number,
+    last_chapter: {
+        id: number,
+        name: string,
+    },
+    other_name: string[]
+    updated_at: string
 }
 
 export interface comicsProps {
@@ -43,7 +50,7 @@ export interface comicsDetailsProps {
         id: string,
         name: string
     }[],
-    short_description: string,
+    description: string,
     other_names: string[],
     status: string,
     total_views: number,

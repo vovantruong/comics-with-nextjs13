@@ -8,7 +8,6 @@ import { BsFire } from 'react-icons/bs'
 import { FaComments, FaEye } from 'react-icons/fa';
 import { AiFillHeart, AiOutlineFileDone, AiOutlineHistory } from 'react-icons/ai';
 import { shortNumber } from '@/utils/shortNumber';
-import fallbackSrc from '../../public/images/img-fallback.png'
 import ImageFallback from './customs/ImageFallback';
 
 interface CardComicProps {
@@ -93,16 +92,7 @@ const CardComic: FC<CardComicProps> = ({ data, type = 'basic', className, badge 
                 href={`/truyen/${id}`}
                 className={clsx(className, 'relative block w-full h-full border-2 border-[#d7d7d7] hover:border-secondary shadow-md overflow-hidden rounded-md group')}
             >
-                {/* <Image
-                    src={thumbnail}
-                    alt={id}
-                    className='w-full h-full object-cover z-0 duration-300 transition-all'
-                    width={300}
-                    height={300}
-                    priority
-                /> */}
                 <ImageFallback
-                    fallbackSrc={fallbackSrc}
                     src={thumbnail}
                     alt={id}
                     className='w-full h-full object-cover z-0 duration-300 transition-all'
@@ -139,7 +129,7 @@ const CardComic: FC<CardComicProps> = ({ data, type = 'basic', className, badge 
             >
                 <div className='absolute border-t border-gray-700 bottom-0 px-2 py-1 left-0 lg:group-hover:h-full w-full h-10 sm:h-20 bg-[rgba(0,0,0,0.6)] group-hover:bg-[rgba(0,0,0,0.8)] transition-all z-[1] duration-500'>
                     <div className='flex-col justify-center text-white sm:text-sm text-[10px] font-semibold border-b border-gray-300 pb-[2px] h-10 flex items-center text-center'>
-                        <p className='line-clamp-2 group-hover:line-clamp-3 leading-[1.2]'>{title}</p>
+                        <p className='line-clamp-2 leading-[1.2]'>{title}</p>
                     </div>
                     <div className='text-white text-[10px] items-center justify-between w-full pt-2 gap-1 flex-col sm:flex-row sm:flex hidden font-semibold'>
                         <div className='sm:w-auto w-full flex items-center justify-center gap-1 flex-1 border-secondary rounded-[4px] border bg-[#ffda0b41] py-[2px] px-1'>

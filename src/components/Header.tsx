@@ -11,6 +11,7 @@ import { genresProps } from "@/types/typeProps";
 import LoadingBook from './customs/LoadingBook';
 import useSWR from 'swr';
 import { useMediaQueryContext } from '@/contexts/MediaQueryContext';
+import { backupDataGenres } from "@/constants/backupDataGenres";
 
 const fetcher = (url: string) => fetch(url).then(res => res.json())
 
@@ -32,7 +33,7 @@ const Header = () => {
     }, [])
 
 
-    const { data, mutate } = useSWR(`/api/genres`, fetcher, {
+    const { data } = useSWR(`/api/genres`, fetcher, {
         revalidateIfStale: false,
         revalidateOnFocus: false,
         revalidateOnReconnect: false,
@@ -67,7 +68,7 @@ const Header = () => {
                                         setVisible={setDropGenres}
                                     >
                                         <div className="w-full flex flex-wrap gap-1 text-[10px] text-gray-600 rounded-md">
-                                            {data ? data?.map((item: genresProps) => (
+                                            {(data && data?.length > 0) ? data?.map((item: genresProps) => (
                                                 <Link
                                                     title={item.description}
                                                     key={item.id}
@@ -77,7 +78,20 @@ const Header = () => {
                                                 >
                                                     {item.name}
                                                 </Link>
-                                            )) : <LoadingBook />}
+                                            ))
+                                                : data?.length === 0
+                                                    ? backupDataGenres.map((item: genresProps) => (
+                                                        <Link
+                                                            title={item.description}
+                                                            key={item.id}
+                                                            href={`the-loai?type=${item.id}`}
+                                                            onClick={() => setDropGenres(false)}
+                                                            className="px-3 py-1 mb-1 inline-block border rounded-md hover:bg-slate-200 bg-primary font-medium"
+                                                        >
+                                                            {item.name}
+                                                        </Link>
+                                                    ))
+                                                    : <LoadingBook />}
                                         </div>
                                     </DropdownMenu>
                                 </li>

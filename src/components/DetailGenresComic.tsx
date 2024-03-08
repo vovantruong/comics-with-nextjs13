@@ -6,6 +6,7 @@ import CardComic from './CardComic'
 import Pagination from './Pagination'
 import Skeleton from 'react-loading-skeleton'
 import { useRouter } from 'next/navigation'
+import { log } from 'console'
 
 interface DetailGenresComicProps {
     type: string
@@ -55,9 +56,7 @@ const DetailGenresComic: FC<DetailGenresComicProps> = ({ page, type }) => {
         mutate({ ...data })
     }, [type])
 
-    useEffect(() => {
 
-    }, [type])
 
     const handleChangePage = (data: { selected: number }) => {
         let numberPage = data.selected + 1
