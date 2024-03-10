@@ -55,7 +55,11 @@ export interface comicsDetailsProps {
     status: string,
     total_views: number,
     followers: number,
-    authors: string
+    authors: string,
+    chapters: {
+        id: number,
+        name: string
+    }[]
 }
 
 export interface topComicsProps {

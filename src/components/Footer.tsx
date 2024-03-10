@@ -8,7 +8,7 @@ interface footerProps {
 
 const Footer = ({ className }: footerProps) => {
     return (
-        <footer className={clsx(className, 'w-full h-20 bg-[#f6f3ee] mt-[20px] md:mt-[100px] py-2 justify-center flex items-center flex-col gap-2 border-t')}>
+        <footer className={clsx(className, 'w-full h-20 bg-[#f6f3ee] py-2 justify-center flex items-center flex-col gap-2 border-t')}>
             <div className="flex items-center md:gap-3 gap-2 flex-wrap justify-center sm:flex-row flex-col">
                 <p>Copyrights &copy; {new Date().getFullYear()} by Gavin Dev</p>
                 <div className="sm:block hidden">|</div>

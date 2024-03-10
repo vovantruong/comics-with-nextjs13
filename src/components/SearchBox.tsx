@@ -8,6 +8,7 @@ import { useRouter } from 'next/navigation'
 import React, { FC, useCallback, useEffect, useRef, useState } from 'react'
 import { AiOutlineClose, AiOutlineCloseCircle, AiOutlineLoading3Quarters } from 'react-icons/ai'
 import { FaEye, FaGrinHearts } from 'react-icons/fa'
+import { IoMdCloudDownload, IoMdWifi } from 'react-icons/io'
 import { IoClose, IoSearchOutline } from 'react-icons/io5'
 
 interface SearchBoxProps {
@@ -86,17 +87,19 @@ const SearchBox: FC<SearchBoxProps> = ({ className }) => {
                             </div>
                             <div className='pl-2 text-xs flex flex-col text-slate-500'>
                                 <h1 className='font-bold text-lg line-clamp-2 leading-[1] sm:mb-2 mb-3 text-slate-600'>{item?.title}</h1>
-                                <p className='font-medium mb-1'>Cập nhật mới: <span className='text-[#d3873f]'>{item?.updated_at}</span></p>
-                                <p className='mb-1'>
-                                    <span className='font-medium'>Trạng thái:</span>
-                                    {item?.status}
+                                <p className='mb-1 flex items-center gap-4'>
+                                    <span className='flex items-center gap-1 font-medium'><IoMdCloudDownload /> Cập nhật:</span>
+                                    <span className='text-[#d3873f]'>{item?.updated_at}</span></p>
+                                <p className='mb-1 flex items-center gap-4'>
+                                    <span className='font-medium pr-2 flex items-center gap-1'><IoMdWifi /> Trạng thái:</span>
+                                    <span> {item?.status}</span>
                                 </p>
                                 <p className='flex items-center gap-4 mb-1'>
-                                    <span className='flex items-center gap-2 font-medium'><FaEye /> Lượt xem:</span>
+                                    <span className='flex items-center gap-1 font-medium'><FaEye /> Lượt xem:</span>
                                     <span className='text-[#d3873f]'>{item?.total_views}</span>
                                 </p>
                                 <p className='flex items-center gap-4 mb-1'>
-                                    <span className='flex items-center gap-2 font-medium'><FaGrinHearts /> Thích:</span>
+                                    <span className='flex items-center gap-1 font-medium'><FaGrinHearts /> Thích:</span>
                                     <span className='text-[#d3873f]'>  {item?.followers}</span>
                                 </p>
                             </div>
@@ -118,7 +121,7 @@ const SearchBox: FC<SearchBoxProps> = ({ className }) => {
                         type="text"
                         value={query}
                         onChange={(e) => { setQuery(e.target.value); setShowBoxed(true) }}
-                        placeholder="Tìm kiếm tên truyện, tác giả, ..."
+                        placeholder="Tìm kiếm nhanh tên truyện, tác giả, ..."
                         className={clsx(className, "xl:placeholder:text-sm md:placeholder:text-xs outline-none border-[#f0f0f0] h-10 bg-white rounded-md xl:pr-2 xl:min-w-[380px]",
                             "opacity-[1] text-sm placeholder:text-gray-800 focus:border-secondary lg:w-[320px] pl-3 md:pr-10 transition border xl:w-full ",
                             "min-w-[auto] w-full"

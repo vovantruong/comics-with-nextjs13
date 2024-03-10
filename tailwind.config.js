@@ -22,7 +22,7 @@ module.exports = {
             animation: {
                 'sticky-head': 'sticky-head 0.5s forwards',
                 'show-dropdown': 'show-dropdown 0.3s forwards',
-                'hidden-dropdown': 'hidden-dropdown 0.3s forwards;'
+                'hidden-dropdown': 'hidden-dropdown 0.3s forwards;',
             },
             keyframes: {
                 'sticky-head': {
@@ -40,6 +40,21 @@ module.exports = {
                     '50%': { transform: 'translateY(-15px) translateX(-50%)', opacity: 1, },
                     '100%': { transform: 'translateY(30px) translateX(-50%)', opacity: 0, }
                 },
+                'loader-rotate': {
+                    '0%': { transform: 'rotate(0deg) scale(0.8)' },
+                    '50%': { transform: 'rotate(360deg) scale(1.2)' },
+                    '100%': { transform: 'rotate(720deg) scale(0.8)' },
+                },
+                'loader-spin-1': {
+                    '0%': { boxShadow: '0 0 0 #7fc0d4' },
+                    '50%': { boxShadow: '0 0 0 #7fc0d4', marginBottom: '0', transform: 'translate(15px, 15px)' },
+                    '100%': { boxShadow: '30px 0 0 #7fc0d4', marginBottom: '10px', },
+                },
+                'loader-spin-2': {
+                    '0%': { boxShadow: '30px 0 0 #ffb31c' },
+                    '50%': { boxShadow: '0 0 0 #ffb31c', marginTop: '-20px', transform: 'translate(15px, 15px)' },
+                    '100%': { boxShadow: '30px 0 0 #ffb31c', marginTop: '0px', },
+                }
             }
         },
     },

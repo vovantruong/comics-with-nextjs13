@@ -2,13 +2,14 @@
 import ImageFallback from '@/components/customs/ImageFallback'
 import RankingComics from '@/components/sidebar/RankingComics'
 import { comicsDetailsProps } from '@/types/typeProps'
-import axios from 'axios'
 import Link from 'next/link'
 import React, { FC, useEffect, useLayoutEffect, useState } from 'react'
 import { BsChevronRight } from 'react-icons/bs'
-import Skeleton from 'react-loading-skeleton'
-import { FaTags, FaUser } from 'react-icons/fa'
-import { IoMdWifi } from 'react-icons/io'
+import { FaEye, FaFileAlt, FaGrinHearts, FaTags, FaUser } from 'react-icons/fa'
+import { IoMdBarcode, IoMdWifi } from 'react-icons/io'
+import Head from 'next/head'
+import CollapseDesc from '@/components/comicDetail/CollapseDesc'
+import ListChapters from '@/components/comicDetail/ListChapters'
 
 
 interface pageProps {
@@ -18,14 +19,25 @@ interface pageProps {
 }
 
 const getComicDetail = async (id: string) => {
-    const res = await fetch(`https://comics-api.vercel.app/comics/${id}`)
 
-    if (!res.ok) throw new Error('Error');
+    try {
+        const res = await fetch(`https://comics-api.vercel.app/comics/${id}`)
+        const data = await res.json();
+        return data;
 
-    const data = await res.json();
+    } catch (error) {
+        new Error('Error');
+    }
 
-    return data;
+}
 
+// or Dynamic metadata
+export async function generateMetadata({ params }: pageProps) {
+    const data = await getComicDetail(params.slugId) as comicsDetailsProps
+    return {
+        title: `${data.title} - Truyện tranh hay`,
+        description: data.description.slice(0, 150) + '...',
+    }
 }
 
 
@@ -52,14 +64,15 @@ const ComicsDetail: FC<pageProps> = async ({ params }) => {
                                 <ImageFallback
                                     src={data?.thumbnail as string}
                                     alt={data?.id as string}
-                                    className='w-full h-full object-cover z-0 duration-300 transition-all rounded-md'
+                                    className='w-full h-full object-cover z-0 duration-300 transition-all rounded-md border-2 border-slate-300'
                                     width={300}
                                     height={300}
                                     priority
                                 />
                             </div>
                             <div className='w-full md:w-[65%] md:pl-2 pl-0'>
-                                <h1 className='mt-3 lg:text-[28px] md:text-[20px] text-[22px] font-bold text-[#ed7a00] leading-8 md:text-left text-center'>{data?.title}</h1>
+                                <h1 className='mt-3 lg:text-[28px] md:text-[22px] text-[26px] font-bold text-[#ed7a00] leading-8 md:text-left text-center'>{data?.title}</h1>
+                                <h3 className='mt-2 font-medium text-slate-700 md:text-left text-center'>{data?.other_names.join(', ')}</h3>
                                 <hr className='w-full my-4 border-t-2 border-slate-200' />
                                 <ImageFallback
                                     src={data?.thumbnail as string}
@@ -72,13 +85,13 @@ const ComicsDetail: FC<pageProps> = async ({ params }) => {
                                 <ul className='overflow-hidden relative'>
                                     <li className='flex items-center mb-2'>
                                         <p className='w-[33%] text-slate-600 text-base font-semibold flex items-center gap-1 leading-[27px]'><FaUser /> Tác giả: </p>
-                                        <p className='w-[67%] leading-[27px] text-slate-600 text-base font-semibold'>{data?.authors}</p>
+                                        <p className='w-[67%] leading-[27px] text-slate-600 text-base font-semibold'>{data?.authors.replace("Updating", "Đang cập nhật")}</p>
                                     </li>
                                     <li className='flex items-center mb-2'>
                                         <p className='w-[33%] text-slate-600 text-base font-semibold flex items-center gap-1 leading-[27px]'><IoMdWifi /> Tình trạng: </p>
-                                        <p className='w-[67%] leading-[27px] text-slate-600 text-base font-semibold'>{data?.status}</p>
+                                        <p className='w-[67%] leading-[27px] text-slate-600 text-base font-semibold'>{data?.status.replace("Ongoing", "Đang ra chương")}</p>
                                     </li>
-                                    <li className='flex items-start mb-2'>
+                                    <li className='flex items-start mb-3'>
                                         <p className='w-[33%] text-slate-600 text-base font-semibold flex items-center gap-1 leading-[27px]'><FaTags /> Thể loại: </p>
                                         <div className='w-[67%] leading-[27px] text-slate-600 text-base font-semibold'>
                                             {data?.genres.map((item, index) => (
@@ -93,16 +106,49 @@ const ComicsDetail: FC<pageProps> = async ({ params }) => {
                                             ))}
                                         </div>
                                     </li>
+                                    <li className='flex items-center mb-2'>
+                                        <p className='w-[33%] text-slate-600 text-base font-semibold flex items-center gap-1 leading-[27px]'><FaEye /> Lượt xem: </p>
+                                        <p className='w-[67%] leading-[27px] text-slate-600 text-base font-semibold'>{data?.total_views.toLocaleString()} view</p>
+                                    </li>
+                                    <li className='flex items-center mb-2'>
+                                        <p className='w-[33%] text-slate-600 text-base font-semibold flex items-center gap-1 leading-[27px]'><FaGrinHearts />Yêu Thích:</p>
+                                        <p className='w-[67%] leading-[27px] text-slate-600 text-base font-semibold'>{data?.followers.toLocaleString()} tim</p>
+                                    </li>
                                 </ul>
+                                <div className='my-4 flex items-center md:justify-start justify-center'>
+                                    <div className='w-[33%] md:block hidden'></div>
+                                    <div className='flex items-center gap-4'>
+                                        <Link
+                                            href={`/truyen/${data?.id}/${data?.chapters.reverse()[0].id}`}
+                                            className='hover:shadow-md inline-block px-5 py-3 rounded-md border-2 border-[#ed9500] bg-[#ed9500] text-slate-50 font-bold'>
+                                            Đọc từ đầu
+                                        </Link>
+                                        <Link
+                                            href={`/truyen/${data?.id}/${data?.chapters[0].id}`}
+                                            className='hover:shadow-md inline-block px-5 py-3 rounded-md border-2 border-[#ed9500] text-[#ed9500] font-bold'>
+                                            Đọc chương mới
+                                        </Link>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div className='relative w-full my-6'>
-                            <div className='border-b-2 border-slate-300 mb-3 '>
-                                <h3 className='text-lg font-bold py-2 px-4 bg-primary text-slate-700 inline-block border-2 border-slate-300 border-b-0'>Mô tả truyện</h3>
+                            <div className='relative rounded-md w-full mb-3 md:bg-[#f6f3ee] md:p-4 p-0'>
+                                <div className='flex items-center font-semibold md:text-base text-sm'>
+                                    <h3 className='text-lg font-bold text-slate-700 inline-flex items-center gap-2'><FaFileAlt /> Mô tả truyện</h3>
+                                </div>
                             </div>
                             <div className='text-slate-500 text-base px-2 md:px-0'>
-                                {data.description}
+                                <CollapseDesc desc={data.description.replace(/NComics/g, `"Truyện hay"`)} />
                             </div>
+                        </div>
+                        <div className='relative w-full mb-6'>
+                            <div className='relative rounded-md w-full mb-3 md:bg-[#f6f3ee] md:p-4 p-0'>
+                                <div className='flex items-center font-semibold md:text-base text-sm'>
+                                    <h3 className='text-lg font-bold text-slate-700 inline-flex items-center gap-2'><IoMdBarcode /> Danh sách chương</h3>
+                                </div>
+                            </div>
+                            <ListChapters paramsCurrent={data.id} data={data.chapters} />
                         </div>
                     </div>
                 </div>
