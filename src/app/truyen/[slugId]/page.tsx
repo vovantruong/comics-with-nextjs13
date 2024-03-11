@@ -52,12 +52,12 @@ const ComicsDetail: FC<pageProps> = async ({ params }) => {
                     <div className='xl:w-[70%] w-full lg:pr-2 md:pr-0'>
                         <div className="relative w-full my-5">
                             <div className='relative rounded-md w-full mt-2 md:bg-[#f6f3ee] md:p-4 p-0'>
-                                <div className='flex items-center font-semibold md:text-base text-sm'>
-                                    <Link href="/" className='hover:underline text-slate-700'>Trang chủ</Link>
+                                <div className='flex items-center font-semibold text-sm'>
+                                    <Link href="/" className='hover:underline text-slate-600 whitespace-nowrap'>Trang chủ</Link>
                                     <div className="text-sm mx-2 "><BsChevronRight /></div>
-                                    <Link href="/the-loai?type=all" className='hover:underline text-slate-700'>Truyện</Link>
+                                    <Link href="/the-loai?type=all" className='hover:underline text-slate-600'>Truyện</Link>
                                     <div className="text-sm mx-2 "><BsChevronRight /></div>
-                                    <span className='text-slate-700'>{data.title}</span>
+                                    <span className='text-slate-600 line-clamp-1'>{data.title}</span>
                                 </div>
                             </div>
                             <div className='flex items-start w-full md:mt-7 mt-2 flex-wrap'>
@@ -72,8 +72,8 @@ const ComicsDetail: FC<pageProps> = async ({ params }) => {
                                     />
                                 </div>
                                 <div className='w-full md:w-[65%] md:pl-2 pl-0'>
-                                    <h1 className='mt-3 lg:text-[28px] md:text-[22px] text-[26px] font-bold text-[#ed7a00] leading-8 md:text-left text-center'>{data?.title}</h1>
-                                    <h3 className='mt-2 font-medium text-slate-700 md:text-left text-center'>{data?.other_names.join(', ')}</h3>
+                                    <h1 className='mt-3 lg:text-[28px] md:text-[22px] text-[26px] font-bold text-[#ed7a00] leading-8 md:text-left text-center mb-2'>{data?.title}</h1>
+                                    <h3 className='mt-2 font-medium text-slate-500 md:text-left text-center md:text-base text-sm mb-2'>{data?.other_names.join(', ')}</h3>
                                     <hr className='w-full md:my-4 my-2 border-t-2 border-slate-200' />
                                     <ImageFallback
                                         src={data?.thumbnail as string}
