@@ -68,3 +68,17 @@ export interface topComicsProps {
     status?: 'all' | 'completed' | 'updating'
     type?: 'all' | 'daily' | 'weekly' | 'monthly' | 'chapter' | 'follow' | 'comment' | string
 }
+
+export interface singleComic {
+    images: {
+        page: number
+        src: string
+        backup_src: string
+    }[]
+    chapters: {
+        id: string
+        name: string
+    }[]
+    chapter_name: string
+    comic_name: string
+}

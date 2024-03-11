@@ -1,4 +1,11 @@
+import ScrollTop from '@/components/ScrollTop'
+import ImageFallback from '@/components/customs/ImageFallback'
+import NestedLayout from '@/components/layout/NestedLayout'
+import { singleComic } from '@/types/typeProps'
+import Image from 'next/image'
+import Link from 'next/link'
 import { FC } from 'react'
+import { FaChevronLeft } from 'react-icons/fa'
 
 interface ChapterProps {
     params: {
@@ -7,16 +14,11 @@ interface ChapterProps {
     }
 }
 
-interface singleComic {
-    page: number
-    src: string
-    backup_src: string
-}
 
-const getComicDetail = async (id: string) => {
 
+const getSingleComic = async (id: string, chapter: string) => {
     try {
-        const res = await fetch(`https://comics-api.vercel.app/comics/${id}`)
+        const res = await fetch(`https://comics-api.vercel.app/comics/${id}/chapters/${chapter}`)
         const data = await res.json();
         return data;
 
@@ -26,14 +28,50 @@ const getComicDetail = async (id: string) => {
 
 }
 
-const ChapterComic: FC<ChapterProps> = ({ params }) => {
+// or Dynamic metadata
+export async function generateMetadata({ params }: ChapterProps) {
+    const data = await getSingleComic(params.slugId, params.chapter) as singleComic;
+    return {
+        title: `${data.comic_name} - ${data.chapter_name}`,
+        description: 'Truyện Hay - Nơi tinh hoa của những câu chuyện đẹp màu sắc đang chờ đón bạn. Chúng tôi tự hào giới thiệu một kho truyện tranh phong phú và đa dạng, hứa hẹn mang đến cho bạn những giây phút giải trí thú vị và tận hưởng những cung bậc cảm xúc đầy sắc màu.',
+    }
+}
 
-    return <div className='min-h-screen fixed top-0 left-0 right-0 bottom-0 bg-[#18181b]'>
-        <div className='w-full h-full overflow-y-auto text-white element-scrollbar'>
-            <div className='container'>
-                Single Comic - {params.slugId} - {params.chapter}
+const ChapterComic: FC<ChapterProps> = async ({ params }) => {
+
+    const data = await getSingleComic(params.slugId, params.chapter) as singleComic;
+
+    return (
+        <NestedLayout>
+            <div className='min-h-screen w-full bottom-0 bg-[#a8a8a8]'>
+                <div className='w-full h-full overflow-y-auto text-slate-800 element-scrollbar'>
+                    <div className='fixed top-0 left-0 select-none inset-x-0 bg-[rgba(0,0,0,0.61)] text-left py-3 px-2 text-gray-300 font-semibold duration-200 translate-y-0 opacity-1'>
+                        <div className='flex items-center gap-4'>
+                            <Link
+                                className='hover:text-secondary flex items-center gap-2'
+                                href={`/truyen/${params.slugId}`}>
+                                <FaChevronLeft />{data.comic_name}
+                            </Link>-
+                            <span>{data.chapter_name}</span>
+                        </div>
+                    </div>
+                    <div className='container'>
+                        <div className='text-center max-w-[42rem] mx-auto my-12'>
+                            {data.images.map((item) => (
+                                <ImageFallback
+                                    key={item.src}
+                                    src={item.src ? item.src : item.backup_src}
+                                    alt={item.src}
+                                    width={2048}
+                                    height={100}
+                                    className='w-full h-auto'
+                                />
+                            ))}
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
+        </NestedLayout>
+    )
 }
 export default ChapterComic

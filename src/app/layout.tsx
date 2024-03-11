@@ -2,10 +2,8 @@ import './globals.css'
 import type { Metadata } from 'next'
 import clsx from 'clsx'
 import { Montserrat } from 'next/font/google'
-import Footer from '@/components/Footer'
-import Header from '@/components/Header'
 import { MediaQueryProvider } from '@/contexts/MediaQueryContext'
-import ScrollTop from '@/components/ScrollTop'
+
 
 import 'swiper/css';
 import 'swiper/css/pagination';
@@ -15,8 +13,6 @@ import 'swiper/css/thumbs'
 import 'swiper/css/free-mode'
 
 import 'react-loading-skeleton/dist/skeleton.css'
-import Head from 'next/head'
-import { Suspense } from 'react'
 
 const montserrat = Montserrat({
     subsets: ['latin'],
@@ -40,10 +36,7 @@ export default function RootLayout({
                 cz-shortcut-listen="true"
             >
                 <MediaQueryProvider >
-                    <Header />
                     {children}
-                    <Footer />
-                    <ScrollTop />
                 </MediaQueryProvider>
             </body>
         </html>
