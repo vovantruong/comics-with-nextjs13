@@ -73,7 +73,7 @@ const ComicsDetail: FC<pageProps> = async ({ params }) => {
                             <div className='w-full md:w-[65%] md:pl-2 pl-0'>
                                 <h1 className='mt-3 lg:text-[28px] md:text-[22px] text-[26px] font-bold text-[#ed7a00] leading-8 md:text-left text-center'>{data?.title}</h1>
                                 <h3 className='mt-2 font-medium text-slate-700 md:text-left text-center'>{data?.other_names.join(', ')}</h3>
-                                <hr className='w-full my-4 border-t-2 border-slate-200' />
+                                <hr className='w-full md:my-4 my-2 border-t-2 border-slate-200' />
                                 <ImageFallback
                                     src={data?.thumbnail as string}
                                     alt={data?.id as string}
@@ -116,16 +116,16 @@ const ComicsDetail: FC<pageProps> = async ({ params }) => {
                                     </li>
                                 </ul>
                                 <div className='my-4 flex items-center md:justify-start justify-center'>
-                                    <div className='w-[33%] md:block hidden'></div>
+                                    <div className='w-[33%] lg:block hidden'></div>
                                     <div className='flex items-center gap-4'>
                                         <Link
                                             href={`/truyen/${data?.id}/${data?.chapters.reverse()[0].id}`}
-                                            className='hover:shadow-md inline-block px-5 py-3 rounded-md border-2 border-[#ed9500] bg-[#ed9500] text-slate-50 font-bold'>
+                                            className='hover:shadow-md inline-block md:px-5 md:py-3 px-3 py-2  rounded-md border-2 border-[#ed9500] bg-[#ed9500] text-slate-50 font-bold'>
                                             Đọc từ đầu
                                         </Link>
                                         <Link
                                             href={`/truyen/${data?.id}/${data?.chapters[0].id}`}
-                                            className='hover:shadow-md inline-block px-5 py-3 rounded-md border-2 border-[#ed9500] text-[#ed9500] font-bold'>
+                                            className='hover:shadow-md inline-block md:px-5 md:py-3 px-3 py-2 rounded-md border-2 border-[#ed9500] text-[#ed9500] font-bold'>
                                             Đọc chương mới
                                         </Link>
                                     </div>
@@ -133,7 +133,7 @@ const ComicsDetail: FC<pageProps> = async ({ params }) => {
                             </div>
                         </div>
                         <div className='relative w-full my-6'>
-                            <div className='relative rounded-md w-full mb-3 md:bg-[#f6f3ee] md:p-4 p-0'>
+                            <div className='relative rounded-md w-full mb-3 bg-[#f6f3ee] p-4'>
                                 <div className='flex items-center font-semibold md:text-base text-sm'>
                                     <h3 className='text-lg font-bold text-slate-700 inline-flex items-center gap-2'><FaFileAlt /> Mô tả truyện</h3>
                                 </div>
@@ -143,7 +143,7 @@ const ComicsDetail: FC<pageProps> = async ({ params }) => {
                             </div>
                         </div>
                         <div className='relative w-full mb-6'>
-                            <div className='relative rounded-md w-full mb-3 md:bg-[#f6f3ee] md:p-4 p-0'>
+                            <div className='relative rounded-md w-full mb-3 bg-[#f6f3ee] p-4'>
                                 <div className='flex items-center font-semibold md:text-base text-sm'>
                                     <h3 className='text-lg font-bold text-slate-700 inline-flex items-center gap-2'><IoMdBarcode /> Danh sách chương</h3>
                                 </div>

@@ -35,19 +35,24 @@ const ListChapters: FC<listChapterProps> = ({ data, paramsCurrent }) => {
     };
 
     return (
-        <div>
-            <div>
+        <React.Fragment>
+            <div className='my-6'>
                 <button onClick={handlePrevPage} disabled={pageNumber === 1}>Trang trước</button>
                 <button onClick={handleNextPage} disabled={pageNumber === totalPages}>Trang sau</button>
             </div>
-            <div className='flex items-center flex-wrap'>
+            <div className='grid md:grid-cols-2 grid-cols-1 md:gap-4 gap-2'>
                 {paginatedItems.map((item, index) => (
-                    <Link key={index} className='block w-[50%]' href={`/truyen/${paramsCurrent}/${item.id.toString()}`}>
+                    <Link
+                        key={index}
+                        href={`/truyen/${paramsCurrent}/${item.id.toString()}`}
+                        className='flex items-center justify-start w-full border-2 border-slate-300 rounded-md md:p-3 p-2 
+                        font-semibold text-slate-600 lg:hover:bg-[#ffe5a1] transition-all duration-200'
+                    >
                         {item.name}
                     </Link>
                 ))}
             </div>
-        </div>
+        </React.Fragment>
     )
 }
 
