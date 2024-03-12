@@ -120,7 +120,7 @@ const ComicsDetail: FC<pageProps> = async ({ params }) => {
                                         <div className='w-[33%] lg:block hidden'></div>
                                         <div className='flex items-center gap-4'>
                                             <Link
-                                                href={`/truyen/${data?.id}/${data?.chapters.reverse()[0].id}`}
+                                                href={`/truyen/${data?.id}/${data?.chapters.slice().reverse()[0].id}`}
                                                 className='hover:shadow-md inline-block md:px-5 md:py-3 px-3 py-2  rounded-md border-2 border-[#ed9500] bg-[#ed9500] text-slate-50 font-bold'>
                                                 Đọc từ đầu
                                             </Link>

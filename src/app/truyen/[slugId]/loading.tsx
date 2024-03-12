@@ -1,20 +1,9 @@
-import Progressbar from '@/components/Progressbar'
 import React from 'react'
+import LoadingPage from '@/components/layout/LoadingPage'
 
 
 function Loading() {
-    return (
-        <>
-            <Progressbar />
-            <main className='w-full h-[90vh]'>
-                <div className='flex items-center justify-center relative h-full'>
-                    <span
-                        className='loader-spin'>
-                    </span>
-                </div>
-            </main>
-        </>
-    )
+    return <LoadingPage />
 }
 
 export default Loading
