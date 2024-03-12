@@ -7,7 +7,6 @@ const NestedLayout = ({ children }: { children: React.ReactNode }) => {
     return (
         <>
             {children}
-            <ScrollTop />
         </>
     )
 };

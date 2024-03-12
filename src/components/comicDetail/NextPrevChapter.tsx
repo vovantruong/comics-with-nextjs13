@@ -7,7 +7,6 @@ import { FaChevronLeft, FaChevronRight } from 'react-icons/fa'
 import { getNextChapter, getPrevChapter } from '@/utils/nextprevchapter'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
-import LoadingPage from '../layout/LoadingPage'
 
 interface dataProps {
     data: singleComic
@@ -17,7 +16,7 @@ interface dataProps {
 
 const NextPrevChapter: FC<dataProps> = ({ data, slug, chapter }) => {
     const [currentData, setCurrentData] = useState<singleComic>(data)
-    const [isLoading, setIsLoading] = useState<boolean>(false)
+    const [hiddenScreen, setHiddenScreen] = useState<boolean>(false)
     const router = useRouter()
 
     const currentSlug = slug;
@@ -29,9 +28,7 @@ const NextPrevChapter: FC<dataProps> = ({ data, slug, chapter }) => {
     const handleNextChapter = async () => {
         const nextChapter = dataChapter[currentIndex + 1]
         router.push(`/truyen/${currentSlug}/${nextChapter.id}`)
-        setIsLoading(true)
         const { data, msg } = await getNextChapter(currentSlug, nextChapter)
-        setIsLoading(false)
         if (data !== null) {
             setCurrentData(data)
         }
@@ -41,15 +38,11 @@ const NextPrevChapter: FC<dataProps> = ({ data, slug, chapter }) => {
     const handlePrevChapter = async () => {
         const prevChapter = dataChapter[currentIndex - 1]
         router.push(`/truyen/${currentSlug}/${prevChapter.id}`)
-        setIsLoading(true)
         const { data, msg } = await getPrevChapter(currentSlug, prevChapter)
-        setIsLoading(false)
         if (data !== null) {
             setCurrentData(data)
         }
     }
-
-    // if (isLoading) return <LoadingPage />
 
 
     return (
@@ -78,7 +71,7 @@ const NextPrevChapter: FC<dataProps> = ({ data, slug, chapter }) => {
                         {currentData.comic_name} <br /> <span className='text-yellow-700 uppercase pt-2 block'> {currentData.chapter_name}</span>
                     </h3>
                 </div>
-                <div className='text-center max-w-[42rem] mx-auto my-12'>
+                <div className='text-center max-w-[42rem] mx-auto mt-12 mb-16'>
                     {currentData.images.map((item) => (
                         <ImageFallback
                             key={item.src}
@@ -96,14 +89,14 @@ const NextPrevChapter: FC<dataProps> = ({ data, slug, chapter }) => {
                     <button
                         onClick={handlePrevChapter}
                         className='px-3 py-2 rounded-md border-2 border-secondary flex items-center gap-2 
-                        bg-[#ffd098] text-slate-800 font-semibold md:w-[210px] md:text-base text-sm'
+                        bg-[#ffd098] text-slate-800 font-semibold md:w-[210px] md:text-base text-xs'
                     >
                         <FaChevronLeft />Chương trước
                     </button>
                     <button
                         onClick={handleNextChapter}
                         className='px-3 py-2 rounded-md border-2 border-secondary flex items-center 
-                        justify-end gap-2 bg-[#ffd098] text-slate-800 font-semibold md:w-[210px] md:text-base text-sm'
+                        justify-end gap-2 bg-[#ffd098] text-slate-800 font-semibold md:w-[210px] md:text-base text-xs'
                     >
                         Chương tiếp theo <FaChevronRight />
                     </button>
