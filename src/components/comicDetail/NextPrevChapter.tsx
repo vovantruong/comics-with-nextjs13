@@ -50,9 +50,6 @@ const NextPrevChapter: FC<dataProps> = ({ data, slug, chapter }) => {
         }
     }
 
-    // console.log(dataChapter[currentIndex - 1]);
-
-
 
     return (
         <React.Fragment>
@@ -100,7 +97,7 @@ const NextPrevChapter: FC<dataProps> = ({ data, slug, chapter }) => {
                     <button
                         onClick={handlePrevChapter}
                         className={clsx(
-                            prevChapter === undefined && 'bg-[#b7b7b7] cursor-no-drop text-[#7e7e7e] border-[#e3e3e3] hover:shadow-none',
+                            prevChapter === undefined && '!bg-[#b7b7b7] cursor-no-drop !text-[#7e7e7e] !border-[#e3e3e3] hover:shadow-none',
                             'px-3 py-2 rounded-md border-2 border-[#ffbd6d] justify-center flex items-center gap-2',
                             'bg-[#ffe0bb] text-slate-800 font-semibold md:w-[200px] md:text-base text-xs hover:shadow-[0_0_10px_#ffc785]'
                         )}
@@ -111,7 +108,7 @@ const NextPrevChapter: FC<dataProps> = ({ data, slug, chapter }) => {
                     <button
                         onClick={handleNextChapter}
                         className={clsx(
-                            nextChapter === undefined && 'bg-[#b7b7b7] cursor-no-drop text-[#7e7e7e] border-[#e3e3e3] hover:shadow-none',
+                            nextChapter === undefined && '!bg-[#b7b7b7] cursor-no-drop !text-[#7e7e7e] !border-[#e3e3e3] hover:shadow-none',
                             'px-3 py-2 rounded-md border-2 border-secondary flex items-center',
                             'justify-center gap-2 bg-[#ffad4b] text-slate-800 font-semibold md:w-[200px] md:text-base text-xs hover:shadow-[0_0_10px_#ffc785]'
                         )}

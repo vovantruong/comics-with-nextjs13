@@ -13,29 +13,57 @@ interface GenresComicsProps {
     }
 }
 
+// call api danh sách thể loại truyện => id và tên cảu loại đó
+const fetchDataGenres = async () => {
+    try {
+        const res = await fetch(`https://comics-api.vercel.app/genres`, { next: { revalidate: 60 } })
+        const data = await res.json()
+        return data;
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+const getDataGenresComic = async (page: string, type: string) => {
+    try {
+        const res = await fetch(`https://comics-api.vercel.app/genres/${type}${page ? `?page=${page}` : ''}`, {
+            headers: {
+                "Content-Type": "application/json",
+                'Access-Control-Allow-Origin': '*'
+            }
+        })
+        const { comics, total_pages, current_page } = await res.json()
+        return { comics, total_pages, current_page }
+    } catch (error) {
+        console.log("Invalited Error - ", error);
+    }
+}
+
+// Generate metadata
+export async function generateMetadata({ searchParams }: GenresComicsProps) {
+    const type = searchParams.type ?? "all"
+
+    const data = await fetchDataGenres()
+    const filter = data.filter((item: genresProps) => item.id === type)[0]
+
+    return {
+        title: `Thể loại - ${filter?.name ? filter.name : 'Tất cả'} | Truyện tranh hay`,
+        description: 'Tất cả thể loại truyện đều có tại Truyện hay',
+    }
+}
+
+
 const GenresComics: FC<GenresComicsProps> = async ({ searchParams }) => {
     const type_genres = searchParams.type ?? "all"
     const page_genres = searchParams.page ?? "1"
 
-    const fetchData = async () => {
-        try {
-            const res = await fetch(`https://comics-api.vercel.app/genres`, { next: { revalidate: 60 } })
-            const data = await res.json()
-            return data;
-        } catch (error) {
-            console.log(error);
-        }
-    }
-
-    const dataGenres = await fetchData()
+    const dataGenres = await fetchDataGenres()
     const dataFilter = dataGenres.filter((item: genresProps) => item.id === type_genres)[0]
+
+    const dataDetailGentes = await getDataGenresComic(page_genres, type_genres)
 
     return (
         <RootLayout>
-            <Head>
-                <title>My page title</title>
-                <meta property="og:title" content="My page title" key="title" />
-            </Head>
             <main className="overflow-x-hidden bg-white">
                 <div className='container flex items-start justify-center relative flex-wrap !md:px-2 !px-3'>
                     <div className='relative rounded-md md:mt-10 mt-3 w-full bg-[#f6f3ee] md:p-5 p-3'>
@@ -54,8 +82,8 @@ const GenresComics: FC<GenresComicsProps> = async ({ searchParams }) => {
                         </div>
                     </div>
                     <div className='w-full relative'>
-                        <div className='relative bg-[#f6f3ee] rounded-md py-5 px-3 mt-5'>
-                            <DetailGenresComic type={type_genres} page={page_genres} />
+                        <div className='relative bg-[#f6f3ee] rounded-md py-5 px-3 mt-5 mb-12'>
+                            <DetailGenresComic type={type_genres} page={page_genres} data={dataDetailGentes} />
                         </div>
                     </div>
                 </div>

@@ -95,7 +95,6 @@ const BannerComics = ({ }) => {
                 </div>
                 {
                     (!isLoading) && (
-                        // (dataTrending && dataTrending.length > 0) && (
                         <div className='absolute left-0 right-0 top-[45%] -translate-y-[50%] w-full z-10 lg:opacity-0 transition-all duration-300 group-hover/pagi:opacity-100 
                 sm:block hidden opacity-100'>
                             <button
