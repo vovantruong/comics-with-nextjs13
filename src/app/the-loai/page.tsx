@@ -1,4 +1,5 @@
 import DetailGenresComic from '@/components/DetailGenresComic';
+import RootLayout from '@/components/layout/RootLayout';
 import { genresProps } from '@/types/typeProps';
 import Head from 'next/head';
 import Link from 'next/link'
@@ -30,7 +31,7 @@ const GenresComics: FC<GenresComicsProps> = async ({ searchParams }) => {
     const dataFilter = dataGenres.filter((item: genresProps) => item.id === type_genres)[0]
 
     return (
-        <>
+        <RootLayout>
             <Head>
                 <title>My page title</title>
                 <meta property="og:title" content="My page title" key="title" />
@@ -59,7 +60,7 @@ const GenresComics: FC<GenresComicsProps> = async ({ searchParams }) => {
                     </div>
                 </div>
             </main>
-        </>
+        </RootLayout>
 
     )
 }

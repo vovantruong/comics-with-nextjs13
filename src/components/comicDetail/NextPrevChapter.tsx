@@ -7,6 +7,8 @@ import { FaChevronLeft, FaChevronRight } from 'react-icons/fa'
 import { getNextChapter, getPrevChapter } from '@/utils/nextprevchapter'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
+import clsx from 'clsx'
+import SearchBox from '../customs/SearchBox'
 
 interface dataProps {
     data: singleComic
@@ -17,6 +19,7 @@ interface dataProps {
 const NextPrevChapter: FC<dataProps> = ({ data, slug, chapter }) => {
     const [currentData, setCurrentData] = useState<singleComic>(data)
     const [hiddenScreen, setHiddenScreen] = useState<boolean>(false)
+
     const router = useRouter()
 
     const currentSlug = slug;
@@ -24,9 +27,12 @@ const NextPrevChapter: FC<dataProps> = ({ data, slug, chapter }) => {
 
     const dataChapter = currentData.chapters.slice().reverse()
     const currentIndex = dataChapter.findIndex(element => parseInt(element.id) === parseInt(currentChapter))
+    const nextChapter = dataChapter[currentIndex + 1]
+    const prevChapter = dataChapter[currentIndex - 1]
 
     const handleNextChapter = async () => {
-        const nextChapter = dataChapter[currentIndex + 1]
+        if (nextChapter === undefined) return
+
         router.push(`/truyen/${currentSlug}/${nextChapter.id}`)
         const { data, msg } = await getNextChapter(currentSlug, nextChapter)
         if (data !== null) {
@@ -36,13 +42,16 @@ const NextPrevChapter: FC<dataProps> = ({ data, slug, chapter }) => {
     }
 
     const handlePrevChapter = async () => {
-        const prevChapter = dataChapter[currentIndex - 1]
+        if (prevChapter === undefined) return
         router.push(`/truyen/${currentSlug}/${prevChapter.id}`)
         const { data, msg } = await getPrevChapter(currentSlug, prevChapter)
         if (data !== null) {
             setCurrentData(data)
         }
     }
+
+    // console.log(dataChapter[currentIndex - 1]);
+
 
 
     return (
@@ -60,9 +69,11 @@ const NextPrevChapter: FC<dataProps> = ({ data, slug, chapter }) => {
                     </div>
                 </div>
                 <div className='md:hidden block'>
-                    <Link href={`/truyen/${slug}`} className='flex items-center gap-2'>
-                        <FaChevronLeft /> Trở về
-                    </Link>
+                    <div className='flex items-center justify-between'>
+                        <Link href={`/truyen/${slug}`} className='flex items-center gap-2'>
+                            <FaChevronLeft /> Trở về
+                        </Link>
+                    </div>
                 </div>
             </div>
             <div className='container'>
@@ -88,17 +99,25 @@ const NextPrevChapter: FC<dataProps> = ({ data, slug, chapter }) => {
                 <div className='flex items-center justify-center md:gap-4 gap-2'>
                     <button
                         onClick={handlePrevChapter}
-                        className='px-3 py-2 rounded-md border-2 border-secondary flex items-center gap-2 
-                        bg-[#ffd098] text-slate-800 font-semibold md:w-[210px] md:text-base text-xs'
+                        className={clsx(
+                            prevChapter === undefined && 'bg-[#b7b7b7] cursor-no-drop text-[#7e7e7e] border-[#e3e3e3] hover:shadow-none',
+                            'px-3 py-2 rounded-md border-2 border-[#ffbd6d] justify-center flex items-center gap-2',
+                            'bg-[#ffe0bb] text-slate-800 font-semibold md:w-[200px] md:text-base text-xs hover:shadow-[0_0_10px_#ffc785]'
+                        )}
+                        disabled={prevChapter === undefined}
                     >
                         <FaChevronLeft />Chương trước
                     </button>
                     <button
                         onClick={handleNextChapter}
-                        className='px-3 py-2 rounded-md border-2 border-secondary flex items-center 
-                        justify-end gap-2 bg-[#ffd098] text-slate-800 font-semibold md:w-[210px] md:text-base text-xs'
+                        className={clsx(
+                            nextChapter === undefined && 'bg-[#b7b7b7] cursor-no-drop text-[#7e7e7e] border-[#e3e3e3] hover:shadow-none',
+                            'px-3 py-2 rounded-md border-2 border-secondary flex items-center',
+                            'justify-center gap-2 bg-[#ffad4b] text-slate-800 font-semibold md:w-[200px] md:text-base text-xs hover:shadow-[0_0_10px_#ffc785]'
+                        )}
+                        disabled={nextChapter === undefined}
                     >
-                        Chương tiếp theo <FaChevronRight />
+                        Chương tiếp <FaChevronRight />
                     </button>
                 </div>
             </div>

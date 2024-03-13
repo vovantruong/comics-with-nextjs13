@@ -151,13 +151,6 @@ const ComicsDetail: FC<pageProps> = async ({ params }) => {
                                 </div>
                                 <ListChapters paramsCurrent={data.id} data={data.chapters.slice().reverse()} />
                             </div>
-                            <div className='relative w-full my-6'>
-                                <div className='relative rounded-md w-full mb-3 bg-[#f6f3ee] p-4'>
-                                    <div className='flex items-center font-semibold md:text-base text-sm'>
-                                        <h3 className='text-lg font-bold text-slate-700 inline-flex items-center gap-2'><FaFileAlt /> Top bình luận</h3>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                     </div>
                     <div className='xl:w-[30%] w-full lg:pl-2 md:pl-0'>
