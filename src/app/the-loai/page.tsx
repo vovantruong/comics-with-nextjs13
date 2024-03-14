@@ -1,4 +1,4 @@
-import DetailGenresComic from '@/components/DetailGenresComic';
+import DetailGenresComic from '@/components/genresComic/DetailGenresComic';
 import RootLayout from '@/components/layout/RootLayout';
 import { genresProps } from '@/types/typeProps';
 import Head from 'next/head';

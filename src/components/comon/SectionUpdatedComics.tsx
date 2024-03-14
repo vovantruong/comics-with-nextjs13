@@ -9,7 +9,7 @@ import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, FreeMode, Grid } from 'swiper/modules';
 import clsx from 'clsx';
-import CardComic from '../CardComic';
+import CardComic from '../customs/CardComic';
 import Link from 'next/link';
 
 interface SectionUpdatedComicsProps { }

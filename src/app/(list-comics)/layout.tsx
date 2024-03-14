@@ -17,7 +17,7 @@ const layout: FC<layoutProps> = ({ children }) => {
                             {children}
                         </div>
                     </div>
-                    <div className='xl:w-[30%] w-full lg:pl-2 md:pl-0'>
+                    <div className='xl:w-[30%] w-full lg:pl-2 md:pl-0 mb-5'>
                         <RankingComics />
                         <ListGenres />
                     </div>

@@ -1,19 +1,14 @@
 'use client'
 
-import { comicsProps, topComicsProps } from '@/types/typeProps'
+import { comicsProps } from '@/types/typeProps'
 import { FC, useEffect, useState } from 'react'
-import CardComic from '@/components/CardComic';
+import CardComic from '@/components/customs/CardComic';
 import IconTitle from '../../../public/images/light-book.png';
 import Image from 'next/image'
 import Skeleton from 'react-loading-skeleton';
-import { getTopComics } from '@/utils/services';
 import Select from 'react-select';
-import { AiOutlineLoading3Quarters } from 'react-icons/ai';
 import useSWR from 'swr';
 import { useMediaQueryContext } from '@/contexts/MediaQueryContext';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { FreeMode, Grid } from 'swiper/modules';
-import MediaQuery from 'react-responsive';
 
 interface SectionTopComicsProps { }
 

@@ -4,7 +4,7 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import { Autoplay, Pagination, FreeMode } from 'swiper/modules';
 import { comicsProps } from '@/types/typeProps'
 import { getTrending } from '@/utils/services'
-import CardComic from '../CardComic'
+import CardComic from '@/components/customs/CardComic'
 import Skeleton from 'react-loading-skeleton';
 import clsx from 'clsx';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';

@@ -1,8 +1,8 @@
 'use client'
 import { comicsProps } from '@/types/typeProps'
 import { FC, useEffect, useState } from 'react'
-import CardComic from './CardComic'
-import Pagination from './customs/Pagination'
+import CardComic from '../customs/CardComic'
+import Pagination from '../customs/Pagination'
 import Skeleton from 'react-loading-skeleton'
 import { useRouter } from 'next/navigation'
 

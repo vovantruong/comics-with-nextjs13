@@ -8,23 +8,17 @@ import { BsFire } from 'react-icons/bs'
 import { FaComments, FaEye } from 'react-icons/fa';
 import { AiFillHeart, AiOutlineFileDone, AiOutlineHistory } from 'react-icons/ai';
 import { shortNumber } from '@/utils/shortNumber';
-import ImageFallback from './customs/ImageFallback';
+import ImageFallback from './ImageFallback';
 
 interface CardComicProps {
     data: comicsProps
-    type: 'basic' | 'normal' | 'advantage'
+    type: 'basic' | 'normal' | 'advantage' | ''
     className?: string
     badge?: 'hot' | 'full' | 'up' | 'top'
 }
 
 const CardComic: FC<CardComicProps> = ({ data, type = 'basic', className, badge }) => {
     const { thumbnail, title, id, short_description, total_views, followers, status, last_chapter } = data
-
-    const [imgSrc, setImgSrc] = useState<string>(thumbnail)
-
-    useEffect(() => {
-        setImgSrc(thumbnail)
-    }, [thumbnail])
 
 
     function BadgeBoxed() {

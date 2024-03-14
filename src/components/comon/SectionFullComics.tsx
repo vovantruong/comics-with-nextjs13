@@ -3,8 +3,8 @@ import { FC, useEffect, useState, useRef } from 'react'
 import IconTitle from '../../../public/images/icon-full-book.png';
 import Image from 'next/image'
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay, Pagination, FreeMode, Grid } from 'swiper/modules';
-import CardComic from '../CardComic';
+import { Pagination, FreeMode, Grid } from 'swiper/modules';
+import CardComic from '@/components/customs/CardComic'
 import { comicsProps } from '@/types/typeProps';
 import { getFullComics } from '@/utils/services';
 import Skeleton from 'react-loading-skeleton';
