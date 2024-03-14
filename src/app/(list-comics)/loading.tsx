@@ -1,8 +1,9 @@
-import { FC } from 'react'
+import React from 'react'
+import LoadingPage from '@/components/layout/LoadingPage'
 
-interface LoaingComicsProps { }
 
-const LoaingComics: FC<LoaingComicsProps> = ({ }) => {
-    return <div>LoaingComics...</div>
+function Loading() {
+    return <LoadingPage />
 }
-export default LoaingComics
+
+export default Loading

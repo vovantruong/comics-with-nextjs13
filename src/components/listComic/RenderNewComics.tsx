@@ -1,19 +1,17 @@
-'use client';
-
-import { comicsProps } from '@/types/typeProps';
-import { useRouter } from 'next/navigation';
-import React, { FC, useEffect } from 'react'
-import CardComic from '@/components/customs/CardComic';
-import Skeleton from 'react-loading-skeleton';
-import Pagination from '../customs/Pagination';
+'use client'
+import { comicsProps } from '@/types/typeProps'
+import { useRouter } from 'next/navigation'
+import React, { FC, useEffect, useState } from 'react'
+import CardComic from '../customs/CardComic'
+import Skeleton from 'react-loading-skeleton'
+import Pagination from '../customs/Pagination'
 
 interface pageProps {
     data: comicsProps[]
     total_pages: number
-    current_page: number
 }
 
-const RenderComletedComics: FC<pageProps> = ({ data, total_pages, current_page }) => {
+const RenderNewComics: FC<pageProps> = ({ data, total_pages }) => {
     const router = useRouter()
 
     useEffect(() => {
@@ -26,7 +24,7 @@ const RenderComletedComics: FC<pageProps> = ({ data, total_pages, current_page }
 
     const handleChangePage = (data: { selected: number }) => {
         let numberPage = data.selected + 1
-        router.push(`/truyen-full?page=${numberPage}`)
+        router.push(`/truyen-moi?page=${numberPage}`)
     }
 
     return (
@@ -49,4 +47,4 @@ const RenderComletedComics: FC<pageProps> = ({ data, total_pages, current_page }
     )
 }
 
-export default RenderComletedComics
+export default RenderNewComics

@@ -99,7 +99,7 @@ const Header = () => {
                                     <DropdownMenu
                                         title="Danh Sách"
                                         titleClassName="h-[70px]"
-                                        wrapperClassName="lg:w-[160px] px-3 py-2 border"
+                                        wrapperClassName="lg:w-[220px] px-3 py-2 border"
                                         visible={dropListComics}
                                         setVisible={setDropListComics}
                                     >
