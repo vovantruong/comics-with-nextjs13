@@ -19,18 +19,25 @@ const montserrat = Montserrat({
     variable: '--font-mont'
 })
 
-export const metadata: Metadata = {
-    title: 'Truyện Hay',
-    description: 'Truyện Hay - Nơi tinh hoa của những câu chuyện đẹp màu sắc đang chờ đón bạn. Chúng tôi tự hào giới thiệu một kho truyện tranh phong phú và đa dạng, hứa hẹn mang đến cho bạn những giây phút giải trí thú vị và tận hưởng những cung bậc cảm xúc đầy sắc màu.',
-}
-
 export default function RootLayout({
     children,
 }: {
     children: React.ReactNode
 }) {
+    const desc = "Truyện Hay - Nơi tinh hoa của những câu chuyện đẹp màu sắc đang chờ đón bạn. Chúng tôi tự hào giới thiệu một kho truyện tranh phong phú và đa dạng, hứa hẹn mang đến cho bạn những giây phút giải trí thú vị và tận hưởng những cung bậc cảm xúc đầy sắc màu."
+
     return (
         <html lang="en">
+            <head>
+                <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+                <meta name="keywords" content="truyện hay, truyện tranh hay, truyện tranh đủ thể loại" />
+                <meta name="description" content={desc} />
+                <meta property="og:description" content={desc} />
+                <meta property='og:title' content='Truyện Hay - Nơi tinh hoa hội tụ' />
+                <meta property='og:image' content='../../public/images/share-img-website.png' />
+
+                <title>Truyện Hay - Nơi tinh hoa hội tụ</title>
+            </head>
             <body
                 className={clsx(montserrat.variable, 'font-mont bg-light w-full font-normal')}
                 cz-shortcut-listen="true"

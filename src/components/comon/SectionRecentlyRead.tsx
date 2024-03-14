@@ -1,3 +1,5 @@
+'use client'
+
 import Image from 'next/image'
 import React from 'react'
 import GifBookCate from '../../../public/images/cate-book.gif';
