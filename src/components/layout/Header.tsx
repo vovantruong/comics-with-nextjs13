@@ -106,9 +106,9 @@ const Header = () => {
                                         <div className="text-sm font-medium" onClick={() => setDropListComics(false)}>
                                             <Link href="/truyen-full" className="block leading-8 border-b hover:bg-[#ffda0b41] px-2">Truyện full</Link>
                                             <Link href="/truyen-moi" className="block leading-8 border-b hover:bg-[#ffda0b41] px-2">Truyện mới</Link>
-                                            <Link href="/dang-cap-nhat" className="block leading-8 border-b hover:bg-[#ffda0b41] px-2">Đang cập nhật</Link>
-                                            <Link href="/con-trai" className="block leading-8 border-b hover:bg-[#ffda0b41] px-2">Con trai</Link>
-                                            <Link href="/con-gai" className="block leading-8 border-b hover:bg-[#ffda0b41] px-2">Con gái</Link>
+                                            <Link href="/dang-cap-nhat" className="block leading-8 border-b hover:bg-[#ffda0b41] px-2">Truyện đang cập nhật</Link>
+                                            <Link href="/con-trai" className="block leading-8 border-b hover:bg-[#ffda0b41] px-2">Truyện con trai</Link>
+                                            <Link href="/con-gai" className="block leading-8 border-b hover:bg-[#ffda0b41] px-2">Truyện con gái</Link>
                                         </div>
                                     </DropdownMenu>
                                 </li>

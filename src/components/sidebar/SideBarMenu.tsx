@@ -10,6 +10,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 import Logo from '../../../public/images/truyen-logo-2.png'
 import { BsFacebook, BsGithub, BsGoogle, BsTelegram } from 'react-icons/bs';
+import { FaChevronDown, FaChevronRight } from 'react-icons/fa';
+import { backupDataGenres } from '@/constants/backupDataGenres';
 
 
 interface sidebarProps {
@@ -19,6 +21,8 @@ interface sidebarProps {
 
 const SideBarMenu = ({ data }: sidebarProps) => {
     const [visible, setVisible] = useState<boolean>(false)
+    const [collapseGenres, setCollapseGenres] = useState<boolean>(true)
+    const [collapseList, setCollapseList] = useState<boolean>(true)
 
     useEffect(() => {
         if (visible) {
@@ -27,6 +31,7 @@ const SideBarMenu = ({ data }: sidebarProps) => {
             document.body.style.overflow = '';
         }
     }, [visible])
+
 
     return (
         <div className='relative'>
@@ -46,11 +51,75 @@ const SideBarMenu = ({ data }: sidebarProps) => {
                     ' bg-white shadow-md w-full md:w-[50%] h-screen z-10 absolute pt-5 p-5 overflow-y-auto element-no-scrollbar top-0 right-[-100%] transition-all duration-500'
                 )}>
                     <button className='absolute right-6 top-5 text-4xl text-slate-400' onClick={() => setVisible(false)}><IoClose /></button>
-                    <div className="flex items-start mx-1 w-full flex-col pb-4 mb-6 border-b">
-                        <Link href="/" className="py-1 w-[180px]">
+                    <div className="flex items-start mx-1 w-full flex-col pb-4">
+                        <Link href="/" className="py-1 w-[150px]">
                             <Image src={Logo} alt="Logo" height={50} className="w-full h-full" priority />
                         </Link>
                         <span className='text-slate-400 text-sm inline-block text-center w-full'>Web truyện hay - Đủ thể loại - Cập nhật mới nhất</span>
+                        <ul className='mt-5 w-full'>
+                            <li>
+                                <Link href="/" className='border-b py-4 px-2 font-bold flex items-center gap-3 text-base text-slate-600'>Trang chủ</Link>
+                            </li>
+                            <li>
+                                <Link href="" onClick={() => setCollapseGenres(!collapseGenres)} className='border-b py-4 px-2 font-bold flex items-center justify-between gap-3 text-base text-slate-600'>
+                                    Thể loại
+                                    <FaChevronDown className={clsx("text-sm text-slate-400 transition-all duration-150", collapseGenres ? "rotate-0" : "rotate-180")} />
+                                </Link>
+                                {!collapseGenres && <ul className='pl-3'>
+                                    {(data && data?.length > 0) ? data?.map((item: genresProps) => (
+                                        <Link
+                                            title={item.description}
+                                            key={item.id}
+                                            href={`the-loai?type=${item.id}`}
+                                            className="border-b py-3 px-2 font-semibold flex items-center gap-3 text-sm text-slate-500"
+                                        >
+                                            <FaChevronRight className="text-xs text-slate-400 " />{item.name}
+                                        </Link>
+                                    ))
+                                        : data?.length === 0
+                                        && backupDataGenres.map((item: genresProps) => (
+                                            <Link
+                                                title={item.description}
+                                                key={item.id}
+                                                href={`the-loai?type=${item.id}`}
+                                                className="border-b py-3 px-2 font-semibold flex items-center gap-3 text-sm text-slate-500"
+                                            >
+                                                <FaChevronRight className="text-xs text-slate-400 " />{item.name}
+                                            </Link>
+                                        ))}
+                                </ul>}
+                            </li>
+                            <li>
+                                <Link href="" onClick={() => setCollapseList(!collapseList)} className='border-b py-4 px-2 font-bold flex items-center justify-between gap-3 text-base text-slate-600'>
+                                    Danh sách truyện
+                                    <FaChevronDown className={clsx("text-sm text-slate-400 transition-all duration-150", collapseList ? "rotate-0" : "rotate-180")} />
+                                </Link>
+                                {!collapseList && <ul className='pl-3'>
+                                    <li>
+                                        <Link href="/truyen-full" className='border-b py-3 px-2 font-semibold flex items-center gap-3 text-sm text-slate-500'><FaChevronRight className="text-xs text-slate-400 " />Truyện Full</Link>
+                                    </li>
+                                    <li>
+                                        <Link href="/truyen-moi" className='border-b py-3 px-2 font-semibold flex items-center gap-3 text-sm text-slate-500'><FaChevronRight className="text-xs text-slate-400 " />Truyện mới</Link>
+                                    </li>
+                                    <li>
+                                        <Link href="/dang-cap-nhat" className='border-b py-3 px-2 font-semibold flex items-center gap-3 text-sm text-slate-500'><FaChevronRight className="text-xs text-slate-400 " />Truyện đang cập nhật</Link>
+                                    </li>
+                                    <li>
+                                        <Link href="/con-trai" className='border-b py-3 px-2 font-semibold flex items-center gap-3 text-sm text-slate-500'><FaChevronRight className="text-xs text-slate-400 " />Truyện con trai</Link>
+                                    </li>
+                                    <li>
+                                        <Link href="/con-gai" className='border-b py-3 px-2 font-semibold flex items-center gap-3 text-sm text-slate-500'><FaChevronRight className="text-xs text-slate-400 " />Truyện con gái</Link>
+                                    </li>
+                                </ul>}
+
+                            </li>
+                            <li>
+                                <Link href="/" className='border-b py-4 px-2 font-bold flex items-center gap-3 text-base text-slate-600'>Truyện hot</Link>
+                            </li>
+                            <li>
+                                <Link href="/" className='border-b py-4 px-2 font-bold flex items-center gap-3 text-base text-slate-600'>Truyện top</Link>
+                            </li>
+                        </ul>
                     </div>
                     <div className='w-full text-center mb-4 text-sm text-slate-400'>
                         <p>Copyrights &copy; {new Date().getFullYear()} by Gavin Dev</p>
