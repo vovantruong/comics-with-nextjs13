@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic"
+
 import DetailGenresComic from '@/components/genresComic/DetailGenresComic';
 import RootLayout from '@/components/layout/RootLayout';
 import { genresProps } from '@/types/typeProps';
