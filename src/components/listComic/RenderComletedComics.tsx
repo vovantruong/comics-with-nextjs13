@@ -34,7 +34,7 @@ const RenderComletedComics: FC<pageProps> = ({ data, total_pages, current_page }
             <div className='flex items-start justify-start flex-wrap'>
                 {(data && data.length > 0) ? data.map((item: comicsProps) => (
                     <div className='xl:w-1/4 lg:w-1/4 w-1/3 md:mb-6 mb-3 md:px-2 px-1 xl:h-[320px] md:h-[280px] h-[185px]' key={item.id}>
-                        <CardComic type='normal' data={item} />
+                        <CardComic type='normal' data={item} badge='full' />
                     </div>
                 )) : (
                     Array.from(Array(12).keys()).map(item => (

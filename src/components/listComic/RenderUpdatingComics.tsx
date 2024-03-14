@@ -11,7 +11,7 @@ interface pageProps {
     total_pages: number
 }
 
-const RenderNewComics: FC<pageProps> = ({ data, total_pages }) => {
+const RenderUpdatingComics: FC<pageProps> = ({ data, total_pages }) => {
     const router = useRouter()
 
     useEffect(() => {
@@ -24,15 +24,18 @@ const RenderNewComics: FC<pageProps> = ({ data, total_pages }) => {
 
     const handleChangePage = (data: { selected: number }) => {
         let numberPage = data.selected + 1
-        router.push(`/truyen-moi?page=${numberPage}`)
+        router.push(`/dang-cap-nhat?page=${numberPage}`)
     }
+
+    console.log(data);
+
 
     return (
         <div className='relative bg-white py-3'>
             <div className='flex items-start justify-start flex-wrap'>
                 {(data && data.length > 0) ? data.map((item: comicsProps) => (
-                    <div className='xl:w-1/4 lg:w-1/4 w-1/3 md:mb-6 mb-3 md:px-2 px-1 xl:h-[320px] md:h-[280px] h-[185px]' key={item.id}>
-                        <CardComic type='normal' data={item} badge='hot' />
+                    <div className='relative xl:w-1/4 lg:w-1/4 w-1/3 md:mb-6 mb-3 md:px-2 px-1 xl:h-[320px] md:h-[280px] h-[185px]' key={item.id}>
+                        <CardComic type='normal' data={item} badge='updated_at' />
                     </div>
                 )) : (
                     Array.from(Array(12).keys()).map(item => (
@@ -47,4 +50,4 @@ const RenderNewComics: FC<pageProps> = ({ data, total_pages }) => {
     )
 }
 
-export default RenderNewComics
+export default RenderUpdatingComics

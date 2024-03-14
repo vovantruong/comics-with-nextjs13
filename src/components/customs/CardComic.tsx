@@ -14,11 +14,11 @@ interface CardComicProps {
     data: comicsProps
     type: 'basic' | 'normal' | 'advantage' | ''
     className?: string
-    badge?: 'hot' | 'full' | 'up' | 'top'
+    badge?: 'hot' | 'full' | 'up' | 'top' | 'updated_at'
 }
 
 const CardComic: FC<CardComicProps> = ({ data, type = 'basic', className, badge }) => {
-    const { thumbnail, title, id, short_description, total_views, followers, status, last_chapter } = data
+    const { thumbnail, title, id, short_description, total_views, followers, status, last_chapter, updated_at } = data
 
 
     function BadgeBoxed() {
@@ -94,6 +94,7 @@ const CardComic: FC<CardComicProps> = ({ data, type = 'basic', className, badge 
                     height={300}
                     priority
                 />
+                {badge === "updated_at" && <span className='absolute top-0 right-0 text-[10px] bg-[#cb280eed] py-1 px-2 rounded-sm text-slate-50 font-semibold'>{updated_at}</span>}
                 <div className='absolute border-t border-gray-700 bottom-0 px-2 py-1 left-0 w-full h-10 sm:h-20 bg-[rgba(0,0,0,0.6)] group-hover:bg-[rgba(0,0,0,0.8)] transition-all z-[1] duration-200'>
                     <div className='w-full flex-col justify-center text-white sm:text-sm text-[10px] font-semibold border-b border-gray-300 pb-[2px] h-10 flex items-center text-center'>
                         <p className='line-clamp-2 leading-[1.2]'>{title}</p>
