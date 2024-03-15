@@ -8,7 +8,6 @@ interface layoutProps {
 
 const layout: FC<layoutProps> = ({ children }) => {
     return (
-        // <Suspense fallback={<LoadingPage />}>
         <RootLayout>
             <main className={` overflow-x-hidden bg-white`}>
                 <div className='container'>
@@ -16,7 +15,6 @@ const layout: FC<layoutProps> = ({ children }) => {
                 </div>
             </main>
         </RootLayout>
-        // </Suspense>
     )
 }
 export default layout

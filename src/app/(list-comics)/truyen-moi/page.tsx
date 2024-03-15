@@ -19,6 +19,15 @@ const fetchDataNewComic = async (page?: string) => {
     }
 }
 
+// Generate metadata
+export async function generateMetadata() {
+
+    return {
+        title: `Truyện Mới | Truyện tranh hay`,
+        description: 'Truyện Hay - Nơi tinh hoa của những câu chuyện đẹp màu sắc đang chờ đón bạn. Chúng tôi tự hào giới thiệu một kho truyện tranh phong phú và đa dạng, hứa hẹn mang đến cho bạn những giây phút giải trí thú vị và tận hưởng những cung bậc cảm xúc đầy sắc màu.',
+    }
+}
+
 const NewComics: FC<newProps> = async ({ searchParams }) => {
 
     const { comics, total_pages } = await fetchDataNewComic(searchParams.page)

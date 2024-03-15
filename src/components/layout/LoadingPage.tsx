@@ -6,7 +6,7 @@ function LoadingPage() {
     return (
         <div className='fixed top-0 left-0 right-0 bottom-0 w-full h-full'>
             <Progressbar />
-            <main className='w-full h-screen bg-white'>
+            <main className='w-full h-screen bg-primary'>
                 <div className='flex items-center justify-center relative h-full'>
                     <span
                         className='loader-spin'>
