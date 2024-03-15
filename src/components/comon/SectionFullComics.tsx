@@ -46,7 +46,7 @@ const SectionFullComics: FC<SectionFullComicsProps> = ({ }) => {
                             ref={swiperRef}
                             slidesPerView={4}
                             freeMode={true}
-                            className='sm:pb-0 pb-5'
+                            className='!pb-5'
                             grid={{
                                 rows: 2,
                                 fill: "row"

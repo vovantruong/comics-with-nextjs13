@@ -51,6 +51,7 @@ const CardComic: FC<CardComicProps> = ({ data, type = 'basic', className, badge 
                         <span className='group-first:block hidden' >Hot</span>
                     </div>
                 </div>}
+                {badge === "updated_at" && <span className='absolute top-0 right-0 text-[10px] bg-[#cb280eed] py-1 px-2 rounded-sm text-slate-50 font-semibold'>{updated_at}</span>}
             </>
         )
     }
@@ -71,8 +72,8 @@ const CardComic: FC<CardComicProps> = ({ data, type = 'basic', className, badge 
                     height={300}
                     priority
                 />
-                <div className='absolute w-full bottom-0 z-[1] text-[10px] mt-1 bg-[rgba(0,0,0,0.6)] text-white flex items-center sm:justify-start justify-center group-first:justify-center 
-                font-semibold sm:group-first:text-yellow-300 sm:group-first:text-[10px] px-2 h-10'>
+                <div className='absolute w-full bottom-0 z-[1] text-[11px] mt-1 bg-[rgba(0,0,0,0.6)] text-white flex items-center sm:justify-start justify-center group-first:justify-center 
+                font-semibold sm:group-first:text-yellow-300 sm:group-first:text-sm px-2 h-10'>
                     <p className='line-clamp-2 group-first:line-clamp'>{title}</p>
                 </div>
             </Link>
@@ -94,7 +95,7 @@ const CardComic: FC<CardComicProps> = ({ data, type = 'basic', className, badge 
                     height={300}
                     priority
                 />
-                {badge === "updated_at" && <span className='absolute top-0 right-0 text-[10px] bg-[#cb280eed] py-1 px-2 rounded-sm text-slate-50 font-semibold'>{updated_at}</span>}
+                {badge && <BadgeBoxed />}
                 <div className='absolute border-t border-gray-700 bottom-0 px-2 py-1 left-0 w-full h-10 sm:h-20 bg-[rgba(0,0,0,0.6)] group-hover:bg-[rgba(0,0,0,0.8)] transition-all z-[1] duration-200'>
                     <div className='w-full flex-col justify-center text-white sm:text-sm text-[10px] font-semibold border-b border-gray-300 pb-[2px] h-10 flex items-center text-center'>
                         <p className='line-clamp-2 leading-[1.2]'>{title}</p>
@@ -156,8 +157,8 @@ const CardComic: FC<CardComicProps> = ({ data, type = 'basic', className, badge 
                     src={thumbnail}
                     alt={id}
                     className='w-full h-full object-cover z-0 duration-300 transition-all'
-                    width={300}
-                    height={300}
+                    width={1080}
+                    height={700}
                     priority
                 />
             </Link>

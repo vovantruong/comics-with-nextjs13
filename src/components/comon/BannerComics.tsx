@@ -35,7 +35,7 @@ const BannerComics = ({ }) => {
                         <Swiper
                             ref={swiperRef}
                             loop={true}
-                            className='h-full pb-3'
+                            className='h-full !pb-4'
                             slidesPerView={7}
                             freeMode={true}
                             speed={2000}

@@ -13,6 +13,8 @@ import 'swiper/css/thumbs'
 import 'swiper/css/free-mode'
 
 import 'react-loading-skeleton/dist/skeleton.css'
+import { Suspense } from 'react'
+import LoadingPage from '@/components/layout/LoadingPage'
 
 const montserrat = Montserrat({
     subsets: ['latin'],
@@ -42,9 +44,11 @@ export default function RootLayout({
                 className={clsx(montserrat.variable, 'font-mont bg-light w-full font-normal')}
                 cz-shortcut-listen="true"
             >
-                <MediaQueryProvider >
-                    {children}
-                </MediaQueryProvider>
+                <Suspense fallback={<LoadingPage />}>
+                    <MediaQueryProvider >
+                        {children}
+                    </MediaQueryProvider>
+                </Suspense>
             </body>
         </html>
     )

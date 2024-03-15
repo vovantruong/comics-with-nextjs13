@@ -10,6 +10,7 @@ import { IoMdBarcode, IoMdWifi } from 'react-icons/io'
 import CollapseDesc from '@/components/comicDetail/CollapseDesc'
 import ListChapters from '@/components/comicDetail/ListChapters'
 import RootLayout from '@/components/layout/RootLayout'
+import { shortNumber } from '@/utils/shortNumber'
 
 
 interface pageProps {
@@ -109,11 +110,11 @@ const ComicsDetail: FC<pageProps> = async ({ params }) => {
                                         </li>
                                         <li className='flex items-center mb-2'>
                                             <p className='w-[33%] text-slate-600 text-base font-semibold flex items-center gap-1 leading-[27px]'><FaEye /> Lượt xem: </p>
-                                            <p className='w-[67%] leading-[27px] text-slate-600 text-base font-semibold'>{data?.total_views.toLocaleString()} view</p>
+                                            <p className='w-[67%] leading-[27px] text-slate-600 text-base font-semibold'>{shortNumber(data?.total_views)}</p>
                                         </li>
                                         <li className='flex items-center mb-2'>
                                             <p className='w-[33%] text-slate-600 text-base font-semibold flex items-center gap-1 leading-[27px]'><FaGrinHearts />Yêu Thích:</p>
-                                            <p className='w-[67%] leading-[27px] text-slate-600 text-base font-semibold'>{data?.followers.toLocaleString()} tim</p>
+                                            <p className='w-[67%] leading-[27px] text-slate-600 text-base font-semibold'>{shortNumber(data?.followers)}</p>
                                         </li>
                                     </ul>
                                     <div className='my-4 flex items-center md:justify-start justify-center'>
