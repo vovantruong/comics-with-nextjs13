@@ -24,6 +24,7 @@ const ListChapters: FC<listChapterProps> = ({ data, paramsCurrent }) => {
     const totalPages = Math.ceil(data.length / itemsPerPage);
     const pages = Array.from({ length: totalPages }, (_, index) => index + 1);
 
+
     const handlePageClick = (page: number, index: number) => {
         setPageNumber(page);
         setIsActive(index)

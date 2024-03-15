@@ -16,6 +16,8 @@ import 'react-loading-skeleton/dist/skeleton.css'
 import { Suspense } from 'react'
 import LoadingPage from '@/components/layout/LoadingPage'
 
+import { SpeedInsights } from "@vercel/speed-insights/next"
+
 const montserrat = Montserrat({
     subsets: ['latin'],
     variable: '--font-mont'
@@ -49,6 +51,7 @@ export default function RootLayout({
                         {children}
                     </MediaQueryProvider>
                 </Suspense>
+                <SpeedInsights />
             </body>
         </html>
     )
