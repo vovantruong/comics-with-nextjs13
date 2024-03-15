@@ -1,7 +1,7 @@
 'use client'
 import { comicsProps } from '@/types/typeProps'
 import { useRouter } from 'next/navigation'
-import React, { FC, useEffect, useState } from 'react'
+import React, { FC, useEffect } from 'react'
 import CardComic from '../customs/CardComic'
 import Skeleton from 'react-loading-skeleton'
 import Pagination from '../customs/Pagination'
@@ -11,7 +11,7 @@ interface pageProps {
     total_pages: number
 }
 
-const RenderBoyComics: FC<pageProps> = ({ data, total_pages }) => {
+const RenderGirlComics: FC<pageProps> = ({ data, total_pages }) => {
     const router = useRouter()
 
     useEffect(() => {
@@ -24,7 +24,7 @@ const RenderBoyComics: FC<pageProps> = ({ data, total_pages }) => {
 
     const handleChangePage = (data: { selected: number }) => {
         let numberPage = data.selected + 1
-        router.push(`/con-trai?page=${numberPage}`)
+        router.push(`/con-gai?page=${numberPage}`)
     }
 
 
@@ -48,4 +48,4 @@ const RenderBoyComics: FC<pageProps> = ({ data, total_pages }) => {
     )
 }
 
-export default RenderBoyComics
+export default RenderGirlComics

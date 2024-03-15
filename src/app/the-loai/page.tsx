@@ -86,7 +86,7 @@ const GenresComics: FC<GenresComicsProps> = async ({ searchParams }) => {
                             </div>
                         </div>
                         <div className='w-full relative'>
-                            <div className='relative bg-[#f6f3ee] rounded-md py-5 px-3 mt-5 mb-12'>
+                            <div className='relative bg-[#f6f3ee] rounded-md md:py-5 md:px-3 md:mt-5 mb-12'>
                                 <DetailGenresComic type={type_genres} page={page_genres} data={dataDetailGentes} />
                             </div>
                         </div>
