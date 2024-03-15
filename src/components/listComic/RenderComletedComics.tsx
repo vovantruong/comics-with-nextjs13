@@ -33,12 +33,12 @@ const RenderComletedComics: FC<pageProps> = ({ data, total_pages, current_page }
         <div className='relative bg-white py-3'>
             <div className='flex items-start justify-start flex-wrap'>
                 {(data && data.length > 0) ? data.map((item: comicsProps) => (
-                    <div className='xl:w-1/4 lg:w-1/4 w-1/3 md:mb-6 mb-3 md:px-2 px-1 xl:h-[320px] md:h-[280px] h-[185px]' key={item.id}>
+                    <div className='relative 2xl:w-1/6 xl:w-1/5 lg:w-1/4 w-1/3 md:pb-6 pb-3 md:px-2 px-1 lg:h-[360px] sm:h-[280px] h-[185px]' key={item.id}>
                         <CardComic type='normal' data={item} badge='full' />
                     </div>
                 )) : (
                     Array.from(Array(12).keys()).map(item => (
-                        <div key={item} className='2xl:w-1/6 xl:w-1/5 lg:w-1/4 w-1/3 md:pb-6 pb-3 lg:px-3 md:px-2 px-1 lg:h-[360px] sm:h-[280px] h-[185px]'>
+                        <div key={item} className='2xl:w-1/6 xl:w-1/5 lg:w-1/4 w-1/3 md:pb-6 pb-3 md:px-2 px-1 lg:h-[360px] sm:h-[280px] h-[185px]'>
                             <Skeleton containerClassName='w-full h-full flex' />
                         </div>
                     ))

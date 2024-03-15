@@ -33,7 +33,7 @@ const NewComics: FC<newProps> = async ({ searchParams }) => {
                         <div className="text-sm mx-2 "><BsChevronRight /></div>
                         <Link href="/the-loai?type=all" className='hover:underline text-slate-700'>Truyện đang cập nhật</Link>
                         <div className="text-sm mx-2 "><BsChevronRight /></div>
-                        <span className='text-slate-700'>Trang {searchParams.page}</span>
+                        <span className='text-slate-700'>Trang {searchParams.page ?? "1"}</span>
                     </div>
                 </div>
                 <div className='w-full relative'>

@@ -25,14 +25,14 @@ const NewComics: FC<newProps> = async ({ searchParams }) => {
 
     return (
         <section className="overflow-x-hidden bg-white">
-            <div className='container flex items-start justify-center relative flex-wrap !md:px-2 !px-0'>
+            <div className='relative'>
                 <div className='relative rounded-md md:mt-5 mt-3 w-full bg-[#f6f3ee] md:p-5 p-3'>
                     <div className='flex items-center font-semibold sm:text-lg text-xs'>
                         <Link href="/" className='hover:underline text-slate-700'>Trang chủ</Link>
                         <div className="text-sm mx-2 "><BsChevronRight /></div>
                         <Link href="/the-loai?type=all" className='hover:underline text-slate-700'>Truyện mới</Link>
                         <div className="text-sm mx-2 "><BsChevronRight /></div>
-                        <span className='text-slate-700'>Trang {searchParams.page}</span>
+                        <span className='text-slate-700'>Trang {searchParams.page ?? '1'}</span>
                     </div>
                 </div>
                 <div className='w-full relative'>

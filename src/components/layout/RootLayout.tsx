@@ -1,11 +1,12 @@
 'use client'
 
-import React, { useEffect, useState } from "react";
+import React, { Suspense, useEffect, useState } from "react";
 import Header from "./Header";
 import Footer from "./Footer";
 import ScrollTop from "../ScrollTop";
 import { useMediaQueryContext } from "@/contexts/MediaQueryContext";
 import { FaHeart } from "react-icons/fa";
+import LoadingPage from "./LoadingPage";
 
 
 const RootLayout = ({ children }: { children: React.ReactNode }) => {

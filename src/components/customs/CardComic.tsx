@@ -68,8 +68,8 @@ const CardComic: FC<CardComicProps> = ({ data, type = 'basic', className, badge 
                     src={thumbnail}
                     alt={id}
                     className='w-full h-full object-cover z-0 group-hover:scale-105 duration-300 transition-all'
-                    width={300}
-                    height={300}
+                    width={1080}
+                    height={700}
                     priority
                 />
                 <div className='absolute w-full bottom-0 z-[1] text-[11px] mt-1 bg-[rgba(0,0,0,0.6)] text-white flex items-center sm:justify-start justify-center group-first:justify-center 
@@ -91,8 +91,8 @@ const CardComic: FC<CardComicProps> = ({ data, type = 'basic', className, badge 
                     src={thumbnail}
                     alt={id}
                     className='w-full h-full object-cover z-0 duration-300 transition-all'
-                    width={300}
-                    height={300}
+                    width={1080}
+                    height={700}
                     priority
                 />
                 {badge && <BadgeBoxed />}
