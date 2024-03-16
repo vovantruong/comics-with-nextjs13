@@ -8,15 +8,16 @@ import clsx from 'clsx'
 
 interface DropdownMenuProps {
     children: React.ReactNode
-    title: string
+    title: any
     className?: string
     wrapperClassName?: string
     titleClassName?: string
     visible: boolean
     setVisible: (value: boolean) => void
+    visibleIcon?: boolean
 }
 
-const DropdownMenu: FC<DropdownMenuProps> = ({ title, children, className, wrapperClassName, titleClassName, visible, setVisible }) => {
+const DropdownMenu: FC<DropdownMenuProps> = ({ title, children, className, wrapperClassName, titleClassName, visible, setVisible, visibleIcon = true }) => {
 
     return (
         <OutsideClickHandler onOutsideClick={() => setVisible(false)}>
@@ -26,7 +27,7 @@ const DropdownMenu: FC<DropdownMenuProps> = ({ title, children, className, wrapp
                     onClick={() => setVisible(!visible)}
                 >
                     {title}
-                    <span><FiChevronDown /></span>
+                    {visibleIcon && <span><FiChevronDown /></span>}
                 </div>
                 <div className={clsx(
                     wrapperClassName,

@@ -23,6 +23,8 @@ module.exports = {
                 'sticky-head': 'sticky-head 0.5s forwards',
                 'show-dropdown': 'show-dropdown 0.3s forwards',
                 'hidden-dropdown': 'hidden-dropdown 0.3s forwards;',
+                'show-dropdown-mb': 'show-dropdown-mb 0.3s forwards',
+                'hidden-dropdown-mb': 'hidden-dropdown-mb 0.3s forwards;',
             },
             keyframes: {
                 'sticky-head': {
@@ -39,6 +41,16 @@ module.exports = {
                     '0%': { transform: 'translateY(0) translateX(-50%)', opacity: 1, },
                     '50%': { transform: 'translateY(-15px) translateX(-50%)', opacity: 1, },
                     '100%': { transform: 'translateY(30px) translateX(-50%)', opacity: 0, }
+                },
+                'show-dropdown-mb': {
+                    '0%': { transform: 'translateY(30px)', opacity: 0 },
+                    '70%': { transform: 'translateY(-15px)', opacity: 1 },
+                    '100%': { transform: 'translateY(0px)', opacity: 1 }
+                },
+                'hidden-dropdown-mb': {
+                    '0%': { transform: 'translateY(0)', opacity: 1, },
+                    '50%': { transform: 'translateY(-15px)', opacity: 1, },
+                    '100%': { transform: 'translateY(30px)', opacity: 0, }
                 },
                 'loader-rotate': {
                     '0%': { transform: 'rotate(0deg) scale(0.8)' },

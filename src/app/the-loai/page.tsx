@@ -1,10 +1,10 @@
 export const dynamic = "force-dynamic"
 
 import DetailGenresComic from '@/components/genresComic/DetailGenresComic';
+import DropdownGenresMb from '@/components/genresComic/DropdownGenresMb';
 import LoadingPage from '@/components/layout/LoadingPage';
 import RootLayout from '@/components/layout/RootLayout';
 import { genresProps } from '@/types/typeProps';
-import Head from 'next/head';
 import Link from 'next/link'
 import { FC, Suspense } from 'react'
 import { BsChevronRight, BsFillCaretDownFill } from 'react-icons/bs'
@@ -70,7 +70,7 @@ const GenresComics: FC<GenresComicsProps> = async ({ searchParams }) => {
             <RootLayout>
                 <main className="overflow-x-hidden bg-white">
                     <div className='container flex items-start justify-center relative flex-wrap !md:px-2 !px-3'>
-                        <div className='relative rounded-md md:mt-10 mt-3 w-full bg-[#f6f3ee] md:p-5 p-3'>
+                        <div className='relative rounded-md md:mt-10 mt-3 w-full bg-[#f6f3ee] md:p-5 p-3 flex items-center justify-between'>
                             <div className='flex items-center font-semibold sm:text-lg text-xs'>
                                 <Link href="/" className='hover:underline text-slate-700'>Trang chủ</Link>
                                 <div className="text-sm mx-2 "><BsChevronRight /></div>
@@ -80,10 +80,7 @@ const GenresComics: FC<GenresComicsProps> = async ({ searchParams }) => {
                                     {dataFilter?.name ? dataFilter.name : 'Tất cả'}
                                 </Link>
                             </div>
-                            <div className='absolute md:right-5 right-3 text-xl font-medium top-[50%] -translate-y-[50%] lg:hidden text-slate-500 w-[35px] h-[35px] cursor-pointer 
-                    flex items-center justify-between'>
-                                <BsFillCaretDownFill />
-                            </div>
+                            <DropdownGenresMb data={dataGenres} />
                         </div>
                         <div className='w-full relative'>
                             <div className='relative bg-[#f6f3ee] rounded-md md:py-5 md:px-3 md:mt-5 mb-12'>
