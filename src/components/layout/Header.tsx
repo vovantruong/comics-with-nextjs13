@@ -104,17 +104,17 @@ const Header = () => {
                                         setVisible={setDropListComics}
                                     >
                                         <div className="text-sm font-medium" onClick={() => setDropListComics(false)}>
-                                            <Link href="/truyen-full" className="block leading-8 border-b hover:bg-[#ffda0b41] px-2">Truyện full</Link>
-                                            <Link href="/truyen-moi" className="block leading-8 border-b hover:bg-[#ffda0b41] px-2">Truyện mới</Link>
-                                            <Link href="/dang-cap-nhat" className="block leading-8 border-b hover:bg-[#ffda0b41] px-2">Truyện đang cập nhật</Link>
-                                            <Link href="/con-trai" className="block leading-8 border-b hover:bg-[#ffda0b41] px-2">Truyện con trai</Link>
-                                            <Link href="/con-gai" className="block leading-8 border-b hover:bg-[#ffda0b41] px-2">Truyện con gái</Link>
+                                            <Link href="/truyen-full?page=1" className="block leading-8 border-b hover:bg-[#ffda0b41] px-2">Truyện full</Link>
+                                            <Link href="/truyen-moi?page=1" className="block leading-8 border-b hover:bg-[#ffda0b41] px-2">Truyện mới</Link>
+                                            <Link href="/dang-cap-nhat?page=1" className="block leading-8 border-b hover:bg-[#ffda0b41] px-2">Truyện đang cập nhật</Link>
+                                            <Link href="/con-trai?page=1" className="block leading-8 border-b hover:bg-[#ffda0b41] px-2">Truyện con trai</Link>
+                                            <Link href="/con-gai?page=1" className="block leading-8 border-b hover:bg-[#ffda0b41] px-2">Truyện con gái</Link>
                                         </div>
                                     </DropdownMenu>
                                 </li>
                                 <li className="relative mx-4 flex items-center">
                                     <Link
-                                        href="/truyen-hot"
+                                        href="/truyen-hot?page=1"
                                         className="font-semibold text-sm h-20 leading-20 flex items-center relative text-heading capitalize"
                                     >
                                         Truyện Hot
@@ -122,7 +122,7 @@ const Header = () => {
                                 </li>
                                 <li className="relative mx-4 flex items-center">
                                     <Link
-                                        href="/truyen-top?type=all"
+                                        href="/truyen-top?type=all&page=1"
                                         className="font-semibold text-sm h-20 leading-20 flex items-center relative text-heading capitalize"
                                     >
                                         Top truyện

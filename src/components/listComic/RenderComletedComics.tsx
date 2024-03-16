@@ -11,9 +11,10 @@ interface pageProps {
     data: comicsProps[]
     total_pages: number
     current_page: number
+    params: string
 }
 
-const RenderComletedComics: FC<pageProps> = ({ data, total_pages, current_page }) => {
+const RenderComletedComics: FC<pageProps> = ({ data, total_pages, current_page, params }) => {
     const router = useRouter()
 
     useEffect(() => {
@@ -44,7 +45,7 @@ const RenderComletedComics: FC<pageProps> = ({ data, total_pages, current_page }
                     ))
                 )}
             </div>
-            <Pagination totalPage={total_pages} data={data} handlePageClick={handleChangePage} />
+            <Pagination totalPage={total_pages} data={data} handlePageClick={handleChangePage} current_page={parseInt(params) - 1} />
         </div>
     )
 }

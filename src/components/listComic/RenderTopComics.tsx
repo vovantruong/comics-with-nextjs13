@@ -34,6 +34,7 @@ const btnsStatus = [
 ]
 
 const RenderTopComics: FC<pageProps> = ({ data, total_pages, params }) => {
+    const [forcePage, setForcePage] = useState<number | undefined>()
     const router = useRouter()
 
     useEffect(() => {
@@ -60,7 +61,7 @@ const RenderTopComics: FC<pageProps> = ({ data, total_pages, params }) => {
                                 { '!bg-[#ffdb95]': params.type == item.id },
                                 'border border-slate-200 shadow-sm bg-white rounded-md py-2 px-3 text-sm font-medium whitespace-nowrap'
                             )}
-                            onClick={() => router.push(`?type=${item.id}`)}
+                            onClick={() => { router.push(`?type=${item.id}&page=1`); setForcePage(1) }}
                         >
                             {item.name}
                         </button>
@@ -95,7 +96,7 @@ const RenderTopComics: FC<pageProps> = ({ data, total_pages, params }) => {
                         ))
                     )}
                 </div>
-                <Pagination totalPage={total_pages} data={data} handlePageClick={handleChangePage} />
+                <Pagination totalPage={total_pages} data={data} handlePageClick={handleChangePage} current_page={parseInt(params.page) - 1} />
             </div>
         </>
     )

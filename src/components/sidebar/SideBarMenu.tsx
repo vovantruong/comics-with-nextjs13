@@ -96,25 +96,25 @@ const SideBarMenu = ({ data }: sidebarProps) => {
                                 </Link>
                                 {!collapseList && <ul className='pl-3'>
                                     <li>
-                                        <Link href="/truyen-full" className='border-b py-3 px-2 font-semibold flex items-center gap-3 text-sm text-slate-500'><FaChevronRight className="text-xs text-slate-400 " />Truyện Full</Link>
+                                        <Link href="/truyen-full?page=1" className='border-b py-3 px-2 font-semibold flex items-center gap-3 text-sm text-slate-500'><FaChevronRight className="text-xs text-slate-400 " />Truyện Full</Link>
                                     </li>
                                     <li>
-                                        <Link href="/truyen-moi" className='border-b py-3 px-2 font-semibold flex items-center gap-3 text-sm text-slate-500'><FaChevronRight className="text-xs text-slate-400 " />Truyện mới</Link>
+                                        <Link href="/truyen-moi?page=1" className='border-b py-3 px-2 font-semibold flex items-center gap-3 text-sm text-slate-500'><FaChevronRight className="text-xs text-slate-400 " />Truyện mới</Link>
                                     </li>
                                     <li>
-                                        <Link href="/dang-cap-nhat" className='border-b py-3 px-2 font-semibold flex items-center gap-3 text-sm text-slate-500'><FaChevronRight className="text-xs text-slate-400 " />Truyện đang cập nhật</Link>
+                                        <Link href="/dang-cap-nhat?page=1" className='border-b py-3 px-2 font-semibold flex items-center gap-3 text-sm text-slate-500'><FaChevronRight className="text-xs text-slate-400 " />Truyện đang cập nhật</Link>
                                     </li>
                                     <li>
-                                        <Link href="/con-trai" className='border-b py-3 px-2 font-semibold flex items-center gap-3 text-sm text-slate-500'><FaChevronRight className="text-xs text-slate-400 " />Truyện con trai</Link>
+                                        <Link href="/con-trai?page=1" className='border-b py-3 px-2 font-semibold flex items-center gap-3 text-sm text-slate-500'><FaChevronRight className="text-xs text-slate-400 " />Truyện con trai</Link>
                                     </li>
                                     <li>
-                                        <Link href="/con-gai" className='border-b py-3 px-2 font-semibold flex items-center gap-3 text-sm text-slate-500'><FaChevronRight className="text-xs text-slate-400 " />Truyện con gái</Link>
+                                        <Link href="/con-gai?page=1" className='border-b py-3 px-2 font-semibold flex items-center gap-3 text-sm text-slate-500'><FaChevronRight className="text-xs text-slate-400 " />Truyện con gái</Link>
                                     </li>
                                 </ul>}
 
                             </li>
                             <li>
-                                <Link href="/truyen-hot" className='border-b py-4 px-2 font-bold flex items-center gap-3 text-base text-slate-600'>Truyện hot</Link>
+                                <Link href="/truyen-hot?page=1" className='border-b py-4 px-2 font-bold flex items-center gap-3 text-base text-slate-600'>Truyện hot</Link>
                             </li>
                             <li>
                                 <Link href="/truyen-top?type=all" className='border-b py-4 px-2 font-bold flex items-center gap-3 text-base text-slate-600'>Truyện top</Link>

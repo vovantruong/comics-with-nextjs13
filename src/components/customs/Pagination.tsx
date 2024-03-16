@@ -7,16 +7,18 @@ interface PaginationProps {
     handlePageClick?: (data: { selected: number }) => void
     data?: Object[]
     totalPage?: number
+    current_page?: number
 }
 
-const Pagination: FC<PaginationProps> = ({ className, handlePageClick, data = [], totalPage = 1 }) => {
+const Pagination: FC<PaginationProps> = ({ className, handlePageClick, data = [], totalPage = 1, current_page = 0 }) => {
 
 
     return <nav className='my-2.5 mx-auto'>
         <ReactPaginate
+            initialPage={current_page}
             pageCount={totalPage}
             marginPagesDisplayed={2}
-            pageRangeDisplayed={1}
+            pageRangeDisplayed={3}
             onPageChange={handlePageClick}
             previousLabel={<BsChevronLeft />}
             nextLabel={<BsChevronRight />}

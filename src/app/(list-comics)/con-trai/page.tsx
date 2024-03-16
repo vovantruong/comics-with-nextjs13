@@ -48,7 +48,7 @@ const BoyComics: FC<newProps> = async ({ searchParams }) => {
                 </div>
                 <div className='w-full relative'>
                     <div className='relative bg-[#f6f3ee] rounded-md md:py-5 md:px-3 md:mt-5 xl:mb-12 mb-5'>
-                        <RenderBoyComics data={comics} total_pages={total_pages} />
+                        <RenderBoyComics data={comics} total_pages={total_pages} params={searchParams.page} />
                     </div>
                 </div>
             </div>

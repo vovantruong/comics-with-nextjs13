@@ -9,9 +9,10 @@ import Pagination from '../customs/Pagination'
 interface pageProps {
     data: comicsProps[]
     total_pages: number
+    params: string
 }
 
-const RenderNewComics: FC<pageProps> = ({ data, total_pages }) => {
+const RenderNewComics: FC<pageProps> = ({ data, total_pages, params }) => {
     const router = useRouter()
 
     useEffect(() => {
@@ -42,7 +43,7 @@ const RenderNewComics: FC<pageProps> = ({ data, total_pages }) => {
                     ))
                 )}
             </div>
-            <Pagination totalPage={total_pages} data={data} handlePageClick={handleChangePage} />
+            <Pagination totalPage={total_pages} data={data} handlePageClick={handleChangePage} current_page={parseInt(params) - 1} />
         </div>
     )
 }

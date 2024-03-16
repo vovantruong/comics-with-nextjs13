@@ -38,7 +38,7 @@ const SectionUpdatedComics: FC<SectionUpdatedComicsProps> = ({ }) => {
                     <Image src={IconTitle} alt='icon-title' width={50} height={50} className='sm:w-[50px] sm:h-[50px] w-[35px] h-[35px]' />
                     <h2>Truyện mới cập nhật</h2>
                 </div>
-                <Link href="/dang-cap-nhat" className='text-sm underline text-[#6e60ee] font-medium italic'>Xem tất cả</Link>
+                <Link href="/dang-cap-nhat?page=1" className='text-sm underline text-[#6e60ee] font-medium italic'>Xem tất cả</Link>
             </div>
             <div className="relative overflow-hidden rounded-md mt-5 group/updated">
                 <div className='relative rounded-md bg-white w-full border-none sm:border sm:border-solid overflow-hidden'>

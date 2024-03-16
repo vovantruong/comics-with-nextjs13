@@ -37,7 +37,7 @@ const SectionFullComics: FC<SectionFullComicsProps> = ({ }) => {
                     <Image src={IconTitle} alt='icon-title' width={30} height={30} className='w-[30px] h-[30px]' />
                     <h2>Truyện full</h2>
                 </div>
-                <Link href="/truyen-full" className='text-sm underline text-[#6e60ee] font-medium italic'>Xem tất cả</Link>
+                <Link href="/truyen-full?page=1" className='text-sm underline text-[#6e60ee] font-medium italic'>Xem tất cả</Link>
             </div>
             <div className="overflow-hidden rounded-md mt-5 relative group/full">
                 <div className='relative rounded-md bg-white w-full border-none sm:border sm:border-solid overflow-hidden'>

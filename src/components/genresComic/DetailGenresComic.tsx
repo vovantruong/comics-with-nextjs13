@@ -51,7 +51,7 @@ const DetailGenresComic: FC<DetailGenresComicProps> = ({ page, type, data }) => 
                     ))
                 )}
             </div>
-            <Pagination totalPage={data?.total_pages} data={data?.comics} handlePageClick={handleChangePage} />
+            <Pagination totalPage={data?.total_pages} data={data?.comics} handlePageClick={handleChangePage} current_page={parseInt(page) - 1} />
         </div>
     )
 }
