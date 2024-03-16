@@ -86,9 +86,17 @@ body::-webkit-scrollbar-thumb {
 .loader-spin:after {
 	@apply content-[""] block h-5 w-5 rounded-[50%];
 }
+
 .loader-spin:before {
 	@apply animate-[loader-spin-1_1s_infinite] bg-secondary shadow-[30px_0_0_#7fc0d4] mb-2.5;
 }
+
 .loader-spin:after {
 	@apply animate-[loader-spin-2_1s_infinite] bg-[#7fc0d4] shadow-[30px_0_0_#ffb31c];
+}
+
+@supports (-webkit-overflow-scrolling: touch) {
+	input {
+		font-size: 16px;
+	}
 }

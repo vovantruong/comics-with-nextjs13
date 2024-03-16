@@ -1,14 +1,14 @@
 'use client'
 
 import { singleComic } from '@/types/typeProps'
-import React, { FC, useState } from 'react'
+import React, { FC, memo, useState } from 'react'
 import ImageFallback from '../customs/ImageFallback'
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa'
 import { getNextChapter, getPrevChapter } from '@/utils/nextprevchapter'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import clsx from 'clsx'
-import SearchBox from '../customs/SearchBox'
+import { LuLightbulb, LuLightbulbOff } from "react-icons/lu";
 
 interface dataProps {
     data: singleComic
@@ -50,10 +50,16 @@ const NextPrevChapter: FC<dataProps> = ({ data, slug, chapter }) => {
         }
     }
 
+    console.log(hiddenScreen);
+
+
 
     return (
         <React.Fragment>
-            <div className='fixed top-0 left-0 select-none inset-x-0 bg-[rgba(0,0,0,0.61)] text-left py-3 px-2 text-gray-300 font-semibold duration-200 translate-y-0 opacity-1'>
+            <div className={clsx(
+                'fixed top-0 left-0 select-none inset-x-0 bg-[rgba(0,0,0,0.61)] text-left py-3 px-2 text-gray-300 font-semibold duration-200 translate-y-0 opacity-1',
+                { "!-translate-y-[50px]": hiddenScreen }
+            )}>
                 <div className='md:block hidden'>
                     <div className='flex items-center gap-4 md:flex-row flex-col'>
                         <Link
@@ -73,6 +79,15 @@ const NextPrevChapter: FC<dataProps> = ({ data, slug, chapter }) => {
                     </div>
                 </div>
             </div>
+            <button
+                className={clsx(
+                    'fixed right-4 bottom-[70px] flex items-center justify-center shadow-md w-10 h-10 rounded-[50%] text-white bg-[#c98d16] z-10 text-lg',
+                    { '!opacity-50': hiddenScreen }
+                )}
+                onClick={() => setHiddenScreen(!hiddenScreen)}
+            >
+                {hiddenScreen ? <LuLightbulbOff /> : <LuLightbulb />}
+            </button>
             <div className='container'>
                 <div className='md:hidden block mt-20'>
                     <h3 className='text-center font-bold text-lg bg-primary text-slate-700 rounded-md p-4 shadow-sm'>
@@ -92,7 +107,10 @@ const NextPrevChapter: FC<dataProps> = ({ data, slug, chapter }) => {
                     ))}
                 </div>
             </div>
-            <div className='fixed bottom-0 left-0 select-none inset-x-0 bg-[rgba(0,0,0,0.61)] text-left py-3 px-2 text-gray-300 font-semibold duration-200 translate-y-0 opacity-1'>
+            <div className={clsx(
+                'fixed bottom-0 left-0 select-none inset-x-0 bg-[rgba(0,0,0,0.61)] text-left py-3 px-2 text-gray-300 font-semibold duration-200 translate-y-0 opacity-1',
+                { "!translate-y-[70px]": hiddenScreen }
+            )}>
                 <div className='flex items-center justify-center md:gap-4 gap-2'>
                     <button
                         onClick={handlePrevChapter}
@@ -123,4 +141,4 @@ const NextPrevChapter: FC<dataProps> = ({ data, slug, chapter }) => {
 }
 
 
-export default NextPrevChapter
+export default memo(NextPrevChapter)

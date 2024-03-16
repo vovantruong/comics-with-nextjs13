@@ -123,7 +123,7 @@ const SearchBox: FC<SearchBoxProps> = ({ className }) => {
                         onChange={(e) => { setQuery(e.target.value); setShowBoxed(true) }}
                         placeholder="Tìm kiếm nhanh tên truyện, tác giả, ..."
                         className={clsx(className, "xl:placeholder:text-sm md:placeholder:text-xs outline-none border-[#f0f0f0] h-10 bg-white rounded-md 2xl:min-w-[445px] xl:pr-2 xl:min-w-[368px]",
-                            "opacity-[1] text-sm placeholder:text-gray-800 focus:border-secondary lg:w-[320px] pl-3 md:pr-10 transition border xl:w-full ",
+                            "opacity-[1] lg:text-sm text-base placeholder:text-gray-800 focus:border-secondary lg:w-[320px] pl-3 md:pr-10 transition border xl:w-full ",
                             "min-w-[auto] w-full"
                         )}
                     />
