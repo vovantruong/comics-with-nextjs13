@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic"
+
 import LoadingPage from '@/components/layout/LoadingPage'
 import RootLayout from '@/components/layout/RootLayout'
 import { FC, Suspense } from 'react'
