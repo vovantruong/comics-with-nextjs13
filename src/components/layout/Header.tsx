@@ -122,7 +122,7 @@ const Header = () => {
                                 </li>
                                 <li className="relative mx-4 flex items-center">
                                     <Link
-                                        href="/truyen-top"
+                                        href="/truyen-top?type=all"
                                         className="font-semibold text-sm h-20 leading-20 flex items-center relative text-heading capitalize"
                                     >
                                         Top truyện

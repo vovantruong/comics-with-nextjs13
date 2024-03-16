@@ -114,10 +114,10 @@ const SideBarMenu = ({ data }: sidebarProps) => {
 
                             </li>
                             <li>
-                                <Link href="/" className='border-b py-4 px-2 font-bold flex items-center gap-3 text-base text-slate-600'>Truyện hot</Link>
+                                <Link href="/truyen-hot" className='border-b py-4 px-2 font-bold flex items-center gap-3 text-base text-slate-600'>Truyện hot</Link>
                             </li>
                             <li>
-                                <Link href="/" className='border-b py-4 px-2 font-bold flex items-center gap-3 text-base text-slate-600'>Truyện top</Link>
+                                <Link href="/truyen-top?type=all" className='border-b py-4 px-2 font-bold flex items-center gap-3 text-base text-slate-600'>Truyện top</Link>
                             </li>
                         </ul>
                     </div>
