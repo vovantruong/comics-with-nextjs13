@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic"
+
 import RenderUpdatingComics from '@/components/listComic/RenderUpdatingComics'
 import Link from 'next/link'
 import { FC } from 'react'

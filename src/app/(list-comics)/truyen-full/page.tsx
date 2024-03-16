@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic"
+
 import RenderComletedComics from '@/components/listComic/RenderComletedComics'
 import Link from 'next/link'
 import { FC } from 'react'
