@@ -23,6 +23,20 @@ const BannerComics: FC<bannerProps> = ({ dataTrending }) => {
         });
     }, []);
 
+    useEffect(() => {
+        const swiperInstance = swiperRef.current.swiper;
+
+        function handleResize() {
+            swiperInstance.update(); // Cập nhật Swiper khi kích thước cửa sổ thay đổi
+        }
+
+        window.addEventListener('resize', handleResize);
+
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, []);
+
 
     return (
         <div className='container mx-auto'>
@@ -34,6 +48,7 @@ const BannerComics: FC<bannerProps> = ({ dataTrending }) => {
                             loop={true}
                             className='h-full !pb-4'
                             slidesPerView={7}
+                            slidesPerGroup={1}
                             freeMode={true}
                             speed={2000}
                             autoplay={{
@@ -72,7 +87,7 @@ const BannerComics: FC<bannerProps> = ({ dataTrending }) => {
                         >
                             {
                                 dataTrending.map((item: comicsProps) => (
-                                    <SwiperSlide key={item.id} className='w-full h-full md:p-2 p-0'>
+                                    <SwiperSlide key={item.id} className='2xl:w-[210px] xl:w-[204px] lg:w-[193px] w-[122px] h-full md:p-2 p-0'>
                                         <CardComic data={item} type='advantage' badge='hot' />
                                     </SwiperSlide>
                                 ))
