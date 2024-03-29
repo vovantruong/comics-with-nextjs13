@@ -46,11 +46,11 @@ export default function RootLayout({
                 className={clsx(montserrat.variable, 'font-mont bg-light w-full font-normal')}
                 cz-shortcut-listen="true"
             >
-                <Suspense fallback={<LoadingPage />}>
-                    <MediaQueryProvider >
-                        {children}
-                    </MediaQueryProvider>
-                </Suspense>
+                {/* <Suspense fallback={<LoadingPage />}> */}
+                <MediaQueryProvider >
+                    {children}
+                </MediaQueryProvider>
+                {/* </Suspense> */}
                 <SpeedInsights />
             </body>
         </html>

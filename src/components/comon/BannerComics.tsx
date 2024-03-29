@@ -14,35 +14,13 @@ interface bannerProps {
 
 
 const BannerComics: FC<bannerProps> = ({ dataTrending }) => {
-    const [isRefreshing, setIsRefreshing] = useState(false);
     const swiperRef = useRef() as any;
-
-    useEffect(() => {
-        window.addEventListener('beforeunload', () => {
-            setIsRefreshing(true);
-        });
-    }, []);
-
-    useEffect(() => {
-        const swiperInstance = swiperRef.current.swiper;
-
-        function handleResize() {
-            swiperInstance.update(); // Cập nhật Swiper khi kích thước cửa sổ thay đổi
-        }
-
-        window.addEventListener('resize', handleResize);
-
-        return () => {
-            window.removeEventListener('resize', handleResize);
-        };
-    }, []);
-
 
     return (
         <div className='container mx-auto'>
             <section className="group/pagi relative w-full mt-2 md:mt-5 bg-[#f6f3ee] rounded-md overflow-hidden md:px-3 md:py-2 border-none sm:border sm:border-solid p-0">
                 <div className='relative rounded-md bg-white w-full md:h-[350px] sm:h-[300px] h-[200px] border-none sm:border sm:border-solid overflow-hidden'>
-                    {(dataTrending && dataTrending.length > 0) && (!isRefreshing) ? (
+                    {(dataTrending && dataTrending.length > 0) ? (
                         <Swiper
                             ref={swiperRef}
                             loop={true}
